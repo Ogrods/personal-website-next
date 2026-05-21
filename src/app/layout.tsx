@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { EB_Garamond } from "next/font/google";
 import "./globals.css";
-
-const ebGaramond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Dan Ogrodnik | Web Developer",
@@ -26,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${ebGaramond.variable} antialiased`}>
+      <body className="antialiased">
         {children}
         <Analytics />
         <SpeedInsights />

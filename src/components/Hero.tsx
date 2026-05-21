@@ -1,14 +1,7 @@
-"use client";
-
-import dynamic from "next/dynamic";
 import { ChevronDown } from "lucide-react";
 import { GitHubIcon } from "@/components/icons";
+import ParticleBackground from "@/components/ParticleBackground";
 import type { SiteProfile } from "@/types";
-
-const ParticleBackground = dynamic(
-  () => import("@/components/ParticleBackground"),
-  { ssr: false }
-);
 
 type HeroProps = {
   profile: SiteProfile;
