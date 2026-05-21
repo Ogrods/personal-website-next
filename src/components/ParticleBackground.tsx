@@ -14,11 +14,11 @@ const PALETTE = [
   { head: "#ff3b3b", trail: "#b32424" },
 ] as const;
 
-const MAX_PARTICLES = 400;
+const MAX_PARTICLES = 240;
 const TRAIL_FADE = "rgba(15, 15, 15, 0.008)";
-const MIN_SPEED = 0.85;
-const MAX_SPEED = 2.0;
-const LAUNCH_BOOST = 1.7;
+const MIN_SPEED = 0.7;
+const MAX_SPEED = 1.3;
+const LAUNCH_BOOST = 1.0;
 const WANDER_STRENGTH = 0.11;
 const DAMPING = 0.985;
 const TRAIL_ALPHA = 0.85;
@@ -26,8 +26,8 @@ const HEAD_ALPHA = 0.95;
 const HEAD_SIZE = 1.6;
 const MIN_VELOCITY = 0.45;
 const START_ANGLE = -Math.PI / 2;
-const ANGLE_STEP = (Math.PI * 2) / 120;
-const FRAMES_PER_SPAWN = 1;
+const ANGLE_STEP = (Math.PI * 2) / 60;
+const FRAMES_PER_SPAWN = 3;
 
 type Particle = {
   x: number;
