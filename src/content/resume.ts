@@ -31,7 +31,7 @@ export const resumeContent: ResumeContent = {
       title: "Freelance Front-end Developer",
       years: "October 2021 - present",
       description:
-        "Specializes in crafting intuitive, conversion-focused user interfaces for Shopify stores and WordPress WooCommerce platforms. Develops custom themes and modifies existing templates using Liquid, PHP, JavaScript, and CSS preprocessors (Sass/Less) to align with brand identity.",
+        "Specializes in crafting intuitive, conversion-focused user interfaces for Shopify stores and WordPress WooCommerce platforms, including work on the Milton Sleep Co. mattress storefront. Develops custom themes and modifies existing templates using Liquid, PHP, JavaScript, and CSS preprocessors (Sass/Less) to align with brand identity.",
     },
     {
       company: "Straight Up Digital",
