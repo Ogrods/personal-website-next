@@ -32,16 +32,35 @@ export default function Resume({ resume }: ResumeProps) {
                 </span>
               </p>
               <p className="mt-2 leading-[30px]">{job.description}</p>
+              {job.highlights && job.highlights.length > 0 ? (
+                <ul className="mt-3 list-disc space-y-1 pl-5 text-[15px] leading-[26px] text-[#6e7881]">
+                  {job.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : null}
             </article>
           ))}
         </div>
 
         <SectionHeading title="Skills" />
-        <div className="skill mb-12 max-w-none space-y-0 border-b border-[#e8e8e8] pb-6 leading-[30px]">
-          {resume.skillMessage.map((para, i) => (
-            <p key={i} className={i < resume.skillMessage.length - 1 ? "mb-0" : ""}>
-              {para}
-            </p>
+        <div className="skill mb-12 max-w-none space-y-6 border-b border-[#e8e8e8] pb-8">
+          {resume.skillGroups.map((group) => (
+            <div key={group.label}>
+              <h4 className="mb-2 font-serif text-sm font-bold uppercase tracking-[0.12em] text-[#313131]">
+                {group.label}
+              </h4>
+              <ul className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-sm bg-[#ebeeee] px-2.5 py-1 font-serif text-sm text-[#313131]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
 

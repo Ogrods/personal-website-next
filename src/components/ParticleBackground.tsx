@@ -18,6 +18,7 @@ const MAX_PARTICLES = 400;
 const TRAIL_FADE = "rgba(15, 15, 15, 0.008)";
 const MIN_SPEED = 0.85;
 const MAX_SPEED = 2.0;
+const LAUNCH_BOOST = 1.7;
 const WANDER_STRENGTH = 0.11;
 const DAMPING = 0.985;
 const TRAIL_ALPHA = 0.85;
@@ -44,7 +45,11 @@ function randomPaletteEntry(): (typeof PALETTE)[number] {
 }
 
 function spawnParticle(cx: number, cy: number, angle: number): Particle {
-  const speed = MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED);
+  // Launch faster than the steady-state cruising speed; ~0.985^60 ≈ 0.4 means
+  // a 1.7x boost decays to roughly the cruising band over ~1 second at 60fps,
+  // where keepMoving's MIN_VELOCITY floor takes over.
+  const speed =
+    (MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED)) * LAUNCH_BOOST;
   const color = randomPaletteEntry();
   return {
     x: cx,

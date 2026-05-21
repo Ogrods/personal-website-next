@@ -15,7 +15,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
     >
       <div className="container-site">
         <SectionHeading
-          title="Check Out Some of My Works."
+          title="Selected Work"
           variant="muted"
           align="center"
         />
@@ -27,7 +27,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Visit ${project.title} — ${project.category} (opens in new tab)`}
+              aria-label={`Visit ${project.title} — ${project.outcome} (opens in new tab)`}
               className="portfolio-item group block"
             >
               <div className="item-wrap overflow-hidden bg-white transition-all duration-300 ease-in-out group-hover:shadow-lg">
@@ -55,6 +55,12 @@ export default function Portfolio({ projects }: PortfolioProps) {
                   </h3>
                   <p className="mt-0 font-serif text-xs leading-[18px] text-[#6e7881]">
                     {project.category}
+                  </p>
+                  <p className="mt-2 font-serif text-xs text-[#0762f9]">
+                    {project.stack.join(" · ")}
+                  </p>
+                  <p className="mt-1 font-serif text-xs leading-[18px] text-[#313131]">
+                    {project.outcome}
                   </p>
                 </div>
               </div>

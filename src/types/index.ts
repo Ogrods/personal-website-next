@@ -12,10 +12,13 @@ export type Address = {
 
 export type SiteProfile = {
   name: string;
-  subtitle: string;
-  description: string;
+  availability: string;
+  tagline: string;
+  proofLine: string;
+  bookingUrl: string;
   image: string;
-  bio: string;
+  bioParagraphs: string[];
+  bioClosing?: string;
   contactMessage: string;
   email: string;
   phone: string;
@@ -39,18 +42,18 @@ export type WorkExperience = {
   title: string;
   years: string;
   description: string;
+  highlights?: string[];
 };
 
-export type Skill = {
-  name: string;
-  level: string;
+export type SkillGroup = {
+  label: string;
+  items: string[];
 };
 
 export type ResumeContent = {
-  skillMessage: string[];
+  skillGroups: SkillGroup[];
   education: Education[];
   work: WorkExperience[];
-  skills: Skill[];
 };
 
 export type Project = {
@@ -58,4 +61,6 @@ export type Project = {
   category: string;
   image: string;
   url: string;
+  stack: string[];
+  outcome: string;
 };

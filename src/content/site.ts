@@ -2,11 +2,21 @@ import type { SiteProfile } from "@/types";
 
 export const siteProfile: SiteProfile = {
   name: "Dan Ogrodnik",
-  subtitle: "Front-end Developer and SEO Specialist",
-  description: "Responsive Design, React, SEO & Accessibility",
+  availability: "Available · Remote · Los Angeles",
+  tagline: "Front-end developer for WordPress and Shopify.",
+  proofLine:
+    "Fast, accessible, SEO-strong sites — Lighthouse lifts of 30 to 50 points across 50+ launches.",
+  bookingUrl:
+    "mailto:Dan.Ogrodnik@gmail.com?subject=Book%20a%2015-min%20intro%20call",
   image: "profilepic.webp",
-  bio: "Skilled web developer and digital artist with extensive experience in building responsive, user-friendly interfaces using a diverse range of languages, libraries, and frameworks. Combines a strong background in web development and e-commerce with a keen eye for design to deliver visually compelling and technically robust digital experiences. Adept at optimizing performance, accessibility, and usability while maintaining clean, efficient code. Originally from Connecticut, Dan holds degrees from California Institute of the Arts and the University of Hartford. He currently resides in Los Angeles where he is an avid snowboarder, cyclist, and coffee drinker.",
-  contactMessage: "Questions, comments, concerns? Drop me a line!",
+  bioParagraphs: [
+    "Senior front-end developer with 5+ years shipping production WordPress and Shopify sites. At Fervor Creative, I led 50+ launches across multifamily real estate (100+ Greystar properties), nonprofit (Virginia G. Piper Charitable Trust, Helios Education Foundation), and enterprise (collaborations involving ASU and Starbucks). I served as primary technical contact for a 150+ site agency portfolio.",
+    "My focus is Core Web Vitals, WCAG 2.1 AA accessibility, and technical SEO. I routinely lift Lighthouse scores by 30 to 50 points per project. I work in PHP, JavaScript, Liquid, React, and modern CSS. Based in Los Angeles, currently freelancing at Rhumbline AI, and open to senior front-end roles.",
+  ],
+  bioClosing:
+    "CalArts MFA · Hartford BM · snowboarder, cyclist, coffee enthusiast.",
+  contactMessage:
+    "Looking for a senior front-end developer to ship WordPress or Shopify work? Send a note or book a 15-minute call.",
   email: "Dan.Ogrodnik@gmail.com",
   phone: "860-305-9789",
   github: "https://github.com/Ogrods",

@@ -18,8 +18,8 @@ const svg = `
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <text x="600" y="270" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="600" fill="#ffffff">Dan Ogrodnik</text>
-  <text x="600" y="350" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="38" fill="#dddddd">Front-end Developer and SEO Specialist</text>
-  <text x="600" y="410" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-style="italic" fill="#9aa5b0">Responsive Design, React, SEO &amp; Accessibility</text>
+  <text x="600" y="350" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#dddddd">WordPress &amp; Shopify Front-end Developer</text>
+  <text x="600" y="410" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-style="italic" fill="#9aa5b0">Core Web Vitals · WCAG · Technical SEO · 50+ launches</text>
   <text x="600" y="520" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#0762f9">danogrodnik.com</text>
 </svg>
 `;

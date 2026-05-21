@@ -72,6 +72,11 @@ export default function Contact({ profile }: ContactProps) {
           <p className="max-w-3xl font-serif text-xl leading-9 text-[#9aa5b0]">
             {profile.contactMessage}
           </p>
+          <p className="mt-6">
+            <a href={profile.bookingUrl} className="btn-primary">
+              Book a 15-min intro call
+            </a>
+          </p>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-12">

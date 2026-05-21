@@ -1,5 +1,4 @@
 import { ChevronDown } from "lucide-react";
-import { GitHubIcon } from "@/components/icons";
 import ParticleBackground from "@/components/ParticleBackground";
 import type { SiteProfile } from "@/types";
 
@@ -11,32 +10,38 @@ export default function Hero({ profile }: HeroProps) {
   return (
     <header
       id="home"
-      className="relative flex h-[800px] min-h-[500px] w-full items-center justify-center overflow-hidden text-center"
+      className="relative flex h-dvh min-h-[100svh] w-full items-center justify-center overflow-hidden text-center"
     >
       <ParticleBackground />
 
       <div className="relative z-10 inline-block w-[85%] max-w-5xl px-4 pb-8 align-middle">
         <div className="banner-text w-full">
+          <p className="mb-4 font-serif text-xs uppercase tracking-[0.35em] text-[#9aa5b0]">
+            {profile.availability}
+          </p>
           <h1 className="mx-auto mb-[18px] font-serif text-[clamp(3rem,10vw,5.625rem)] leading-[1.1] tracking-[-2px] text-white">
             {profile.name}
           </h1>
-          <h2 className="mx-auto w-[70%] max-w-3xl font-serif text-[clamp(1.25rem,4vw,2.375rem)] leading-tight text-[#ddd]">
-            {profile.subtitle}
+          <h2 className="mx-auto w-[90%] max-w-3xl font-serif text-[clamp(1.25rem,4vw,2.125rem)] leading-tight text-[#ddd]">
+            {profile.tagline}
           </h2>
           <hr className="mx-auto my-[18px] w-3/5 border-white/10" />
-          <h3 className="mx-auto w-[70%] max-w-2xl font-serif text-xl italic leading-[1.9] text-[#ddd]">
-            {profile.description}
-          </h3>
-          <div className="mt-6">
+          <p className="mx-auto w-[85%] max-w-2xl font-serif text-lg italic leading-[1.75] text-[#bbb] md:text-xl">
+            {profile.proofLine}
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Dan Ogrodnik on GitHub (opens in new tab)"
-              className="inline-flex items-center gap-2 font-serif text-sm uppercase tracking-[0.25em] text-white transition hover:text-[#0762f9]"
+              href={profile.bookingUrl}
+              className="btn-hero-primary"
             >
-              <GitHubIcon size={18} />
-              Github
+              Book a 15-min intro call
+            </a>
+            <a
+              href={profile.resumeDownload}
+              download
+              className="btn-hero-secondary"
+            >
+              Download resume
             </a>
           </div>
         </div>

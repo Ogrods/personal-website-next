@@ -29,7 +29,16 @@ export default function About({ profile }: AboutProps) {
 
           <div className="md:col-span-9 md:pr-[5%]">
             <SectionHeading title="About" variant="light" />
-            <p className="mb-10 leading-[30px] text-[#ccc]">{profile.bio}</p>
+            <div className="mb-6 space-y-6 leading-[30px] text-[#ccc]">
+              {profile.bioParagraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+            {profile.bioClosing ? (
+              <p className="mb-10 text-sm italic text-[#9aa5b0]">
+                {profile.bioClosing}
+              </p>
+            ) : null}
 
             <div className="grid gap-8 md:grid-cols-12">
               <div className="md:col-span-5">
@@ -50,7 +59,10 @@ export default function About({ profile }: AboutProps) {
                 </p>
               </div>
 
-              <div className="flex items-start md:col-span-7 md:justify-end md:pt-1.5">
+              <div className="flex flex-wrap items-start gap-3 md:col-span-7 md:justify-end md:pt-1.5">
+                <a href={profile.bookingUrl} className="btn-primary">
+                  Book a call
+                </a>
                 <a
                   href={profile.resumeDownload}
                   download

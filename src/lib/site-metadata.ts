@@ -1,16 +1,19 @@
 export const siteUrl = "https://danogrodnik.com";
 
-export const siteTitle = "Dan Ogrodnik — Front-End Developer & SEO Specialist";
+export const siteTitle =
+  "Dan Ogrodnik — WordPress & Shopify Front-end Developer";
 
 export const siteDescription =
-  "Front-end developer and SEO specialist in Los Angeles. Responsive design, React, SEO, and accessibility.";
+  "WordPress and Shopify front-end developer in Los Angeles. Core Web Vitals, WCAG accessibility, technical SEO. Lighthouse lifts of 30–50 points across 50+ launches.";
 
 export const siteKeywords = [
   "Dan Ogrodnik",
+  "WordPress developer",
+  "Shopify developer",
   "front-end developer",
-  "SEO specialist",
-  "React developer",
+  "Core Web Vitals",
+  "technical SEO",
+  "WCAG accessibility",
   "Los Angeles",
-  "web developer",
-  "accessibility",
+  "Rhumbline AI",
 ];
