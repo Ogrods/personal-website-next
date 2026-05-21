@@ -15,8 +15,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const IMAGES_DIR = path.join(ROOT, "public", "images");
 
-const MAX_WIDTH = 1200;
-const WEBP_QUALITY = 82;
+const MAX_WIDTH = 1600;
+const WEBP_QUALITY = 92;
 const SKIP = new Set([
   "overlay-bg.png", // tiny tiling background
 ]);

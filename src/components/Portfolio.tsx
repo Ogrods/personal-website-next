@@ -35,10 +35,11 @@ export default function Portfolio({ projects }: PortfolioProps) {
                   <Image
                     src={`/images/portfolio/${project.image}`}
                     alt=""
-                    width={800}
-                    height={400}
+                    width={1200}
+                    height={600}
+                    quality={90}
                     className="h-[200px] w-full object-cover object-top"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 340px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
                   />
                   <div
                     className="portfolio-overlay absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
