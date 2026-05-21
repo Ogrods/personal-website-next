@@ -14,27 +14,27 @@ type FooterProps = {
 
 export default function Footer({ social, name }: FooterProps) {
   return (
-    <footer className="border-t border-white/10 bg-[#0f0f0f] py-10 text-center text-[#888]">
-      <ul className="mb-6 flex justify-center gap-6">
+    <footer className="relative bg-[#191919] pb-12 pt-12 text-center text-sm text-[#303030]">
+      <ul className="social-links mb-8 flex justify-center gap-10">
         {social.map((network) => {
           const Icon =
             iconMap[network.name as keyof typeof iconMap] ?? GitHubIcon;
           return (
-            <li key={network.name}>
+            <li key={network.name} className="inline-block">
               <a
                 href={network.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white transition hover:text-[#0762f9]"
+                className="text-[#525252] transition hover:text-white"
                 aria-label={network.name}
               >
-                <Icon size={28} />
+                <Icon size={30} />
               </a>
             </li>
           );
         })}
       </ul>
-      <p className="text-sm">
+      <p className="copyright text-[#303030]">
         © Copyright {new Date().getFullYear()} {name}
       </p>
     </footer>

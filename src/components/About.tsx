@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SectionHeading from "@/components/SectionHeading";
 import type { SiteProfile } from "@/types";
 
 type AboutProps = {
@@ -9,52 +10,55 @@ export default function About({ profile }: AboutProps) {
   const { address } = profile;
 
   return (
-    <section id="about" className="scroll-mt-20 bg-[#0f0f0f] py-20 text-[#ccc]">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[280px_1fr] md:items-start">
-        <div className="mx-auto w-full max-w-[280px]">
-          <Image
-            src={`/images/${profile.image}`}
-            alt={profile.name}
-            width={280}
-            height={280}
-            className="rounded-full object-cover shadow-lg"
-            priority
-          />
-        </div>
+    <section
+      id="about"
+      className="scroll-mt-20 overflow-hidden bg-[#000524] pb-[66px] pt-24 text-[#ccc]"
+    >
+      <div className="container-site">
+        <div className="grid gap-10 md:grid-cols-12 md:items-start">
+          <div className="md:col-span-3">
+            <Image
+              src={`/images/${profile.image}`}
+              alt={profile.name}
+              width={120}
+              height={120}
+              className="h-[120px] w-[120px] rounded-full object-cover"
+              priority
+            />
+          </div>
 
-        <div>
-          <h2 className="mb-8 font-serif text-4xl text-white">
-            <span className="text-[#0762f9]">About</span>
-          </h2>
-          <p className="mb-10 leading-8 text-[#ccc]">{profile.bio}</p>
+          <div className="md:col-span-9 md:pr-[5%]">
+            <SectionHeading title="About" variant="light" />
+            <p className="mb-10 leading-[30px] text-[#ccc]">{profile.bio}</p>
 
-          <div className="grid gap-8 sm:grid-cols-2">
-            <div>
-              <h3 className="mb-4 text-lg font-semibold text-white">
-                Contact Details
-              </h3>
-              <p className="font-semibold text-white">{profile.name}</p>
-              <p>
-                {address.city}, {address.state}
-              </p>
-              <p>
+            <div className="grid gap-8 md:grid-cols-12">
+              <div className="md:col-span-5">
+                <h3 className="mb-3 font-serif text-lg text-white">
+                  Contact Details
+                </h3>
+                <p className="font-semibold text-white">{profile.name}</p>
+                <p>
+                  {address.city}, {address.state}
+                </p>
+                <p>
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="text-white transition hover:text-[#0762f9]"
+                  >
+                    {profile.email}
+                  </a>
+                </p>
+              </div>
+
+              <div className="flex items-start md:col-span-7 md:justify-end md:pt-1.5">
                 <a
-                  href={`mailto:${profile.email}`}
-                  className="text-[#0762f9] hover:underline"
+                  href={profile.resumeDownload}
+                  download
+                  className="btn-primary"
                 >
-                  {profile.email}
+                  Download Resume
                 </a>
-              </p>
-            </div>
-
-            <div className="flex items-end">
-              <a
-                href={profile.resumeDownload}
-                download
-                className="inline-block rounded border border-[#0762f9] px-6 py-3 text-sm uppercase tracking-widest text-white transition hover:bg-[#0762f9]"
-              >
-                Download Resume
-              </a>
+              </div>
             </div>
           </div>
         </div>

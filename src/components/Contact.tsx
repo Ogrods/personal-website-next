@@ -50,45 +50,56 @@ export default function Contact({ profile }: ContactProps) {
   }
 
   return (
-    <section id="contact" className="scroll-mt-20 bg-[#151515] py-20 text-[#ccc]">
-      <div className="mx-auto max-w-6xl px-6">
-        <h2 className="mb-4 text-center font-serif text-4xl text-white">
-          Get In <span className="text-[#0762f9]">Touch</span>.
-        </h2>
-        <p className="mx-auto mb-12 max-w-2xl text-center leading-7">
-          {profile.contactMessage}
-        </p>
+    <section
+      id="contact"
+      className="scroll-mt-20 bg-[#191919] pb-[102px] pt-24 text-[#636363]"
+    >
+      <div className="container-site">
+        <div className="section-head mb-10">
+          <h2 className="mb-1.5 font-serif text-lg uppercase tracking-[0.2em] text-[#ebeeee]">
+            Get In Touch.
+          </h2>
+          <p className="max-w-3xl font-serif text-xl leading-9 text-[#838c95]">
+            {profile.contactMessage}
+          </p>
+        </div>
 
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label htmlFor="name" className="mb-1 block text-sm text-white">
-                Name *
+        <div className="grid gap-12 lg:grid-cols-12">
+          <form onSubmit={handleSubmit} className="lg:col-span-8">
+            <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
+              <label
+                htmlFor="name"
+                className="mb-0 w-full shrink-0 font-serif text-[15px] font-bold leading-6 text-[#ebeeee] sm:w-[26%]"
+              >
+                Name <span className="text-[#0762f9]">*</span>
               </label>
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
-                className="w-full rounded border border-white/20 bg-[#0f0f0f] px-4 py-3 text-white outline-none focus:border-[#0762f9]"
+                className="field-input sm:w-[65%]"
               />
             </div>
-            <div>
-              <label htmlFor="email" className="mb-1 block text-sm text-white">
-                Email *
+            <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
+              <label
+                htmlFor="email"
+                className="mb-0 w-full shrink-0 font-serif text-[15px] font-bold leading-6 text-[#ebeeee] sm:w-[26%]"
+              >
+                Email <span className="text-[#0762f9]">*</span>
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
-                className="w-full rounded border border-white/20 bg-[#0f0f0f] px-4 py-3 text-white outline-none focus:border-[#0762f9]"
+                className="field-input sm:w-[65%]"
               />
             </div>
-            <div>
+            <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
               <label
                 htmlFor="subject"
-                className="mb-1 block text-sm text-white"
+                className="mb-0 w-full shrink-0 font-serif text-[15px] font-bold leading-6 text-[#ebeeee] sm:w-[26%]"
               >
                 Subject
               </label>
@@ -96,54 +107,64 @@ export default function Contact({ profile }: ContactProps) {
                 id="subject"
                 name="subject"
                 type="text"
-                className="w-full rounded border border-white/20 bg-[#0f0f0f] px-4 py-3 text-white outline-none focus:border-[#0762f9]"
+                className="field-input sm:w-[65%]"
               />
             </div>
-            <div>
+            <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
               <label
                 htmlFor="message"
-                className="mb-1 block text-sm text-white"
+                className="mb-0 w-full shrink-0 font-serif text-[15px] font-bold leading-6 text-[#ebeeee] sm:w-[26%]"
               >
-                Message *
+                Message <span className="text-[#0762f9]">*</span>
               </label>
               <textarea
                 id="message"
                 name="message"
                 required
-                rows={6}
-                className="w-full resize-y rounded border border-white/20 bg-[#0f0f0f] px-4 py-3 text-white outline-none focus:border-[#0762f9]"
+                rows={8}
+                className="field-input min-h-[220px] resize-y sm:w-[65%]"
               />
             </div>
-            <button
-              type="submit"
-              disabled={status === "submitting"}
-              className="rounded border border-[#0762f9] px-8 py-3 text-sm uppercase tracking-widest text-white transition hover:bg-[#0762f9] disabled:opacity-60"
-            >
-              {status === "submitting" ? "Sending..." : "Submit"}
-            </button>
+            <div className="sm:pl-[26%]">
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="btn-submit"
+              >
+                {status === "submitting" ? "Sending..." : "Submit"}
+              </button>
+            </div>
 
             {status === "success" ? (
-              <p className="text-green-400">
-                Your message was sent. Thank you!
+              <p
+                id="message-success"
+                className="mt-6 bg-[#0f0f0f] px-6 py-6 text-[#0762f9] sm:ml-[26%] sm:w-[65%]"
+              >
+                Your message was sent, thank you!
               </p>
             ) : null}
             {status === "error" ? (
-              <p className="text-red-400">{errorMessage}</p>
+              <p
+                id="message-warning"
+                className="mt-6 bg-[#0f0f0f] px-6 py-6 text-[#d72828] sm:ml-[26%] sm:w-[65%]"
+              >
+                {errorMessage}
+              </p>
             ) : null}
           </form>
 
-          <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">
+          <div className="lg:col-span-4">
+            <h4 className="mb-1.5 font-serif text-base font-bold leading-6 text-[#ebeeee]">
               Contact Details
-            </h3>
-            <p className="font-semibold text-white">{profile.name}</p>
+            </h4>
+            <p className="font-semibold text-[#ebeeee]">{profile.name}</p>
             <p>
               {profile.address.city}, {profile.address.state}
             </p>
             <p>
               <a
                 href={`mailto:${profile.email}`}
-                className="text-[#0762f9] hover:underline"
+                className="text-[#0762f9] transition hover:text-white"
               >
                 {profile.email}
               </a>

@@ -7,28 +7,42 @@ import { navLinks } from "@/content/site";
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [opaque, setOpaque] = useState(false);
+  const [active, setActive] = useState("#home");
 
   useEffect(() => {
-    const onScroll = () => setOpaque(window.scrollY > 100);
+    const onScroll = () => {
+      setOpaque(window.scrollY > 100);
+
+      const sections = navLinks
+        .map((l) => document.querySelector(l.href))
+        .filter(Boolean) as Element[];
+
+      const scrollPos = window.scrollY + 120;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = sections[i];
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollPos) {
+          setActive(navLinks[i].href);
+          break;
+        }
+      }
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const linkClass =
-    "block px-4 py-3 text-xs uppercase tracking-[0.2em] text-white/90 transition hover:text-[#0762f9] md:inline-block md:py-0";
-
   return (
     <nav
       id="nav-wrap"
-      className={`fixed left-0 top-0 z-50 w-full transition-colors duration-300 ${
-        opaque ? "bg-[#333]/95 backdrop-blur-sm" : "bg-transparent"
+      className={`fixed left-0 top-0 z-50 w-full font-serif text-xs uppercase tracking-[0.25em] transition-colors duration-300 ${
+        opaque ? "bg-[#333]" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:justify-center">
+      <div className="relative mx-auto flex max-w-[1020px] items-center justify-center px-4">
         <button
           type="button"
-          className="rounded p-2 text-white md:hidden"
+          className="absolute left-4 top-3 rounded p-2 text-white md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -38,15 +52,17 @@ export default function Nav() {
         <ul
           className={`${
             open
-              ? "absolute left-0 top-full w-full border-t border-white/10 bg-[#333] py-2 md:static md:flex md:w-auto md:gap-2 md:border-0 md:bg-transparent md:py-0"
-              : "hidden md:flex md:gap-2"
+              ? "absolute left-0 top-full w-full border-t border-white/10 bg-[#333] py-2 md:static md:flex md:w-auto md:border-0 md:bg-transparent md:py-0"
+              : "hidden min-h-12 md:flex"
           }`}
         >
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="inline-block h-12">
               <a
                 href={link.href}
-                className={linkClass}
+                className={`inline-block px-[13px] py-2 leading-8 text-white transition-colors duration-200 hover:text-[#0762f9] ${
+                  active === link.href ? "text-[#fe6928]" : ""
+                }`}
                 onClick={() => setOpen(false)}
               >
                 {link.label}
