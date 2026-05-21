@@ -14,10 +14,14 @@ const PALETTE = [
   "#ff3b3b",
 ] as const;
 
-const MAX_PARTICLES = 250;
-const SPAWN_PER_FRAME_MIN = 3;
-const SPAWN_PER_FRAME_MAX = 6;
-const TRAIL_FADE = "rgba(15, 15, 15, 0.04)";
+const MAX_PARTICLES = 320;
+const SPAWN_PER_FRAME_MIN = 1;
+const SPAWN_PER_FRAME_MAX = 3;
+const TRAIL_FADE = "rgba(15, 15, 15, 0.018)";
+const MIN_SPEED = 0.25;
+const MAX_SPEED = 1.1;
+const WANDER_STRENGTH = 0.06;
+const DAMPING = 0.985;
 
 type Particle = {
   x: number;
@@ -37,8 +41,8 @@ function randomPaletteColor(): string {
 
 function spawnParticle(cx: number, cy: number): Particle {
   const angle = Math.random() * Math.PI * 2;
-  const speed = 1 + Math.random() * 2.5;
-  const maxLife = 80 + Math.floor(Math.random() * 120);
+  const speed = MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED);
+  const maxLife = 240 + Math.floor(Math.random() * 360);
   return {
     x: cx,
     y: cy,
@@ -64,15 +68,17 @@ function drawStaticBurst(
 
   for (let i = 0; i < 120; i++) {
     const p = spawnParticle(cx, cy);
-    const steps = 40 + Math.floor(Math.random() * 60);
+    const steps = 80 + Math.floor(Math.random() * 120);
     ctx.strokeStyle = p.color;
     ctx.globalAlpha = 0.35;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(p.x, p.y);
     for (let s = 0; s < steps; s++) {
-      p.px = p.x;
-      p.py = p.y;
+      p.vx += (Math.random() - 0.5) * WANDER_STRENGTH;
+      p.vy += (Math.random() - 0.5) * WANDER_STRENGTH;
+      p.vx *= DAMPING;
+      p.vy *= DAMPING;
       p.x += p.vx;
       p.y += p.vy;
       ctx.lineTo(p.x, p.y);
@@ -151,13 +157,19 @@ export default function ParticleBackground() {
         const p = particles[i];
         p.px = p.x;
         p.py = p.y;
+
+        p.vx += (Math.random() - 0.5) * WANDER_STRENGTH;
+        p.vy += (Math.random() - 0.5) * WANDER_STRENGTH;
+        p.vx *= DAMPING;
+        p.vy *= DAMPING;
+
         p.x += p.vx;
         p.y += p.vy;
         p.life -= 1;
 
         const alpha = Math.max(0, p.life / p.maxLife);
         ctx.strokeStyle = p.color;
-        ctx.globalAlpha = alpha * 0.85;
+        ctx.globalAlpha = alpha * 0.7;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(p.px, p.py);
@@ -165,10 +177,10 @@ export default function ParticleBackground() {
         ctx.stroke();
 
         const offScreen =
-          p.x < -20 ||
-          p.x > width + 20 ||
-          p.y < -20 ||
-          p.y > height + 20;
+          p.x < -40 ||
+          p.x > width + 40 ||
+          p.y < -40 ||
+          p.y > height + 40;
         if (p.life <= 0 || offScreen) {
           particles.splice(i, 1);
         }
