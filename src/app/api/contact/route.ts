@@ -1,28 +1,51 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import {
+  checkRateLimit,
+  getClientIp,
+  isBotSubmission,
+  type ContactPayload,
+  validateContactPayload,
+} from "@/lib/contact-api";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
+function silentOk() {
+  return NextResponse.json({ ok: true });
+}
+
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as {
-      name?: string;
-      email?: string;
-      subject?: string;
-      message?: string;
-    };
+    const body = (await request.json()) as ContactPayload;
+    const validated = validateContactPayload(body);
 
-    const name = body.name?.trim();
-    const email = body.email?.trim();
-    const subject = body.subject?.trim() || "Portfolio contact";
-    const message = body.message?.trim();
+    if (!validated.ok) {
+      return NextResponse.json({ error: validated.error }, { status: 400 });
+    }
 
-    if (!name || !email || !message) {
+    const { name, email, subject, message, startedAt, website } =
+      validated.data;
+
+    if (isBotSubmission(website, startedAt)) {
+      return silentOk();
+    }
+
+    const ip = getClientIp(request);
+    const rate = checkRateLimit(ip);
+    if (!rate.allowed) {
       return NextResponse.json(
-        { error: "Name, email, and message are required." },
-        { status: 400 }
+        { error: "Too many submissions. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(rate.retryAfter ?? 60),
+          },
+        }
       );
     }
 
@@ -38,7 +61,8 @@ export async function POST(request: Request) {
 
     const to = process.env.CONTACT_TO_EMAIL ?? "Dan.Ogrodnik@gmail.com";
     const from =
-      process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
+      process.env.CONTACT_FROM_EMAIL ??
+      "Dan Ogrodnik <contact@mail.danogrodnik.com>";
 
     const { error } = await resend.emails.send({
       from,

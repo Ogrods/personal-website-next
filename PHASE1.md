@@ -77,12 +77,14 @@ Acceptance: Lighthouse perf ≥ 90 on mobile throttling.
 
 ---
 
-## 5. Contact form end-to-end
+## 5. Contact form end-to-end ✅ (code complete — manual DNS + Vercel env pending)
 
-- [ ] Verify the Resend domain (likely `danogrodnik.com` once it points to Vercel — or a subdomain like `mail.danogrodnik.com`)
-- [ ] Set `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` in Vercel project env (Production + Preview + Development)
-- [ ] Add a honeypot field + basic rate limit (`@vercel/firewall` or a simple in-memory limiter) — the current route is wide open
-- [ ] Test from a deployed Preview URL with a real submission
+- [x] Resend API route with honeypot, time-trap, validation, per-IP rate limit (3 / 10 min)
+- [x] `CONTACT_FROM_EMAIL` documented as `contact@mail.danogrodnik.com`
+- [x] [DEPLOY.md](./DEPLOY.md) Step 0 (Resend + Namecheap) and [CONTACT_FORM_TEST.md](./CONTACT_FORM_TEST.md)
+- [ ] **You:** Verify `mail.danogrodnik.com` in Resend + Namecheap DNS (DEPLOY.md Step 0)
+- [ ] **You:** Set Vercel env vars on deploy (DEPLOY.md Step 2)
+- [ ] **You:** Run test checklist on Preview URL (CONTACT_FORM_TEST.md)
 
 Acceptance: a submission from the live site hits the inbox within 30s; spam/bot submissions are rejected silently.
 

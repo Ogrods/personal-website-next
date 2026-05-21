@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import type { SiteProfile } from "@/types";
 
 type ContactProps = {
@@ -9,7 +9,12 @@ type ContactProps = {
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
+function stripCrLf(value: string): string {
+  return value.replace(/[\r\n]/g, "");
+}
+
 export default function Contact({ profile }: ContactProps) {
+  const startedAtRef = useRef<number>(Date.now());
   const [status, setStatus] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -21,6 +26,8 @@ export default function Contact({ profile }: ContactProps) {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    const subjectRaw = String(formData.get("subject") ?? "");
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -28,8 +35,10 @@ export default function Contact({ profile }: ContactProps) {
         body: JSON.stringify({
           name: formData.get("name"),
           email: formData.get("email"),
-          subject: formData.get("subject"),
+          subject: stripCrLf(subjectRaw),
           message: formData.get("message"),
+          website: formData.get("website"),
+          startedAt: startedAtRef.current,
         }),
       });
 
@@ -40,6 +49,7 @@ export default function Contact({ profile }: ContactProps) {
       }
 
       form.reset();
+      startedAtRef.current = Date.now();
       setStatus("success");
     } catch (err) {
       setStatus("error");
@@ -66,6 +76,27 @@ export default function Contact({ profile }: ContactProps) {
 
         <div className="grid gap-12 lg:grid-cols-12">
           <form onSubmit={handleSubmit} className="lg:col-span-8" noValidate>
+            {/* Honeypot — hidden from users, bots often fill it */}
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                left: "-9999px",
+                width: 1,
+                height: 1,
+                overflow: "hidden",
+              }}
+            >
+              <label htmlFor="website">Website</label>
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
               <label
                 htmlFor="name"
@@ -78,6 +109,7 @@ export default function Contact({ profile }: ContactProps) {
                 name="name"
                 type="text"
                 required
+                maxLength={120}
                 autoComplete="name"
                 className="field-input sm:w-[65%]"
               />
@@ -94,6 +126,7 @@ export default function Contact({ profile }: ContactProps) {
                 name="email"
                 type="email"
                 required
+                maxLength={200}
                 autoComplete="email"
                 className="field-input sm:w-[65%]"
               />
@@ -109,6 +142,7 @@ export default function Contact({ profile }: ContactProps) {
                 id="subject"
                 name="subject"
                 type="text"
+                maxLength={200}
                 autoComplete="off"
                 className="field-input sm:w-[65%]"
               />
@@ -124,6 +158,7 @@ export default function Contact({ profile }: ContactProps) {
                 id="message"
                 name="message"
                 required
+                maxLength={5000}
                 rows={8}
                 className="field-input min-h-[220px] resize-y sm:w-[65%]"
               />
