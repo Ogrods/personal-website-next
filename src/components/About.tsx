@@ -37,7 +37,6 @@ export default function About({ profile }: AboutProps) {
               <p>
                 {address.city}, {address.state}
               </p>
-              <p>{profile.phone}</p>
               <p>
                 <a
                   href={`mailto:${profile.email}`}

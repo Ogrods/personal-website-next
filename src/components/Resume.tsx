@@ -58,7 +58,11 @@ export default function Resume({ resume }: ResumeProps) {
           <h2 className="mb-4 font-serif text-4xl text-white">
             <span className="text-[#0762f9]">Skills</span>
           </h2>
-          <p className="mb-8 max-w-3xl leading-7">{resume.skillMessage}</p>
+          <div className="mb-8 max-w-3xl space-y-4 leading-7">
+            {resume.skillMessage.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {resume.skills.map((skill) => {
               const width = parseLevel(skill.level);

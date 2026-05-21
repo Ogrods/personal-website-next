@@ -19,6 +19,9 @@ export default function Hero({ profile }: HeroProps) {
         <h1 className="font-serif text-5xl leading-tight tracking-tight text-white sm:text-7xl md:text-[5.5rem]">
           {profile.name}
         </h1>
+        <p className="mt-2 font-serif text-base uppercase tracking-[0.3em] text-white/80 sm:text-lg">
+          {profile.subtitle}
+        </p>
         <hr className="mx-auto my-5 w-3/5 border-white/10" />
         <h3 className="mx-auto max-w-2xl font-serif text-lg italic leading-relaxed text-[#ddd] sm:text-xl">
           {profile.description}

@@ -12,6 +12,7 @@ export type Address = {
 
 export type SiteProfile = {
   name: string;
+  subtitle: string;
   description: string;
   image: string;
   bio: string;
@@ -46,7 +47,7 @@ export type Skill = {
 };
 
 export type ResumeContent = {
-  skillMessage: string;
+  skillMessage: string[];
   education: Education[];
   work: WorkExperience[];
   skills: Skill[];

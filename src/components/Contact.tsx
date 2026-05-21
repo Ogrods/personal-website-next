@@ -148,7 +148,6 @@ export default function Contact({ profile }: ContactProps) {
                 {profile.email}
               </a>
             </p>
-            <p>{profile.phone}</p>
           </div>
         </div>
       </div>
