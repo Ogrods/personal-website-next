@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "generate-og": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

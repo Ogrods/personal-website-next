@@ -52,20 +52,20 @@ export default function Contact({ profile }: ContactProps) {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 bg-[#191919] pb-[102px] pt-24 text-[#636363]"
+      className="scroll-mt-20 bg-[#191919] pb-[102px] pt-24 text-[#9aa5b0]"
     >
       <div className="container-site">
         <div className="section-head mb-10">
           <h2 className="mb-1.5 font-serif text-lg uppercase tracking-[0.2em] text-[#ebeeee]">
             Get In Touch.
           </h2>
-          <p className="max-w-3xl font-serif text-xl leading-9 text-[#838c95]">
+          <p className="max-w-3xl font-serif text-xl leading-9 text-[#9aa5b0]">
             {profile.contactMessage}
           </p>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-12">
-          <form onSubmit={handleSubmit} className="lg:col-span-8">
+          <form onSubmit={handleSubmit} className="lg:col-span-8" noValidate>
             <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
               <label
                 htmlFor="name"
@@ -78,6 +78,7 @@ export default function Contact({ profile }: ContactProps) {
                 name="name"
                 type="text"
                 required
+                autoComplete="name"
                 className="field-input sm:w-[65%]"
               />
             </div>
@@ -93,6 +94,7 @@ export default function Contact({ profile }: ContactProps) {
                 name="email"
                 type="email"
                 required
+                autoComplete="email"
                 className="field-input sm:w-[65%]"
               />
             </div>
@@ -107,6 +109,7 @@ export default function Contact({ profile }: ContactProps) {
                 id="subject"
                 name="subject"
                 type="text"
+                autoComplete="off"
                 className="field-input sm:w-[65%]"
               />
             </div>
@@ -129,34 +132,37 @@ export default function Contact({ profile }: ContactProps) {
               <button
                 type="submit"
                 disabled={status === "submitting"}
+                aria-busy={status === "submitting"}
                 className="btn-submit"
               >
                 {status === "submitting" ? "Sending..." : "Submit"}
               </button>
             </div>
 
-            {status === "success" ? (
-              <p
-                id="message-success"
-                className="mt-6 bg-[#0f0f0f] px-6 py-6 text-[#0762f9] sm:ml-[26%] sm:w-[65%]"
-              >
-                Your message was sent, thank you!
-              </p>
-            ) : null}
-            {status === "error" ? (
-              <p
-                id="message-warning"
-                className="mt-6 bg-[#0f0f0f] px-6 py-6 text-[#d72828] sm:ml-[26%] sm:w-[65%]"
-              >
-                {errorMessage}
-              </p>
-            ) : null}
+            <div role="status" aria-live="polite" aria-atomic="true">
+              {status === "success" ? (
+                <p
+                  id="message-success"
+                  className="mt-6 bg-[#0f0f0f] px-6 py-6 text-[#0762f9] sm:ml-[26%] sm:w-[65%]"
+                >
+                  Your message was sent, thank you!
+                </p>
+              ) : null}
+              {status === "error" ? (
+                <p
+                  id="message-warning"
+                  className="mt-6 bg-[#0f0f0f] px-6 py-6 text-[#d72828] sm:ml-[26%] sm:w-[65%]"
+                >
+                  {errorMessage}
+                </p>
+              ) : null}
+            </div>
           </form>
 
           <div className="lg:col-span-4">
-            <h4 className="mb-1.5 font-serif text-base font-bold leading-6 text-[#ebeeee]">
+            <h3 className="mb-1.5 font-serif text-base font-bold leading-6 text-[#ebeeee]">
               Contact Details
-            </h4>
+            </h3>
             <p className="font-semibold text-[#ebeeee]">{profile.name}</p>
             <p>
               {profile.address.city}, {profile.address.state}

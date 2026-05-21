@@ -9,7 +9,7 @@ export default function Resume({ resume }: ResumeProps) {
   return (
     <section
       id="resume"
-      className="scroll-mt-20 overflow-hidden bg-white pb-[72px] pt-[90px] text-[#838c95]"
+      className="scroll-mt-20 overflow-hidden bg-white pb-[72px] pt-[90px] text-[#6e7881]"
     >
       <div className="container-site">
         <SectionHeading title="Work" />

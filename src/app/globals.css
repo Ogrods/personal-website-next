@@ -19,9 +19,26 @@ html {
 body {
   background: var(--bg-dark);
   color: var(--text-muted);
-  font-family: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
+  font-family: var(--font-eb-garamond), Garamond, Georgia, "Times New Roman", serif;
   font-size: 17px;
   line-height: 30px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
 }
 
 .container-site {

@@ -32,6 +32,7 @@ export default function Hero({ profile }: HeroProps) {
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit Dan Ogrodnik on GitHub (opens in new tab)"
               className="inline-flex items-center gap-2 font-serif text-sm uppercase tracking-[0.25em] text-white transition hover:text-[#0762f9]"
             >
               <GitHubIcon size={18} />
@@ -44,7 +45,7 @@ export default function Hero({ profile }: HeroProps) {
       <a
         href="#about"
         className="absolute bottom-[30px] left-1/2 z-10 -ml-[21px] text-white transition hover:text-[#0762f9]"
-        aria-label="Scroll to about section"
+        aria-label="Scroll to About section"
       >
         <ChevronDown size={42} strokeWidth={1.5} />
       </a>

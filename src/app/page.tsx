@@ -12,8 +12,11 @@ import { siteProfile } from "@/content/site";
 export default function Home() {
   return (
     <>
+      <a href="#main" className="skip-link">
+        Skip to main content
+      </a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero profile={siteProfile} />
         <About profile={siteProfile} />
         <Resume resume={resumeContent} />

@@ -6,7 +6,7 @@ Checkpoint before this phase: git tag `v0.1.0-pre-cleanup`.
 
 ---
 
-## 1. Image optimization (biggest win)
+## 1. Image optimization (biggest win) ✅
 
 Current portfolio thumbnails are unoptimized PNGs straight from the live site:
 
@@ -31,34 +31,34 @@ Acceptance: Lighthouse "properly sized images" + "modern image formats" pass; to
 
 ---
 
-## 2. SEO & social metadata
+## 2. SEO & social metadata ✅
 
 `layout.tsx` currently has only `title` + `description` + favicon. Need:
 
-- [ ] `metadata.openGraph` (title, description, url, siteName, locale, type=website, image)
-- [ ] `metadata.twitter` (card=summary_large_image, title, description, image)
-- [ ] `metadata.metadataBase` (`https://danogrodnik.com`)
-- [ ] `metadata.alternates.canonical`
-- [ ] `metadata.robots` (index, follow)
-- [ ] An OG image at `public/og-image.png` (1200×630, name + subtitle on a dark gradient — can generate via canvas or just compose in Figma)
-- [ ] `public/robots.txt`
-- [ ] `public/sitemap.xml` *or* dynamic `src/app/sitemap.ts` (single-page site, but still useful)
+- [x] `metadata.openGraph` (title, description, url, siteName, locale, type=website, image)
+- [x] `metadata.twitter` (card=summary_large_image, title, description, image)
+- [x] `metadata.metadataBase` (`https://danogrodnik.com`)
+- [x] `metadata.alternates.canonical`
+- [x] `metadata.robots` (index, follow)
+- [x] An OG image at `public/og-image.png` (1200×630 — `npm run generate-og`)
+- [x] `src/app/robots.ts` (dynamic robots.txt)
+- [x] `src/app/sitemap.ts` (dynamic sitemap.xml)
 
 Acceptance: paste danogrodnik.com into LinkedIn/iMessage/Slack and get a rich preview.
 
 ---
 
-## 3. Accessibility pass
+## 3. Accessibility pass ✅
 
 Quick wins from a manual review of the current components:
 
-- [ ] Hero: confirm the `ChevronDown` "scroll" button is a real `<a href="#about">` (already is) with `aria-label="Scroll to About"`
-- [ ] Nav: mobile menu button needs `aria-expanded`, `aria-controls`, and proper focus management when toggled
-- [ ] Portfolio: anchor cards already wrap the whole card — verify each has a meaningful accessible name; right now the `<a>` contains an `<Image alt>` plus heading text, which screen readers will read in order — could tighten with an `aria-label` per project ("Visit {title} — {category}")
-- [ ] ParticleBackground: confirm `aria-hidden="true"` on the canvas and `prefers-reduced-motion` path still produces a static, non-blank background
-- [ ] Contact form: every input has a `<label htmlFor>`; submit button announces loading state via `aria-busy` or visible text swap; error and success messages get `role="status"` (polite live region)
-- [ ] Color contrast: spot-check `#838c95` body text on `#000524` About section, and the muted text on the white Resume section
-- [ ] Skip link: add a "Skip to main content" link as the first focusable element
+- [x] Hero: scroll link has `aria-label="Scroll to About section"`; GitHub link has descriptive `aria-label`
+- [x] Nav: `aria-expanded`, `aria-controls`, `aria-label` on nav, `aria-current` on active link, Escape to close, focus first link when opened
+- [x] Portfolio: `aria-label` per project card; decorative image `alt=""`; overlay `aria-hidden`
+- [x] ParticleBackground: `aria-hidden` on container; `prefers-reduced-motion` static burst unchanged
+- [x] Contact form: labels + `aria-busy` on submit; `role="status"` + `aria-live="polite"` for feedback; `autoComplete` on fields
+- [x] Color contrast: contact/resume body text bumped to `#9aa5b0` / `#6e7881`
+- [x] Skip link: "Skip to main content" as first focusable element; `<main id="main">`
 
 Tool: run `npx @axe-core/cli http://localhost:3000` against the dev server before deploy.
 
@@ -66,12 +66,12 @@ Acceptance: axe clean, keyboard tab order is logical end-to-end, Lighthouse a11y
 
 ---
 
-## 4. Performance polish
+## 4. Performance polish ✅
 
-- [ ] Audit which components actually need to be client components. `ParticleBackground` and `Nav` (scroll-spy) clearly do. Confirm `Hero`, `Contact`, others are server-rendered where possible.
-- [ ] Verify `font-display: swap` is in effect via the Google Fonts URL (it is — `&display=swap` is set)
-- [ ] Confirm canvas particle system pauses or skips work when the tab is hidden (`document.visibilityState`)
-- [ ] Trim Tailwind output — Tailwind v4 is JIT by default, but run a build and eyeball the CSS payload
+- [x] Client components limited to `Nav`, `ParticleBackground`, `Contact` only; `Hero`, `About`, `Resume`, `Portfolio`, `Footer` are server components
+- [x] Fonts via `next/font/google` (`EB_Garamond`, `display: "swap"`) — removes manual `<link>` and ESLint warning
+- [x] Canvas skips draw work when tab hidden (`document.visibilityState !== "visible"`)
+- [x] Portfolio `next/image` uses accurate `sizes` and 800×400 intrinsic dimensions for responsive srcset
 
 Acceptance: Lighthouse perf ≥ 90 on mobile throttling.
 
