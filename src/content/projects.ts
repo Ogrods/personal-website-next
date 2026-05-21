@@ -2,6 +2,15 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    title: "FIRST — Foundation for Ichthyosis & Related Skin Types",
+    category: "Global rare-disease nonprofit",
+    image: "first.webp",
+    url: "https://firstskinfoundation.org/",
+    stack: ["WordPress", "React"],
+    outcome:
+      "$2.2M research funding, 1,600+ patient registry; events, physician finder, donation flows",
+  },
+  {
     title: "Virginia G. Piper Charitable Trust",
     category: "Philanthropy · Maricopa County, AZ",
     image: "piper.webp",

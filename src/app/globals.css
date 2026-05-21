@@ -67,7 +67,8 @@ body {
 
 .btn-hero-secondary {
   display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   color: #fff;
   padding: 14px 28px;
   font-size: 14px;
@@ -78,8 +79,9 @@ body {
 }
 
 .btn-hero-secondary:hover {
-  border-color: #0762f9;
-  color: #0762f9;
+  background: #fff;
+  border-color: #fff;
+  color: #0f0f0f;
 }
 
 .btn-primary {
