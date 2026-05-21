@@ -7,8 +7,9 @@ export const projects: Project[] = [
     image: "first.webp",
     url: "https://firstskinfoundation.org/",
     stack: ["WordPress", "React"],
+    metric: "$2.2M research · 1,600+ patient registry",
     outcome:
-      "$2.2M research funding, 1,600+ patient registry; events, physician finder, donation flows",
+      "Events, physician finder, and donation flows for a global rare-disease nonprofit.",
   },
   {
     title: "Virginia G. Piper Charitable Trust",
@@ -16,7 +17,8 @@ export const projects: Project[] = [
     image: "piper.webp",
     url: "https://pipertrust.org/",
     stack: ["WordPress", "ACF"],
-    outcome: "Custom theme for a $764M+ philanthropy",
+    metric: "$764M+ AZ philanthropy",
+    outcome: "Custom theme and grants experience for Arizona's largest philanthropy.",
   },
   {
     title: "Helios Education Foundation",
@@ -24,7 +26,8 @@ export const projects: Project[] = [
     image: "helios.webp",
     url: "https://annualreports.helios.org/",
     stack: ["WordPress", "Gutenberg"],
-    outcome: "Annual report site; $350M+ over 20 years partner",
+    metric: "$350M+ over 20 years",
+    outcome: "Annual report site highlighting impact across early learning and college success.",
   },
   {
     title: "Alta Uptown",
@@ -32,15 +35,8 @@ export const projects: Project[] = [
     image: "uptown.webp",
     url: "https://altauptown.com/",
     stack: ["WordPress", "ACF"],
-    outcome: "Greystar rollout; +30–50 pt Lighthouse on launch",
-  },
-  {
-    title: "The Station by Alta",
-    category: "Luxury Apartments · Nashville, TN",
-    image: "station-preview.webp",
-    url: "https://thestationbyalta.com/",
-    stack: ["WordPress", "ACF"],
-    outcome: "Shared multifamily theme; 100+ property program",
+    metric: "+30–50 pt Lighthouse",
+    outcome: "Greystar Alta rollout with shared multifamily theme across 100+ properties.",
   },
   {
     title: "NYX Cycle & Fitness",
@@ -48,7 +44,8 @@ export const projects: Project[] = [
     image: "nyx.webp",
     url: "https://nyxcycle.com",
     stack: ["WordPress"],
-    outcome: "Brand-forward custom theme for a Scottsdale studio",
+    metric: "Brand-forward custom theme",
+    outcome: "High-energy studio site with distinctive typography and class booking flows.",
   },
   {
     title: "Fionna Carlisle",
@@ -56,6 +53,7 @@ export const projects: Project[] = [
     image: "fionna.webp",
     url: "http://www.fionnacarlisle.com",
     stack: ["WordPress"],
-    outcome: "Portfolio site for an acclaimed Scottish artist",
+    metric: "Acclaimed Scottish artist · gallery",
+    outcome: "Gallery-forward portfolio for exhibitions, news, and collector outreach.",
   },
 ];

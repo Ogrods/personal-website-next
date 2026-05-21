@@ -62,5 +62,6 @@ export type Project = {
   image: string;
   url: string;
   stack: string[];
+  metric: string;
   outcome: string;
 };

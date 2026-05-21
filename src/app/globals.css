@@ -141,7 +141,3 @@ body {
   background-color: var(--accent);
 }
 
-.portfolio-overlay {
-  background-image: url("/images/overlay-bg.png");
-  background-repeat: repeat;
-}
