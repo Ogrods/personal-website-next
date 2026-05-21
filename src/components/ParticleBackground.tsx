@@ -14,14 +14,16 @@ const PALETTE = [
   "#ff3b3b",
 ] as const;
 
-const MAX_PARTICLES = 320;
+const MAX_PARTICLES = 400;
 const SPAWN_PER_FRAME_MIN = 1;
 const SPAWN_PER_FRAME_MAX = 3;
 const TRAIL_FADE = "rgba(15, 15, 15, 0.018)";
 const MIN_SPEED = 0.25;
 const MAX_SPEED = 1.1;
 const WANDER_STRENGTH = 0.06;
-const DAMPING = 0.985;
+const DAMPING = 0.988;
+const LINE_ALPHA = 0.65;
+const MIN_VELOCITY = 0.15;
 
 type Particle = {
   x: number;
@@ -31,8 +33,6 @@ type Particle = {
   vx: number;
   vy: number;
   color: string;
-  life: number;
-  maxLife: number;
 };
 
 function randomPaletteColor(): string {
@@ -42,7 +42,6 @@ function randomPaletteColor(): string {
 function spawnParticle(cx: number, cy: number): Particle {
   const angle = Math.random() * Math.PI * 2;
   const speed = MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED);
-  const maxLife = 240 + Math.floor(Math.random() * 360);
   return {
     x: cx,
     y: cy,
@@ -51,9 +50,23 @@ function spawnParticle(cx: number, cy: number): Particle {
     vx: Math.cos(angle) * speed,
     vy: Math.sin(angle) * speed,
     color: randomPaletteColor(),
-    life: maxLife,
-    maxLife,
   };
+}
+
+function wrapPosition(value: number, max: number): number {
+  if (value < 0) return max + (value % max);
+  if (value >= max) return value % max;
+  return value;
+}
+
+function keepMoving(p: Particle) {
+  const speed = Math.hypot(p.vx, p.vy);
+  if (speed < MIN_VELOCITY) {
+    const angle = Math.random() * Math.PI * 2;
+    const boost = MIN_SPEED + Math.random() * 0.4;
+    p.vx = Math.cos(angle) * boost;
+    p.vy = Math.sin(angle) * boost;
+  }
 }
 
 function drawStaticBurst(
@@ -79,6 +92,7 @@ function drawStaticBurst(
       p.vy += (Math.random() - 0.5) * WANDER_STRENGTH;
       p.vx *= DAMPING;
       p.vy *= DAMPING;
+      keepMoving(p);
       p.x += p.vx;
       p.y += p.vy;
       ctx.lineTo(p.x, p.y);
@@ -153,8 +167,7 @@ export default function ParticleBackground() {
 
       const particles = particlesRef.current;
 
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
+      for (const p of particles) {
         p.px = p.x;
         p.py = p.y;
 
@@ -162,28 +175,28 @@ export default function ParticleBackground() {
         p.vy += (Math.random() - 0.5) * WANDER_STRENGTH;
         p.vx *= DAMPING;
         p.vy *= DAMPING;
+        keepMoving(p);
 
         p.x += p.vx;
         p.y += p.vy;
-        p.life -= 1;
 
-        const alpha = Math.max(0, p.life / p.maxLife);
+        const wrappedX = wrapPosition(p.x, width);
+        const wrappedY = wrapPosition(p.y, height);
+        const didWrap = wrappedX !== p.x || wrappedY !== p.y;
+        p.x = wrappedX;
+        p.y = wrappedY;
+        if (didWrap) {
+          p.px = p.x;
+          p.py = p.y;
+        }
+
         ctx.strokeStyle = p.color;
-        ctx.globalAlpha = alpha * 0.7;
+        ctx.globalAlpha = LINE_ALPHA;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(p.px, p.py);
         ctx.lineTo(p.x, p.y);
         ctx.stroke();
-
-        const offScreen =
-          p.x < -40 ||
-          p.x > width + 40 ||
-          p.y < -40 ||
-          p.y > height + 40;
-        if (p.life <= 0 || offScreen) {
-          particles.splice(i, 1);
-        }
       }
 
       ctx.globalAlpha = 1;
