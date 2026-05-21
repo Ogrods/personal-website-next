@@ -27,12 +27,6 @@ export const projects: Project[] = [
     url: "https://pipertrust.org/",
   },
   {
-    title: "Milton Sleep Co.",
-    category: "Nationwide Mattress Supplier",
-    image: "milton-preview.jpg",
-    url: "https://miltonsleep.com/",
-  },
-  {
     title: "The Station by Alta",
     category: "Luxury Apartments in Nashville, TN",
     image: "station-preview.jpg",
