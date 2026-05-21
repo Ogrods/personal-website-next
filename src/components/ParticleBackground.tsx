@@ -15,8 +15,6 @@ const PALETTE = [
 ] as const;
 
 const MAX_PARTICLES = 400;
-const SPAWN_PER_FRAME_MIN = 1;
-const SPAWN_PER_FRAME_MAX = 3;
 const TRAIL_FADE = "rgba(15, 15, 15, 0.008)";
 const MIN_SPEED = 0.85;
 const MAX_SPEED = 2.0;
@@ -26,6 +24,9 @@ const TRAIL_ALPHA = 0.85;
 const HEAD_ALPHA = 0.95;
 const HEAD_SIZE = 1.6;
 const MIN_VELOCITY = 0.45;
+const START_ANGLE = -Math.PI / 2;
+const ANGLE_STEP = (Math.PI * 2) / 120;
+const FRAMES_PER_SPAWN = 1;
 
 type Particle = {
   x: number;
@@ -42,8 +43,7 @@ function randomPaletteEntry(): (typeof PALETTE)[number] {
   return PALETTE[Math.floor(Math.random() * PALETTE.length)];
 }
 
-function spawnParticle(cx: number, cy: number): Particle {
-  const angle = Math.random() * Math.PI * 2;
+function spawnParticle(cx: number, cy: number, angle: number): Particle {
   const speed = MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED);
   const color = randomPaletteEntry();
   return {
@@ -85,7 +85,8 @@ function drawStaticBurst(
   ctx.fillRect(0, 0, width, height);
 
   for (let i = 0; i < 120; i++) {
-    const p = spawnParticle(cx, cy);
+    const angle = START_ANGLE + i * ANGLE_STEP;
+    const p = spawnParticle(cx, cy, angle);
     const steps = 80 + Math.floor(Math.random() * 120);
     ctx.strokeStyle = p.trailColor;
     ctx.globalAlpha = 0.4;
@@ -112,6 +113,8 @@ export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);
+  const spawnAngleRef = useRef<number>(START_ANGLE);
+  const spawnCounterRef = useRef<number>(0);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -149,15 +152,18 @@ export default function ParticleBackground() {
     const cx = () => width / 2;
     const cy = () => height / 2;
 
-    const spawnBatch = () => {
+    const spawnNext = () => {
       const particles = particlesRef.current;
-      const count =
-        SPAWN_PER_FRAME_MIN +
-        Math.floor(
-          Math.random() * (SPAWN_PER_FRAME_MAX - SPAWN_PER_FRAME_MIN + 1)
-        );
-      for (let i = 0; i < count && particles.length < MAX_PARTICLES; i++) {
-        particles.push(spawnParticle(cx(), cy()));
+      if (particles.length >= MAX_PARTICLES) return;
+
+      spawnCounterRef.current += 1;
+      if (spawnCounterRef.current < FRAMES_PER_SPAWN) return;
+      spawnCounterRef.current = 0;
+
+      particles.push(spawnParticle(cx(), cy(), spawnAngleRef.current));
+      spawnAngleRef.current += ANGLE_STEP;
+      if (spawnAngleRef.current > START_ANGLE + Math.PI * 2) {
+        spawnAngleRef.current -= Math.PI * 2;
       }
     };
 
@@ -216,7 +222,7 @@ export default function ParticleBackground() {
       }
 
       ctx.globalAlpha = 1;
-      spawnBatch();
+      spawnNext();
       rafRef.current = requestAnimationFrame(tick);
     };
 
@@ -225,7 +231,7 @@ export default function ParticleBackground() {
     } else {
       ctx.fillStyle = "#0f0f0f";
       ctx.fillRect(0, 0, width, height);
-      spawnBatch();
+      spawnNext();
       rafRef.current = requestAnimationFrame(tick);
     }
 
