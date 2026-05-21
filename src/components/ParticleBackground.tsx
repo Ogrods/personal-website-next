@@ -3,26 +3,26 @@
 import { useEffect, useRef } from "react";
 
 const PALETTE = [
-  { head: "#ffffff", trail: "#6a6a6a" },
-  { head: "#ff3b8e", trail: "#7a1d47" },
-  { head: "#7a3bff", trail: "#3a1d7a" },
-  { head: "#3b8eff", trail: "#1d477a" },
-  { head: "#3bffd7", trail: "#1d7a6a" },
-  { head: "#3bff5a", trail: "#1d7a2d" },
-  { head: "#ffd23b", trail: "#7a661d" },
-  { head: "#ff7a3b", trail: "#7a3a1d" },
-  { head: "#ff3b3b", trail: "#7a1d1d" },
+  { head: "#ffffff", trail: "#a0a0a0" },
+  { head: "#ff3b8e", trail: "#b32464" },
+  { head: "#7a3bff", trail: "#4e1eb3" },
+  { head: "#3b8eff", trail: "#1e5cb3" },
+  { head: "#3bffd7", trail: "#1eb398" },
+  { head: "#3bff5a", trail: "#1eb33d" },
+  { head: "#ffd23b", trail: "#b39028" },
+  { head: "#ff7a3b", trail: "#b3501e" },
+  { head: "#ff3b3b", trail: "#b32424" },
 ] as const;
 
 const MAX_PARTICLES = 400;
 const SPAWN_PER_FRAME_MIN = 1;
 const SPAWN_PER_FRAME_MAX = 3;
-const TRAIL_FADE = "rgba(15, 15, 15, 0.012)";
+const TRAIL_FADE = "rgba(15, 15, 15, 0.008)";
 const MIN_SPEED = 0.85;
 const MAX_SPEED = 2.0;
 const WANDER_STRENGTH = 0.035;
 const DAMPING = 0.994;
-const TRAIL_ALPHA = 0.55;
+const TRAIL_ALPHA = 0.85;
 const HEAD_ALPHA = 0.95;
 const HEAD_SIZE = 1.6;
 const MIN_VELOCITY = 0.45;
