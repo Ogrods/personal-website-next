@@ -72,4 +72,6 @@ src/
 
 ## Roadmap
 
-See `PHASE1.md` for the current polish-and-deploy plan.
+- `PHASE1.md` / `PHASE1_COMPLETE.md` — initial Next.js rebuild + Vercel launch
+- `PHASE2_COMPLETE.md` — case study modal, Trusted by marquee, motion, nav fixes (current)
+- Phase 3 backlog: additional case studies (Piper, Greystar), LinkedIn audit, ongoing content updates
