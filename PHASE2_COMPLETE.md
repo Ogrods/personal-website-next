@@ -39,6 +39,24 @@
 - Responsiveness sweep on live site at 320 / 768 / 1024 px (hero CTAs, marquee, modal, MetricStrip, Portfolio grid)
 - Real-device test of FIRST case study modal (Esc, backdrop tap, focus trap, body scroll lock)
 
+## Tomorrow — push mobile Performance 98 → 99
+
+**Current (mobile, incognito, May 2026):** 98 Performance · 100 Accessibility · 100 Best Practices · 100 SEO — baked into `MetricStrip`.
+
+**Already shipped toward 99:** AVIF + tighter portfolio `sizes`, `experimental.inlineCss`, modern `browserslist`, font subset 400/700.
+
+**Try next (in order):**
+
+1. Re-run PageSpeed Insights on mobile after `inlineCss` deploy stabilizes; update ticker if score moves.
+2. Pause particle canvas when hero is off-screen (`IntersectionObserver`) — cuts main-thread work on scroll.
+3. Defer Vercel Analytics / Speed Insights until after first paint (dynamic import or `afterInteractive` if not already).
+4. Confirm no remaining portfolio images over-fetch on mobile (Lighthouse “Improve image delivery”).
+5. If still 98: test `quality={70}` on below-fold portfolio thumbs only (keep hero/profile sharp).
+
+**Done when:** mobile Performance **99** on PageSpeed Insights → update `MetricStrip` target + footnote date.
+
+---
+
 ## Phase 3 backlog
 
 - Piper Trust case study (modal + featured tile)
