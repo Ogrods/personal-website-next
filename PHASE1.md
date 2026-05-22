@@ -77,31 +77,36 @@ Acceptance: Lighthouse perf ≥ 90 on mobile throttling.
 
 ---
 
-## 5. Contact form end-to-end ✅ (code complete — manual DNS + Vercel env pending)
+## 5. Contact form end-to-end ✅
 
 - [x] Resend API route with honeypot, time-trap, validation, per-IP rate limit (3 / 10 min)
 - [x] `CONTACT_FROM_EMAIL` documented as `contact@mail.danogrodnik.com`
 - [x] [DEPLOY.md](./DEPLOY.md) Step 0 (Resend + Namecheap) and [CONTACT_FORM_TEST.md](./CONTACT_FORM_TEST.md)
-- [ ] **You:** Verify `mail.danogrodnik.com` in Resend + Namecheap DNS (DEPLOY.md Step 0)
-- [ ] **You:** Set Vercel env vars on deploy (DEPLOY.md Step 2)
-- [ ] **You:** Run test checklist on Preview URL (CONTACT_FORM_TEST.md)
+- [x] `mail.danogrodnik.com` verified in Resend + Namecheap DNS
+- [x] Vercel env vars set; contact form delivers on live site
+- [x] Test checklist passed on Preview and production
 
 Acceptance: a submission from the live site hits the inbox within 30s; spam/bot submissions are rejected silently.
 
 ---
 
-## 6. Deploy
+## 6. Deploy ✅
 
-Follow `DEPLOY.md`. Suggested order:
+- [x] GitHub: `Ogrods/personal-website-next`
+- [x] Vercel import, env vars, production deploy
+- [x] Custom domain `danogrodnik.com` + `www` (HTTPS valid)
+- [x] Contact form, resume download, booking link validated on live site
+- [x] Heroku billing stopped (credit card removed)
 
-1. Push portfolio repo to GitHub (`Ogrods/portfolio-next` or similar)
-2. Import on Vercel, set env vars, deploy
-3. Validate Preview URL end-to-end (contact form, all anchor links, image loading, mobile)
-4. Add custom domain `danogrodnik.com` in Vercel → Domains
-5. Update DNS at registrar per Vercel's instructions
-6. Once DNS propagates and HTTPS is green: `heroku ps:scale web=0 -a <old-app>` (keep the app, just stop it — easy rollback if needed for 7–14 days, then `heroku apps:destroy`)
+Acceptance: `https://danogrodnik.com` resolves to the new site, contact form delivers.
 
-Acceptance: `https://danogrodnik.com` resolves to the new site, contact form delivers, old Heroku dyno is scaled to zero.
+---
+
+## Phase 1 complete — May 21, 2026
+
+See [PHASE1_COMPLETE.md](./PHASE1_COMPLETE.md) for summary, backup location, and Phase 2 backlog.
+
+Tags: `v1.0.0-launch` (initial deploy), `v1.0.0-phase1-complete` (booking + resume + portfolio final).
 
 ---
 
