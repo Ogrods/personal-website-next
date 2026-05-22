@@ -18,7 +18,7 @@ const METRICS: MetricDef[] = [
   {
     id: "performance",
     label: "Performance",
-    target: 99,
+    target: 98,
     format: (n) => `${n}`,
   },
   {
@@ -107,7 +107,7 @@ export default function MetricStrip() {
           ))}
         </ul>
         <p className="mt-6 font-serif text-xs text-[#6e7881]">
-          Desktop, incognito, May 2026.{" "}
+          Mobile, incognito, May 2026.{" "}
           <a
             href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdanogrodnik.com"
             target="_blank"
