@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import type { ResumeContent } from "@/types";
 
@@ -7,7 +8,8 @@ type ResumeProps = {
 
 export default function Resume({ resume }: ResumeProps) {
   return (
-    <section
+    <Reveal
+      as="section"
       id="resume"
       className="scroll-mt-20 overflow-hidden bg-white pb-[72px] pt-[90px] text-[#6e7881]"
     >
@@ -32,13 +34,6 @@ export default function Resume({ resume }: ResumeProps) {
                 </span>
               </p>
               <p className="mt-2 leading-[30px]">{job.description}</p>
-              {job.highlights && job.highlights.length > 0 ? (
-                <ul className="mt-3 list-disc space-y-1 pl-5 text-[15px] leading-[26px] text-[#6e7881]">
-                  {job.highlights.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              ) : null}
             </article>
           ))}
         </div>
@@ -87,6 +82,6 @@ export default function Resume({ resume }: ResumeProps) {
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

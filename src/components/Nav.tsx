@@ -86,7 +86,7 @@ export default function Nav() {
             <li key={link.href} className="inline-block h-12">
               <a
                 href={link.href}
-                className={`inline-block px-[13px] py-2 leading-8 text-white transition-colors duration-200 hover:text-[#0762f9] ${
+                className={`nav-link inline-block px-[13px] py-2 leading-8 text-white transition-colors duration-200 hover:text-[#0762f9] ${
                   active === link.href ? "text-[#fe6928]" : ""
                 }`}
                 aria-current={active === link.href ? "page" : undefined}
@@ -101,3 +101,4 @@ export default function Nav() {
     </nav>
   );
 }
+

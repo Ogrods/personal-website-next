@@ -6,6 +6,7 @@ import MetricStrip from "@/components/MetricStrip";
 import Nav from "@/components/Nav";
 import Portfolio from "@/components/Portfolio";
 import Resume from "@/components/Resume";
+import TrustedBy from "@/components/TrustedBy";
 import { projects } from "@/content/projects";
 import { resumeContent } from "@/content/resume";
 import { siteProfile } from "@/content/site";
@@ -20,9 +21,10 @@ export default function Home() {
       <main id="main">
         <Hero profile={siteProfile} />
         <MetricStrip />
+        <Portfolio projects={projects} />
+        <TrustedBy />
         <About profile={siteProfile} />
         <Resume resume={resumeContent} />
-        <Portfolio projects={projects} />
         <Contact profile={siteProfile} />
       </main>
       <Footer social={siteProfile.social} name={siteProfile.name} />

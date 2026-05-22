@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import { FormEvent, useRef, useState } from "react";
+import Reveal from "@/components/Reveal";
 import type { SiteProfile } from "@/types";
 
 type ContactProps = {
@@ -60,7 +61,7 @@ export default function Contact({ profile }: ContactProps) {
   }
 
   return (
-    <section
+    <Reveal as="section"
       id="contact"
       className="scroll-mt-20 bg-[#191919] pb-[102px] pt-24 text-[#9aa5b0]"
     >
@@ -252,6 +253,8 @@ export default function Contact({ profile }: ContactProps) {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
+
+

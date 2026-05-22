@@ -2,8 +2,8 @@ import type { SiteProfile } from "@/types";
 
 export const siteProfile: SiteProfile = {
   name: "Dan Ogrodnik",
-  availability: "Available · Remote · LA Hybrid · Contract",
-  tagline: "Front-end developer for WordPress and Shopify.",
+  availability: "Available | Remote | LA Hybrid | Contract",
+  tagline: "Front-end developer - WordPress, Shopify, React.",
   proofLine:
     "Fast, accessible, SEO-strong sites - Lighthouse lifts of 30 to 50 points across 50+ launches.",
   bookingUrl: "https://calendar.app.google/rveuZ14Je3ehY7Zq9",
@@ -13,7 +13,7 @@ export const siteProfile: SiteProfile = {
     "My focus is Core Web Vitals, WCAG 2.1 AA accessibility, and technical SEO. I routinely lift Lighthouse scores by 30 to 50 points per project. I work in PHP, JavaScript, Liquid, React, and modern CSS. Based in Los Angeles, currently freelancing at Rhumbline AI, and open to senior front-end roles.",
   ],
   bioClosing:
-    "CalArts MFA · Hartford BM · snowboarder, cyclist, coffee enthusiast.",
+    "CalArts MFA | Hartford BM | snowboarder, cyclist, coffee enthusiast.",
   currentlyExploring:
     "Currently exploring: AWS Cloud Practitioner certification, headless WordPress on Vercel, and Next.js app router patterns.",
   contactMessage:
@@ -33,7 +33,7 @@ export const siteProfile: SiteProfile = {
   social: [
     {
       name: "github",
-      url: "https://github.com/ogrods",
+      url: "https://github.com/Ogrods",
     },
     {
       name: "linkedin",
@@ -48,8 +48,8 @@ export const siteProfile: SiteProfile = {
 
 export const navLinks = [
   { href: "#home", label: "Home" },
+  { href: "#portfolio", label: "Works" },
   { href: "#about", label: "About" },
   { href: "#resume", label: "Resume" },
-  { href: "#portfolio", label: "Works" },
   { href: "#contact", label: "Contact" },
 ] as const;

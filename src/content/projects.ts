@@ -1,4 +1,4 @@
-import type { Project } from "@/types";
+﻿import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
@@ -10,6 +10,10 @@ export const projects: Project[] = [
     metric: "$2.2M research · 1,600+ patient registry",
     outcome:
       "Events, physician finder, and donation flows for a global rare-disease nonprofit.",
+    featured: true,
+    caseStudySlug: "first",
+    featuredBlurb:
+      "Current Rhumbline AI engagement: conversion-focused WordPress front-end with React for interactive UI. Built events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA — supporting $2.2M in research funding and a 1,600+ patient registry for a global rare-disease nonprofit.",
   },
   {
     title: "Virginia G. Piper Charitable Trust",
@@ -67,3 +71,4 @@ export const projects: Project[] = [
       "Custom Liquid theme, product flows, and conversion-focused storefront built and shipped end-to-end.",
   },
 ];
+

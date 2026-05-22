@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import type { SiteProfile } from "@/types";
 
@@ -10,7 +11,7 @@ export default function About({ profile }: AboutProps) {
   const { address } = profile;
 
   return (
-    <section
+    <Reveal as="section"
       id="about"
       className="scroll-mt-20 overflow-hidden bg-[#000524] pb-[66px] pt-24 text-[#ccc]"
     >
@@ -114,6 +115,9 @@ export default function About({ profile }: AboutProps) {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
+
+
+

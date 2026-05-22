@@ -3,7 +3,7 @@ import type { ResumeContent } from "@/types";
 export const resumeContent: ResumeContent = {
   skillGroups: [
     {
-      label: "CMS & E-commerce",
+      label: "CMS, E-commerce & Front-end",
       items: [
         "WordPress",
         "Gutenberg",
@@ -11,26 +11,15 @@ export const resumeContent: ResumeContent = {
         "WooCommerce",
         "Shopify",
         "Liquid",
-      ],
-    },
-    {
-      label: "Front-end",
-      items: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "TypeScript",
         "React",
+        "TypeScript",
+        "JavaScript",
         "Sass",
         "Tailwind CSS",
       ],
     },
     {
-      label: "Back-end & APIs",
-      items: ["PHP", "Node.js", "REST APIs", "Custom theme & post types"],
-    },
-    {
-      label: "Performance, SEO, A11y",
+      label: "Performance, SEO & Accessibility",
       items: [
         "Core Web Vitals",
         "Lighthouse",
@@ -40,21 +29,20 @@ export const resumeContent: ResumeContent = {
         "Search Console",
         "SEMrush",
         "Ahrefs",
-        "Screaming Frog",
       ],
     },
     {
-      label: "DevOps & workflow",
+      label: "Back-end, DevOps & Workflow",
       items: [
+        "PHP",
+        "Node.js",
+        "REST APIs",
         "Git",
-        "GitHub",
         "Docker",
         "AWS",
         "WP Engine",
-        "Flywheel",
-        "Agile / Scrum",
-        "Jira",
         "Figma",
+        "Jira",
       ],
     },
   ],

@@ -79,9 +79,9 @@ body {
 }
 
 .btn-hero-secondary:hover {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border-color: #fff;
-  color: #0f0f0f;
+  color: #fff;
 }
 
 .btn-primary {
@@ -141,3 +141,235 @@ body {
   background-color: var(--accent);
 }
 
+
+/* Scroll reveal */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.55s ease-out,
+      transform 0.55s ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.reveal-in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Trusted by marquee */
+.trusted-marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .trusted-marquee-track {
+    animation: trusted-marquee 36s linear infinite;
+  }
+
+  .trusted-marquee-mask:hover .trusted-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes trusted-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-marquee-mask {
+    overflow: visible;
+    mask-image: none;
+  }
+
+  .trusted-marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem 2rem;
+    animation: none;
+  }
+}
+
+/* Nav link underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Case study modal (portal-based) */
+.portfolio-card {
+  cursor: pointer;
+}
+
+.cs-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.cs-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.92);
+}
+
+.cs-modal-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-height: 100dvh;
+  background: #fff;
+  color: #313131;
+  overflow: hidden;
+}
+
+.cs-modal-header {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+  padding: 1rem 1.25rem;
+}
+
+.cs-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  color: #6e7881;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cs-modal-close:hover {
+  color: #313131;
+}
+
+.cs-modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cs-modal-footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  border-top: 1px solid #e8e8e8;
+  background: #fff;
+  padding: 1rem 1.25rem;
+}
+
+.cs-modal-footer button,
+.cs-modal-footer a {
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .cs-modal-root {
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .cs-modal-panel {
+    width: min(42rem, 100%);
+    max-height: min(90vh, 900px);
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cs-modal-panel {
+    width: min(48rem, 100%);
+    max-height: 85vh;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cs-modal-root[data-state="open"] .cs-modal-backdrop {
+    animation: cs-fade-in 0.2s ease-out;
+  }
+
+  .cs-modal-root[data-state="open"] .cs-modal-panel {
+    animation: cs-panel-in 0.25s ease-out;
+  }
+}
+
+@keyframes cs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cs-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

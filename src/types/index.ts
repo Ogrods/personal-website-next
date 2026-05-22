@@ -65,4 +65,34 @@ export type Project = {
   stack: string[];
   metric: string;
   outcome: string;
+  featured?: boolean;
+  featuredBlurb?: string;
+  caseStudySlug?: string;
 };
+
+export type CaseStudyImage = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export type CaseStudy = {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  role: string;
+  liveUrl: string;
+  overview: string;
+  metrics: string[];
+  challenge: string;
+  approach: string[];
+  dualAudience?: {
+    heading: string;
+    body: string;
+    caption: string;
+    images: CaseStudyImage[];
+  };
+  heroImage: CaseStudyImage;
+  stack: string[];
+};
+
