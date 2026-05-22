@@ -220,6 +220,35 @@ export default function Contact({ profile }: ContactProps) {
                 {profile.email}
               </a>
             </p>
+            {profile.phone ? (
+              <p>
+                <a
+                  href={`tel:${profile.phone.replace(/[^0-9+]/g, "")}`}
+                  className="text-[#0762f9] transition hover:text-white"
+                >
+                  {profile.phone}
+                </a>
+              </p>
+            ) : null}
+            <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+              {profile.social.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#0762f9] transition hover:text-white"
+                >
+                  {link.name === "github"
+                    ? "GitHub"
+                    : link.name === "linkedin"
+                      ? "LinkedIn"
+                      : link.name === "instagram"
+                        ? "Instagram"
+                        : link.name}
+                </a>
+              ))}
+            </p>
           </div>
         </div>
       </div>

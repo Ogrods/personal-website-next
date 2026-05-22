@@ -2,7 +2,7 @@ import type { SiteProfile } from "@/types";
 
 export const siteProfile: SiteProfile = {
   name: "Dan Ogrodnik",
-  availability: "Available · Remote · Los Angeles",
+  availability: "Available · Remote · LA Hybrid · Contract",
   tagline: "Front-end developer for WordPress and Shopify.",
   proofLine:
     "Fast, accessible, SEO-strong sites - Lighthouse lifts of 30 to 50 points across 50+ launches.",
@@ -14,6 +14,8 @@ export const siteProfile: SiteProfile = {
   ],
   bioClosing:
     "CalArts MFA · Hartford BM · snowboarder, cyclist, coffee enthusiast.",
+  currentlyExploring:
+    "Currently exploring: AWS Cloud Practitioner certification, headless WordPress on Vercel, and Next.js app router patterns.",
   contactMessage:
     "Looking for a senior front-end developer to ship WordPress or Shopify work? Send a note or book a 15-minute call.",
   email: "Dan.Ogrodnik@gmail.com",

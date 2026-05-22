@@ -19,6 +19,7 @@ export type SiteProfile = {
   image: string;
   bioParagraphs: string[];
   bioClosing?: string;
+  currentlyExploring?: string;
   contactMessage: string;
   email: string;
   phone: string;

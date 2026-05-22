@@ -36,7 +36,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
               <div className="relative aspect-[16/9] overflow-hidden bg-[#e8ecec]">
                 <Image
                   src={`/images/portfolio/${project.image}`}
-                  alt=""
+                  alt={`Homepage screenshot of ${project.title} - ${project.category}`}
                   width={1200}
                   height={675}
                   quality={90}

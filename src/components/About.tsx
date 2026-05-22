@@ -35,8 +35,13 @@ export default function About({ profile }: AboutProps) {
               ))}
             </div>
             {profile.bioClosing ? (
-              <p className="mb-10 text-sm italic text-[#9aa5b0]">
+              <p className="mb-2 text-sm italic text-[#9aa5b0]">
                 {profile.bioClosing}
+              </p>
+            ) : null}
+            {profile.currentlyExploring ? (
+              <p className="mb-10 text-sm text-[#9aa5b0]">
+                {profile.currentlyExploring}
               </p>
             ) : null}
 
@@ -56,6 +61,35 @@ export default function About({ profile }: AboutProps) {
                   >
                     {profile.email}
                   </a>
+                </p>
+                {profile.phone ? (
+                  <p>
+                    <a
+                      href={`tel:${profile.phone.replace(/[^0-9+]/g, "")}`}
+                      className="text-white transition hover:text-[#0762f9]"
+                    >
+                      {profile.phone}
+                    </a>
+                  </p>
+                ) : null}
+                <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  {profile.social.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#9aa5b0] transition hover:text-[#0762f9]"
+                    >
+                      {link.name === "github"
+                        ? "GitHub"
+                        : link.name === "linkedin"
+                          ? "LinkedIn"
+                          : link.name === "instagram"
+                            ? "Instagram"
+                            : link.name}
+                    </a>
+                  ))}
                 </p>
               </div>
 

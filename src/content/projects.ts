@@ -56,4 +56,14 @@ export const projects: Project[] = [
     metric: "Acclaimed Scottish artist · gallery",
     outcome: "Gallery-forward portfolio for exhibitions, news, and collector outreach.",
   },
+  {
+    title: "Madishroom",
+    category: "E-commerce · Shopify storefront",
+    image: "madishroom.webp",
+    url: "https://madishroom.com",
+    stack: ["Shopify", "Liquid"],
+    metric: "End-to-end owner-operator launch",
+    outcome:
+      "Custom Liquid theme, product flows, and conversion-focused storefront built and shipped end-to-end.",
+  },
 ];

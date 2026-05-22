@@ -8,7 +8,53 @@ import {
   siteTitle,
   siteUrl,
 } from "@/lib/site-metadata";
+import { siteProfile } from "@/content/site";
 import "./globals.css";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteProfile.name,
+  url: siteUrl,
+  image: `${siteUrl}/images/${siteProfile.image}`,
+  email: `mailto:${siteProfile.email}`,
+  telephone: siteProfile.phone,
+  jobTitle: "Senior Front-End Developer",
+  description: siteDescription,
+  address: {
+    "@type": "PostalCode",
+    addressLocality: siteProfile.address.city,
+    addressRegion: siteProfile.address.state,
+    addressCountry: "US",
+  },
+  worksFor: {
+    "@type": "Organization",
+    name: "Rhumbline AI",
+  },
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "California Institute of the Arts",
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      name: "University of Hartford",
+    },
+  ],
+  knowsAbout: [
+    "WordPress",
+    "Shopify",
+    "React",
+    "Liquid",
+    "PHP",
+    "JavaScript",
+    "TypeScript",
+    "Core Web Vitals",
+    "Web Content Accessibility Guidelines (WCAG)",
+    "Technical SEO",
+  ],
+  sameAs: siteProfile.social.map((link) => link.url),
+};
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -47,7 +93,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Dan Ogrodnik - Front-end Developer and SEO Specialist",
+        alt: "Dan Ogrodnik - Senior Front-End Developer (WordPress, Shopify, React)",
       },
     ],
   },
@@ -66,6 +112,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`scroll-smooth ${ebGaramond.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className={`${ebGaramond.className} font-serif antialiased`}>
         {children}
         <Analytics />
