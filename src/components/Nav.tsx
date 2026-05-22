@@ -151,7 +151,7 @@ export default function Nav({ name, bookingUrl }: NavProps) {
       <nav
         id="nav-wrap"
         aria-label="Main navigation"
-        className={`fixed left-0 top-0 z-50 w-full font-serif transition-colors duration-300 ${barBg}`}
+        className={`fixed left-0 top-0 z-[70] w-full font-serif transition-colors duration-300 ${barBg}`}
       >
         {/* Mobile bar */}
         <div className="relative mx-auto flex h-12 min-h-12 max-w-[1020px] items-center justify-between px-4 md:hidden">

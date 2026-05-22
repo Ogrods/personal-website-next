@@ -7,7 +7,7 @@ export default function TrustedBy() {
   return (
     <section
       aria-label="Trusted by"
-      className="scroll-mt-20 border-y border-[#dfe3e3] bg-white py-12"
+      className="scroll-mt-12 border-y border-[#dfe3e3] bg-white py-12 md:scroll-mt-20"
     >
       <div className="container-site">
         <p className="mb-8 text-center font-serif text-xs uppercase tracking-[0.28em] text-[#6e7881]">
