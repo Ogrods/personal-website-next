@@ -63,7 +63,7 @@ export default function Contact({ profile }: ContactProps) {
   return (
     <Reveal as="section"
       id="contact"
-      className="scroll-mt-12 bg-[#191919] pb-[102px] pt-24 text-[#b5c0cb] md:scroll-mt-20"
+      className="scroll-mt-[47px] bg-[#191919] pb-[102px] pt-24 text-[#b5c0cb] md:scroll-mt-20"
     >
       <div className="container-site">
         <div className="section-head mb-10">
