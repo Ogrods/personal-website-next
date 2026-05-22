@@ -41,12 +41,12 @@ function ProjectCard({
           alt={`Homepage screenshot of ${project.title} - ${project.category}`}
           width={1200}
           height={675}
-          quality={90}
+          quality={75}
           className="h-full w-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.02]"
           sizes={
             featured
-              ? "(max-width: 768px) 100vw, 66vw"
-              : "(max-width: 768px) 100vw, 50vw"
+              ? "(max-width: 768px) 96vw, (max-width: 1024px) 96vw, 680px"
+              : "(max-width: 768px) 96vw, (max-width: 1024px) 50vw, 500px"
           }
         />
       </div>
