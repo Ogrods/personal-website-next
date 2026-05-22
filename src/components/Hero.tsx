@@ -32,6 +32,8 @@ export default function Hero({ profile }: HeroProps) {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <a
               href={profile.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-hero-primary"
             >
               Book a 15-min intro call

@@ -60,7 +60,12 @@ export default function About({ profile }: AboutProps) {
               </div>
 
               <div className="flex flex-wrap items-start gap-3 md:col-span-7 md:justify-end md:pt-1.5">
-                <a href={profile.bookingUrl} className="btn-primary">
+                <a
+                  href={profile.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
                   Book a call
                 </a>
                 <a

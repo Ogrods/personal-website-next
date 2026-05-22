@@ -6,8 +6,7 @@ export const siteProfile: SiteProfile = {
   tagline: "Front-end developer for WordPress and Shopify.",
   proofLine:
     "Fast, accessible, SEO-strong sites — Lighthouse lifts of 30 to 50 points across 50+ launches.",
-  bookingUrl:
-    "mailto:Dan.Ogrodnik@gmail.com?subject=Book%20a%2015-min%20intro%20call",
+  bookingUrl: "https://calendar.app.google/rveuZ14Je3ehY7Zq9",
   image: "profilepic.webp",
   bioParagraphs: [
     "Senior front-end developer with 5+ years shipping production WordPress and Shopify sites. At Fervor Creative, I led 50+ launches across multifamily real estate (100+ Greystar properties), nonprofit (Virginia G. Piper Charitable Trust, Helios Education Foundation), and enterprise (collaborations involving ASU and Starbucks). I served as primary technical contact for a 150+ site agency portfolio.",

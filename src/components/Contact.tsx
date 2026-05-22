@@ -73,7 +73,12 @@ export default function Contact({ profile }: ContactProps) {
             {profile.contactMessage}
           </p>
           <p className="mt-6">
-            <a href={profile.bookingUrl} className="btn-primary">
+            <a
+              href={profile.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               Book a 15-min intro call
             </a>
           </p>
