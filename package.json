@@ -12,7 +12,8 @@
     "ingest-portfolio-images": "node scripts/ingest-portfolio-images.mjs",
     "generate-og": "node scripts/generate-og-image.mjs",
     "generate-favicon": "node scripts/generate-favicon.mjs",
-    "generate-first-card": "node scripts/generate-first-card.mjs"
+    "generate-first-card": "node scripts/generate-first-card.mjs",
+    "axe": "axe http://localhost:3000"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

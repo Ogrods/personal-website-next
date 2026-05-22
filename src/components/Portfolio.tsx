@@ -83,7 +83,7 @@ function ProjectCard({
               </span>
             ))}
           </div>
-          <span className="font-serif text-xs font-semibold text-[#0762f9] md:ml-auto">
+          <span className="font-serif text-xs font-bold text-[#0762f9] md:ml-auto">
             {project.metric}
           </span>
         </div>

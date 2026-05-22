@@ -98,7 +98,6 @@ export default function CaseStudyModal({
     <div
       className="cs-modal-root"
       data-state="open"
-      role="presentation"
       onMouseDown={handleBackdropClick}
     >
       <div className="cs-modal-backdrop" aria-hidden />

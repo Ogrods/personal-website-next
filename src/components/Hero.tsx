@@ -19,7 +19,7 @@ export default function Hero({ profile }: HeroProps) {
 
       <div className="relative z-10 inline-block w-[85%] max-w-5xl px-4 pb-8 align-middle">
         <div className="banner-text w-full">
-          <p className="mb-4 font-serif text-xs uppercase tracking-[0.35em] text-[#9aa5b0]">
+          <p className="mb-4 font-serif text-xs uppercase tracking-[0.35em] text-[#b8c4ce]">
             {profile.availability}
           </p>
           <h1 className="mx-auto mb-[18px] font-serif text-[clamp(3rem,10vw,5.625rem)] leading-[1.1] tracking-[-2px] text-white">
@@ -29,7 +29,7 @@ export default function Hero({ profile }: HeroProps) {
             {profile.tagline}
           </h2>
           <hr className="mx-auto my-[18px] w-3/5 border-white/10" />
-          <p className="mx-auto w-[85%] max-w-2xl font-serif text-lg italic leading-[1.75] text-[#bbb] md:text-xl">
+          <p className="mx-auto w-[85%] max-w-2xl font-serif text-lg italic leading-[1.75] text-[#d4d4d4] md:text-xl">
             {profile.proofLine}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-6">

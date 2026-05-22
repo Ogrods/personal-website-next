@@ -63,14 +63,14 @@ export default function Contact({ profile }: ContactProps) {
   return (
     <Reveal as="section"
       id="contact"
-      className="scroll-mt-20 bg-[#191919] pb-[102px] pt-24 text-[#9aa5b0]"
+      className="scroll-mt-20 bg-[#191919] pb-[102px] pt-24 text-[#b5c0cb]"
     >
       <div className="container-site">
         <div className="section-head mb-10">
           <h2 className="mb-1.5 font-serif text-lg uppercase tracking-[0.2em] text-[#ebeeee]">
             Get In Touch.
           </h2>
-          <p className="max-w-3xl font-serif text-xl leading-9 text-[#9aa5b0]">
+          <p className="max-w-3xl font-serif text-xl leading-9 text-[#b5c0cb]">
             {profile.contactMessage}
           </p>
           <p className="mt-6">
@@ -87,26 +87,14 @@ export default function Contact({ profile }: ContactProps) {
 
         <div className="grid gap-12 lg:grid-cols-12">
           <form onSubmit={handleSubmit} className="lg:col-span-8" noValidate>
-            {/* Honeypot — hidden from users, bots often fill it */}
-            <div
-              aria-hidden
-              style={{
-                position: "absolute",
-                left: "-9999px",
-                width: 1,
-                height: 1,
-                overflow: "hidden",
-              }}
-            >
-              <label htmlFor="website">Website</label>
-              <input
-                id="website"
-                name="website"
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-              />
-            </div>
+            {/* Honeypot: visually hidden, not in tab order; no aria-hidden on focusable */}
+            <input
+              className="honeypot-field"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
 
             <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
               <label
@@ -209,7 +197,7 @@ export default function Contact({ profile }: ContactProps) {
             <h3 className="mb-1.5 font-serif text-base font-bold leading-6 text-[#ebeeee]">
               Contact Details
             </h3>
-            <p className="font-semibold text-[#ebeeee]">{profile.name}</p>
+            <p className="font-bold text-[#ebeeee]">{profile.name}</p>
             <p>
               {profile.address.city}, {profile.address.state}
             </p>

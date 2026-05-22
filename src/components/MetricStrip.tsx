@@ -77,7 +77,7 @@ function AnimatedMetric({
   return (
     <p
       ref={ref}
-      className="font-serif text-[clamp(2rem,5vw,2.75rem)] font-semibold leading-none text-white"
+      className="font-serif text-[clamp(2rem,5vw,2.75rem)] font-bold leading-none text-white"
       style={{ transitionDelay: `${delayMs}ms` }}
     >
       {metric.static ?? value}
@@ -93,14 +93,14 @@ export default function MetricStrip() {
       className="border-y border-white/10 bg-[#0f0f0f] py-10 text-center"
     >
       <div className="container-site">
-        <p className="mb-6 font-serif text-xs uppercase tracking-[0.28em] text-[#9aa5b0]">
+        <p className="mb-6 font-serif text-xs uppercase tracking-[0.28em] text-[#b5c0cb]">
           Lighthouse on this site
         </p>
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {METRICS.map((m, i) => (
             <Reveal as="li" key={m.id} delayMs={i * 100}>
               <AnimatedMetric metric={m} delayMs={i * 100} />
-              <p className="mt-2 font-serif text-sm leading-snug text-[#9aa5b0]">
+              <p className="mt-2 font-serif text-sm leading-snug text-[#b5c0cb]">
                 {m.label}
               </p>
             </Reveal>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import type { SiteProfile } from "@/types";
@@ -36,12 +36,12 @@ export default function About({ profile }: AboutProps) {
               ))}
             </div>
             {profile.bioClosing ? (
-              <p className="mb-2 text-sm italic text-[#9aa5b0]">
+              <p className="mb-2 text-sm italic text-[#b5c0cb]">
                 {profile.bioClosing}
               </p>
             ) : null}
             {profile.currentlyExploring ? (
-              <p className="mb-10 text-sm text-[#9aa5b0]">
+              <p className="mb-10 text-sm text-[#b5c0cb]">
                 {profile.currentlyExploring}
               </p>
             ) : null}
@@ -51,7 +51,7 @@ export default function About({ profile }: AboutProps) {
                 <h3 className="mb-3 font-serif text-lg text-white">
                   Contact Details
                 </h3>
-                <p className="font-semibold text-white">{profile.name}</p>
+                <p className="font-bold text-white">{profile.name}</p>
                 <p>
                   {address.city}, {address.state}
                 </p>
@@ -80,7 +80,7 @@ export default function About({ profile }: AboutProps) {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#9aa5b0] transition hover:text-[#0762f9]"
+                      className="text-[#b5c0cb] transition hover:text-[#0762f9]"
                     >
                       {link.name === "github"
                         ? "GitHub"
