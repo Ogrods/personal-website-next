@@ -42,9 +42,9 @@ export default function Resume({ resume }: ResumeProps) {
         <div className="skill mb-12 max-w-none space-y-6 border-b border-[#e8e8e8] pb-8">
           {resume.skillGroups.map((group) => (
             <div key={group.label}>
-              <h4 className="mb-2 font-serif text-sm font-bold uppercase tracking-[0.12em] text-[#313131]">
+              <h3 className="mb-2 font-serif text-sm font-bold uppercase tracking-[0.12em] text-[#313131]">
                 {group.label}
-              </h4>
+              </h3>
               <ul className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <li

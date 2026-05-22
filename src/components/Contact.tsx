@@ -86,15 +86,18 @@ export default function Contact({ profile }: ContactProps) {
         </div>
 
         <div className="grid gap-12 lg:grid-cols-12">
-          <form onSubmit={handleSubmit} className="lg:col-span-8" noValidate>
+          <form onSubmit={handleSubmit} className="relative lg:col-span-8" noValidate>
             {/* Honeypot: visually hidden, not in tab order; no aria-hidden on focusable */}
-            <input
-              className="honeypot-field"
-              name="website"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-            />
+            <label htmlFor="contact-website-hp" className="honeypot-field">
+              Leave this field blank
+              <input
+                id="contact-website-hp"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </label>
 
             <div className="mb-10 flex flex-col gap-1 sm:flex-row sm:items-start">
               <label

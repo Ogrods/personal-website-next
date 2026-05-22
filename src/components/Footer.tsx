@@ -14,7 +14,7 @@ type FooterProps = {
 
 export default function Footer({ social, name }: FooterProps) {
   return (
-    <footer className="relative bg-[#191919] pb-12 pt-12 text-center text-sm text-[#303030]">
+    <footer className="relative bg-[#191919] pb-12 pt-12 text-center text-sm text-[#b5c0cb]">
       <ul className="social-links mb-8 flex justify-center gap-10">
         {social.map((network) => {
           const Icon =
@@ -25,7 +25,7 @@ export default function Footer({ social, name }: FooterProps) {
                 href={network.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#525252] transition hover:text-white"
+                className="text-[#8f9aa8] transition hover:text-white"
                 aria-label={network.name}
               >
                 <Icon size={30} />
@@ -34,7 +34,7 @@ export default function Footer({ social, name }: FooterProps) {
           );
         })}
       </ul>
-      <p className="copyright text-[#303030]">
+      <p className="copyright text-[#b5c0cb]">
         © Copyright {new Date().getFullYear()} {name}
       </p>
     </footer>

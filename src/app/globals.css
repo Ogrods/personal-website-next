@@ -146,7 +146,7 @@ body {
   outline-offset: 2px;
 }
 
-/* Honeypot: off-screen, not in tab order */
+/* Honeypot: off-screen, not in tab order; label satisfies Lighthouse */
 .honeypot-field {
   position: absolute;
   width: 1px;
