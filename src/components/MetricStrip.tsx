@@ -18,7 +18,7 @@ const METRICS: MetricDef[] = [
   {
     id: "performance",
     label: "Performance",
-    target: 98,
+    target: 99,
     format: (n) => `${n}`,
   },
   {
