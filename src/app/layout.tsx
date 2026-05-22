@@ -22,7 +22,7 @@ const personJsonLd = {
   jobTitle: "Senior Front-End Developer",
   description: siteDescription,
   address: {
-    "@type": "PostalCode",
+    "@type": "PostalAddress",
     addressLocality: siteProfile.address.city,
     addressRegion: siteProfile.address.state,
     addressCountry: "US",
