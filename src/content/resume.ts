@@ -64,36 +64,24 @@ export const resumeContent: ResumeContent = {
       title: "Freelance Front-end Developer",
       years: "2025 – present",
       description:
-        "Conversion-focused WordPress and Shopify front-end work, with React for interactive UI. Current engagement: front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types.",
-      highlights: [
-        "Led the WordPress front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry)",
-        "Shipped events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA accessibility",
-        "WordPress and Shopify theme work with React for interactive UI; performance- and accessibility-tuned releases",
-      ],
+        "Led WordPress front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry); shipped events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA accessibility. Delivered conversion-focused WordPress and Shopify front-end work with React for interactive UI; customized themes against design specs and shipped performance-, accessibility-, and conversion-tuned releases.",
+      highlights: [],
     },
     {
       company: "Fervor Creative",
       title: "Front-end Developer",
       years: "April 2022 – October 2024",
       description:
-        "Digital agency role shipping production WordPress and Shopify sites for nonprofit, education, and multifamily real estate clients.",
-      highlights: [
-        "Shipped 50+ production sites in 30 months; primary technical contact for a 150+ site portfolio",
-        "Clients included ASU, Starbucks, Virginia G. Piper Charitable Trust, and 100+ Greystar properties",
-        "Lifted Lighthouse Performance, SEO, and Accessibility scores by 30–50 points per site",
-      ],
+        "Shipped 50+ production WordPress and Shopify sites in 30 months for nonprofit, education, and multifamily real estate clients including ASU, Starbucks, The Piper Trust, and 100+ Greystar Real Estate properties. Owned post-launch support across a 150+ site agency portfolio; triaged plugin conflicts, hosting incidents, and accessibility regressions under same-day response expectations. Engineered custom themes in PHP, JavaScript (ES6+), and Liquid; lifted Lighthouse Performance, SEO, and Accessibility scores by 30–50 points per site via Core Web Vitals tuning, Schema.org / JSON-LD, and WCAG remediation.",
+      highlights: [],
     },
     {
       company: "Freelance / Contract",
-      title: "Front-end Developer (ANova Digital, Straight Up Digital)",
+      title: "Front-end Developer (Straight Up Digital, ANova Digital)",
       years: "August 2020 – present",
       description:
-        "End-to-end WordPress and Shopify development for small-to-mid-market clients on retained and project bases.",
-      highlights: [
-        "Custom Liquid (Shopify) and PHP / Sass (WordPress) themes from design mockups",
-        "E-commerce and WooCommerce builds including Milton Sleep Co. storefront work",
-        "Post-launch Core Web Vitals, mobile usability, and accessibility optimization",
-      ],
+        "End-to-end WordPress and Shopify development for small-to-mid-market clients; convert design mockups into production Liquid and PHP / Sass themes; integrate REST APIs for payments, shipping, and marketing automation; optimize page speed, mobile usability, and accessibility post-launch.",
+      highlights: [],
     },
   ],
 };
