@@ -76,9 +76,9 @@ export const resumeContent: ResumeContent = {
       title: "Freelance Front-end Developer",
       years: "2025 – present",
       description:
-        "Conversion-focused WordPress and Shopify front-end work, with React for interactive UI. Current engagement: front-end build for FIRST — Foundation for Ichthyosis & Related Skin Types.",
+        "Conversion-focused WordPress and Shopify front-end work, with React for interactive UI. Current engagement: front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types.",
       highlights: [
-        "Led the WordPress front-end build for FIRST — Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry)",
+        "Led the WordPress front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry)",
         "Shipped events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA accessibility",
         "WordPress and Shopify theme work with React for interactive UI; performance- and accessibility-tuned releases",
       ],

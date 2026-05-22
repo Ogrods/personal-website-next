@@ -2,7 +2,7 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    title: "FIRST — Foundation for Ichthyosis & Related Skin Types",
+    title: "FIRST - Foundation for Ichthyosis & Related Skin Types",
     category: "Global rare-disease nonprofit",
     image: "first.webp",
     url: "https://firstskinfoundation.org/",

@@ -5,7 +5,7 @@ export const siteProfile: SiteProfile = {
   availability: "Available · Remote · Los Angeles",
   tagline: "Front-end developer for WordPress and Shopify.",
   proofLine:
-    "Fast, accessible, SEO-strong sites — Lighthouse lifts of 30 to 50 points across 50+ launches.",
+    "Fast, accessible, SEO-strong sites - Lighthouse lifts of 30 to 50 points across 50+ launches.",
   bookingUrl: "https://calendar.app.google/rveuZ14Je3ehY7Zq9",
   image: "profilepic.webp",
   bioParagraphs: [

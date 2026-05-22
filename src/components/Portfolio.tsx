@@ -30,7 +30,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Visit ${project.title} — ${project.metric} (opens in new tab)`}
+              aria-label={`Visit ${project.title} - ${project.metric} (opens in new tab)`}
               className="portfolio-card group block border border-[#dfe3e3] bg-white transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-[#e8ecec]">
