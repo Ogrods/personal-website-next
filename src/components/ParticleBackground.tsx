@@ -151,8 +151,17 @@ export default function ParticleBackground() {
 
     resize();
 
-    const observer = new ResizeObserver(resize);
-    observer.observe(container);
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(container);
+
+    let heroVisible = true;
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        heroVisible = entry?.isIntersecting ?? true;
+      },
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(container);
 
     const cx = () => width / 2;
     const cy = () => height / 2;
@@ -173,7 +182,10 @@ export default function ParticleBackground() {
     };
 
     const tick = () => {
-      if (document.visibilityState !== "visible") {
+      if (
+        document.visibilityState !== "visible" ||
+        !heroVisible
+      ) {
         rafRef.current = requestAnimationFrame(tick);
         return;
       }
@@ -241,7 +253,8 @@ export default function ParticleBackground() {
     }
 
     return () => {
-      observer.disconnect();
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
       cancelAnimationFrame(rafRef.current);
       particlesRef.current = [];
     };

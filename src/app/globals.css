@@ -261,6 +261,52 @@ select:focus-visible {
   transform: translateX(-50%) scaleX(1);
 }
 
+/* Mobile full-screen nav overlay */
+.nav-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 15, 15, 0.97);
+  padding: 5rem 1.5rem 2rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav-mobile-overlay {
+    animation: nav-overlay-in 0.22s ease-out;
+  }
+}
+
+@keyframes nav-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav-mobile-link:focus {
+  outline: none;
+}
+
+.nav-mobile-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.nav-mobile-brand:focus {
+  outline: none;
+}
+
+.nav-mobile-brand:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* Case study modal (portal-based) */
 .portfolio-card {
   cursor: pointer;

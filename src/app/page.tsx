@@ -17,7 +17,7 @@ export default function Home() {
       <a href="#main" className="skip-link">
         Skip to main content
       </a>
-      <Nav />
+      <Nav name={siteProfile.name} bookingUrl={siteProfile.bookingUrl} />
       <main id="main">
         <Hero profile={siteProfile} />
         <MetricStrip />
