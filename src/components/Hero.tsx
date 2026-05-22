@@ -19,7 +19,7 @@ export default function Hero({ profile }: HeroProps) {
 
       <div className="relative z-10 inline-block w-[85%] max-w-5xl px-4 pb-8 align-middle">
         <div className="banner-text w-full">
-          <p className="mb-4 font-serif text-xs uppercase tracking-[0.35em] text-[#b8c4ce]">
+          <p className="mb-4 hidden font-serif text-xs uppercase tracking-[0.35em] text-[#b8c4ce] md:block">
             {profile.availability}
           </p>
           <h1 className="mx-auto mb-[18px] font-serif text-[clamp(3rem,10vw,5.625rem)] leading-[1.1] tracking-[-2px] text-white">
