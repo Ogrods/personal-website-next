@@ -14,7 +14,9 @@ const PALETTE = [
   { head: "#ff3b3b", trail: "#b32424" },
 ] as const;
 
-const MAX_PARTICLES = 240;
+const MAX_PARTICLES_DESKTOP = 240;
+const MAX_PARTICLES_MOBILE = 120;
+const MOBILE_BREAKPOINT = 768;
 const TRAIL_FADE = "rgba(15, 15, 15, 0.008)";
 const MIN_SPEED = 0.7;
 const MAX_SPEED = 1.3;
@@ -27,7 +29,8 @@ const HEAD_SIZE = 1.6;
 const MIN_VELOCITY = 0.45;
 const START_ANGLE = -Math.PI / 2;
 const ANGLE_STEP = (Math.PI * 2) / 60;
-const FRAMES_PER_SPAWN = 3;
+const FRAMES_PER_SPAWN_DESKTOP = 3;
+const FRAMES_PER_SPAWN_MOBILE = 5;
 
 type Particle = {
   x: number;
@@ -136,12 +139,22 @@ export default function ParticleBackground() {
     let width = 0;
     let height = 0;
     let dpr = 1;
+    let isMobile = false;
+    let maxParticles = MAX_PARTICLES_DESKTOP;
+    let framesPerSpawn = FRAMES_PER_SPAWN_DESKTOP;
+    let dprCap = 2;
 
     const resize = () => {
       const rect = container.getBoundingClientRect();
       width = Math.max(1, Math.floor(rect.width));
       height = Math.max(1, Math.floor(rect.height));
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      isMobile = width < MOBILE_BREAKPOINT;
+      maxParticles = isMobile ? MAX_PARTICLES_MOBILE : MAX_PARTICLES_DESKTOP;
+      framesPerSpawn = isMobile
+        ? FRAMES_PER_SPAWN_MOBILE
+        : FRAMES_PER_SPAWN_DESKTOP;
+      dprCap = isMobile ? 1.5 : 2;
+      dpr = Math.min(window.devicePixelRatio || 1, dprCap);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       canvas.style.width = `${width}px`;
@@ -149,112 +162,143 @@ export default function ParticleBackground() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    resize();
-
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(container);
-
+    let resizeObserver: ResizeObserver | null = null;
+    let visibilityObserver: IntersectionObserver | null = null;
     let heroVisible = true;
-    const visibilityObserver = new IntersectionObserver(
-      ([entry]) => {
-        heroVisible = entry?.isIntersecting ?? true;
-      },
-      { threshold: 0 }
-    );
-    visibilityObserver.observe(container);
+    let cancelled = false;
+    let idleHandle: number | null = null;
+    let timeoutHandle: number | null = null;
 
-    const cx = () => width / 2;
-    const cy = () => height / 2;
+    const start = () => {
+      if (cancelled) return;
 
-    const spawnNext = () => {
-      const particles = particlesRef.current;
-      if (particles.length >= MAX_PARTICLES) return;
+      resize();
 
-      spawnCounterRef.current += 1;
-      if (spawnCounterRef.current < FRAMES_PER_SPAWN) return;
-      spawnCounterRef.current = 0;
+      resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(container);
 
-      particles.push(spawnParticle(cx(), cy(), spawnAngleRef.current));
-      spawnAngleRef.current += ANGLE_STEP;
-      if (spawnAngleRef.current > START_ANGLE + Math.PI * 2) {
-        spawnAngleRef.current -= Math.PI * 2;
-      }
-    };
+      visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          heroVisible = entry?.isIntersecting ?? true;
+        },
+        { threshold: 0 }
+      );
+      visibilityObserver.observe(container);
 
-    const tick = () => {
-      if (
-        document.visibilityState !== "visible" ||
-        !heroVisible
-      ) {
-        rafRef.current = requestAnimationFrame(tick);
-        return;
-      }
+      const cx = () => width / 2;
+      const cy = () => height / 2;
 
-      ctx.fillStyle = TRAIL_FADE;
-      ctx.fillRect(0, 0, width, height);
+      const spawnNext = () => {
+        const particles = particlesRef.current;
+        if (particles.length >= maxParticles) return;
 
-      const particles = particlesRef.current;
+        spawnCounterRef.current += 1;
+        if (spawnCounterRef.current < framesPerSpawn) return;
+        spawnCounterRef.current = 0;
 
-      ctx.lineWidth = 1;
-      for (const p of particles) {
-        p.px = p.x;
-        p.py = p.y;
+        particles.push(spawnParticle(cx(), cy(), spawnAngleRef.current));
+        spawnAngleRef.current += ANGLE_STEP;
+        if (spawnAngleRef.current > START_ANGLE + Math.PI * 2) {
+          spawnAngleRef.current -= Math.PI * 2;
+        }
+      };
 
-        p.vx += (Math.random() - 0.5) * WANDER_STRENGTH;
-        p.vy += (Math.random() - 0.5) * WANDER_STRENGTH;
-        p.vx *= DAMPING;
-        p.vy *= DAMPING;
-        keepMoving(p);
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        const wrappedX = wrapPosition(p.x, width);
-        const wrappedY = wrapPosition(p.y, height);
-        const didWrap = wrappedX !== p.x || wrappedY !== p.y;
-        p.x = wrappedX;
-        p.y = wrappedY;
-        if (didWrap) {
-          p.px = p.x;
-          p.py = p.y;
+      const tick = () => {
+        if (document.visibilityState !== "visible" || !heroVisible) {
+          rafRef.current = requestAnimationFrame(tick);
+          return;
         }
 
-        ctx.strokeStyle = p.trailColor;
-        ctx.globalAlpha = TRAIL_ALPHA;
-        ctx.beginPath();
-        ctx.moveTo(p.px, p.py);
-        ctx.lineTo(p.x, p.y);
-        ctx.stroke();
-      }
+        ctx.fillStyle = TRAIL_FADE;
+        ctx.fillRect(0, 0, width, height);
 
-      ctx.globalAlpha = HEAD_ALPHA;
-      for (const p of particles) {
-        ctx.fillStyle = p.headColor;
-        ctx.fillRect(
-          p.x - HEAD_SIZE / 2,
-          p.y - HEAD_SIZE / 2,
-          HEAD_SIZE,
-          HEAD_SIZE
-        );
-      }
+        const particles = particlesRef.current;
 
-      ctx.globalAlpha = 1;
-      spawnNext();
-      rafRef.current = requestAnimationFrame(tick);
+        ctx.lineWidth = 1;
+        for (const p of particles) {
+          p.px = p.x;
+          p.py = p.y;
+
+          p.vx += (Math.random() - 0.5) * WANDER_STRENGTH;
+          p.vy += (Math.random() - 0.5) * WANDER_STRENGTH;
+          p.vx *= DAMPING;
+          p.vy *= DAMPING;
+          keepMoving(p);
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          const wrappedX = wrapPosition(p.x, width);
+          const wrappedY = wrapPosition(p.y, height);
+          const didWrap = wrappedX !== p.x || wrappedY !== p.y;
+          p.x = wrappedX;
+          p.y = wrappedY;
+          if (didWrap) {
+            p.px = p.x;
+            p.py = p.y;
+          }
+
+          ctx.strokeStyle = p.trailColor;
+          ctx.globalAlpha = TRAIL_ALPHA;
+          ctx.beginPath();
+          ctx.moveTo(p.px, p.py);
+          ctx.lineTo(p.x, p.y);
+          ctx.stroke();
+        }
+
+        ctx.globalAlpha = HEAD_ALPHA;
+        for (const p of particles) {
+          ctx.fillStyle = p.headColor;
+          ctx.fillRect(
+            p.x - HEAD_SIZE / 2,
+            p.y - HEAD_SIZE / 2,
+            HEAD_SIZE,
+            HEAD_SIZE
+          );
+        }
+
+        ctx.globalAlpha = 1;
+        spawnNext();
+        rafRef.current = requestAnimationFrame(tick);
+      };
+
+      if (reducedMotion) {
+        drawStaticBurst(ctx, width, height);
+      } else {
+        ctx.fillStyle = "#0f0f0f";
+        ctx.fillRect(0, 0, width, height);
+        spawnNext();
+        rafRef.current = requestAnimationFrame(tick);
+      }
     };
 
-    if (reducedMotion) {
-      drawStaticBurst(ctx, width, height);
+    // Defer the heavy canvas init until the main thread is idle so we don't
+    // compete with LCP paint. Fallback to a 1.2s timeout for browsers without
+    // requestIdleCallback (Safari).
+    const idleWindow = window as typeof window & {
+      requestIdleCallback?: (
+        cb: IdleRequestCallback,
+        opts?: IdleRequestOptions
+      ) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+
+    if (typeof idleWindow.requestIdleCallback === "function") {
+      idleHandle = idleWindow.requestIdleCallback(start, { timeout: 1500 });
     } else {
-      ctx.fillStyle = "#0f0f0f";
-      ctx.fillRect(0, 0, width, height);
-      spawnNext();
-      rafRef.current = requestAnimationFrame(tick);
+      timeoutHandle = window.setTimeout(start, 1200);
     }
 
     return () => {
-      resizeObserver.disconnect();
-      visibilityObserver.disconnect();
+      cancelled = true;
+      if (idleHandle !== null && idleWindow.cancelIdleCallback) {
+        idleWindow.cancelIdleCallback(idleHandle);
+      }
+      if (timeoutHandle !== null) {
+        window.clearTimeout(timeoutHandle);
+      }
+      resizeObserver?.disconnect();
+      visibilityObserver?.disconnect();
       cancelAnimationFrame(rafRef.current);
       particlesRef.current = [];
     };
