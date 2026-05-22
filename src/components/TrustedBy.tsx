@@ -1,13 +1,11 @@
 import Image from "next/image";
-import Reveal from "@/components/Reveal";
 import { clientLogos } from "@/content/clients";
 
 export default function TrustedBy() {
   const items = [...clientLogos, ...clientLogos];
 
   return (
-    <Reveal
-      as="section"
+    <section
       aria-label="Trusted by"
       className="scroll-mt-20 border-y border-[#dfe3e3] bg-white py-12"
     >
@@ -49,6 +47,6 @@ export default function TrustedBy() {
           </ul>
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }
