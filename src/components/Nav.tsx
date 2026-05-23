@@ -176,11 +176,7 @@ export default function Nav({ name, bookingUrl }: NavProps) {
         </div>
 
         {/* Desktop links */}
-        <div
-          className={`relative mx-auto hidden max-w-[1020px] items-center justify-center px-4 md:flex ${
-            opaque ? "bg-[#333]" : "bg-transparent"
-          }`}
-        >
+        <div className="relative mx-auto hidden max-w-[1020px] items-center justify-center px-4 md:flex">
           <ul className="flex min-h-12">
             {navLinks.map((link) => (
               <li key={link.href} className="inline-block h-12">
