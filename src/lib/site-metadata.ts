@@ -1,4 +1,4 @@
-export const siteUrl = "https://danogrodnik.com";
+export const siteUrl = "https://www.danogrodnik.com";
 
 export const siteTitle =
   "Dan Ogrodnik - Senior Front-End Developer | WordPress, Shopify, React";
