@@ -162,12 +162,14 @@ export default function Portfolio({ projects }: PortfolioProps) {
 
   return (
     <>
-      <Reveal as="section" id="portfolio" className="scroll-mt-[47px] bg-[#ebeeee] pb-[60px] pt-[90px] md:scroll-mt-20">
+      <section id="portfolio" className="scroll-mt-[47px] bg-[#ebeeee] pb-[60px] pt-[90px] md:scroll-mt-20">
         <div className="container-site">
-          <SectionHeading title="Selected Work" variant="muted" align="center" />
-          <p className="-mt-6 mb-12 text-center font-serif text-sm leading-relaxed text-[#6e7881]">
-            5+ years · 50+ launches · WordPress, Shopify, React
-          </p>
+          <Reveal>
+            <SectionHeading title="Selected Work" variant="muted" align="center" />
+            <p className="-mt-6 mb-12 text-center font-serif text-sm leading-relaxed text-[#6e7881]">
+              5+ years · 50+ launches · WordPress, Shopify, React
+            </p>
+          </Reveal>
 
           <div className="grid gap-8 md:grid-cols-2">
             {featured ? (
@@ -183,7 +185,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
             ))}
           </div>
         </div>
-      </Reveal>
+      </section>
 
       {activeCaseStudy ? (
         <CaseStudyModal

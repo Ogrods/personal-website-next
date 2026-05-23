@@ -8,17 +8,19 @@ type ResumeProps = {
 
 export default function Resume({ resume }: ResumeProps) {
   return (
-    <Reveal
-      as="section"
+    <section
       id="resume"
       className="scroll-mt-[47px] overflow-hidden bg-white pb-[72px] pt-[90px] text-[#6e7881] md:scroll-mt-20"
     >
       <div className="container-site">
-        <SectionHeading title="Work" />
+        <Reveal>
+          <SectionHeading title="Work" />
+        </Reveal>
         <div className="mb-12 space-y-0">
           {resume.work.map((job, index) => (
-            <article
+            <Reveal as="article"
               key={`${job.company}-${job.years}`}
+              delayMs={index * 60}
               className={`work mb-12 border-b border-[#e8e8e8] pb-6 ${
                 index === resume.work.length - 1 ? "border-b-0" : ""
               }`}
@@ -34,14 +36,16 @@ export default function Resume({ resume }: ResumeProps) {
                 </span>
               </p>
               <p className="mt-2 leading-[30px]">{job.description}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
 
-        <SectionHeading title="Skills" />
+        <Reveal>
+          <SectionHeading title="Skills" />
+        </Reveal>
         <div className="skill mb-12 max-w-none space-y-6 border-b border-[#e8e8e8] pb-8">
-          {resume.skillGroups.map((group) => (
-            <div key={group.label}>
+          {resume.skillGroups.map((group, index) => (
+            <Reveal key={group.label} delayMs={index * 60}>
               <h3 className="mb-2 font-serif text-sm font-bold uppercase tracking-[0.12em] text-[#313131]">
                 {group.label}
               </h3>
@@ -55,15 +59,18 @@ export default function Resume({ resume }: ResumeProps) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <SectionHeading title="Education" />
+        <Reveal>
+          <SectionHeading title="Education" />
+        </Reveal>
         <div className="space-y-0">
           {resume.education.map((edu, index) => (
-            <article
+            <Reveal as="article"
               key={`${edu.school}-${edu.graduated}`}
+              delayMs={index * 60}
               className={`mb-12 border-b border-[#e8e8e8] pb-6 ${
                 index === resume.education.length - 1 ? "border-b-0 mb-0" : ""
               }`}
@@ -78,10 +85,10 @@ export default function Resume({ resume }: ResumeProps) {
                   {edu.graduated}
                 </span>
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }

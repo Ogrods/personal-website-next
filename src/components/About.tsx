@@ -11,13 +11,13 @@ export default function About({ profile }: AboutProps) {
   const { address } = profile;
 
   return (
-    <Reveal as="section"
+    <section
       id="about"
       className="scroll-mt-[47px] overflow-hidden bg-[#000524] pb-[66px] pt-24 text-[#ccc] md:scroll-mt-20"
     >
       <div className="container-site">
         <div className="grid gap-10 md:grid-cols-12 md:items-start">
-          <div className="md:col-span-3">
+          <Reveal className="md:col-span-3">
             <Image
               src={`/images/${profile.image}`}
               alt={profile.name}
@@ -26,9 +26,9 @@ export default function About({ profile }: AboutProps) {
               className="h-[120px] w-[120px] rounded-full object-cover"
               priority
             />
-          </div>
+          </Reveal>
 
-          <div className="md:col-span-9 md:pr-[5%]">
+          <Reveal delayMs={80} className="md:col-span-9 md:pr-[5%]">
             <SectionHeading title="About" variant="light" />
             <div className="mb-6 space-y-6 leading-[30px] text-[#ccc]">
               {profile.bioParagraphs.map((para, i) => (
@@ -112,10 +112,10 @@ export default function About({ profile }: AboutProps) {
                 </a>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }
 

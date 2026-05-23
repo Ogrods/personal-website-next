@@ -1,0 +1,28 @@
+---
+description: Default scroll-reveal pattern — animate content inside sections, not whole sections
+alwaysApply: true
+---
+
+# Scroll reveal / fade-in defaults
+
+When adding scroll-triggered fade or slide-up animations:
+
+## Do
+
+- Use plain `<section>` (or equivalent) for section wrappers — background, padding, and layout paint immediately.
+- Wrap **content inside** the section: headings, cards, list items, form blocks, columns.
+- Stagger siblings with small delays (e.g. 60–100ms per item) when it helps readability.
+- Respect `prefers-reduced-motion` (hide or skip animation).
+
+## Don't
+
+- Wrap an entire `<section>` in a reveal/fade component (`Reveal as="section"`, Framer Motion on the section root, etc.).
+- Fade the full viewport band including section background — it reads as a jarring “black sheet lifting” on dark/light transitions.
+
+## Rationale
+
+Section-level fades fight hard background cuts between bands. Item-level reveals keep the section stable while content enters — clearer hierarchy and less motion sickness on scroll.
+
+## This codebase
+
+Use `Reveal` from `@/components/Reveal` on inner elements only. Portfolio pattern: `MetricStrip`, `Portfolio`, `About`, `Resume`, `Contact`.

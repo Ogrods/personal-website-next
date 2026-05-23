@@ -87,15 +87,16 @@ function AnimatedMetric({
 
 export default function MetricStrip() {
   return (
-    <Reveal
-      as="section"
+    <section
       aria-label="Lighthouse scores on this site"
       className="border-y border-white/10 bg-[#0f0f0f] py-10 text-center"
     >
       <div className="container-site">
-        <p className="mb-6 font-serif text-xs uppercase tracking-[0.28em] text-[#b5c0cb]">
-          Lighthouse on this site
-        </p>
+        <Reveal>
+          <p className="mb-6 font-serif text-xs uppercase tracking-[0.28em] text-[#b5c0cb]">
+            Lighthouse on this site
+          </p>
+        </Reveal>
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {METRICS.map((m, i) => (
             <Reveal as="li" key={m.id} delayMs={i * 100}>
@@ -106,19 +107,21 @@ export default function MetricStrip() {
             </Reveal>
           ))}
         </ul>
-        <p className="mt-6 font-serif text-xs text-[#6e7881]">
-          Mobile, incognito, May 2026.{" "}
-          <a
-            href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdanogrodnik.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-[#9aa5b0]"
-          >
-            Re-run on PageSpeed Insights
-          </a>
-        </p>
+        <Reveal delayMs={400}>
+          <p className="mt-6 font-serif text-xs text-[#6e7881]">
+            Mobile, incognito, May 2026.{" "}
+            <a
+              href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdanogrodnik.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-[#9aa5b0]"
+            >
+              Re-run on PageSpeed Insights
+            </a>
+          </p>
+        </Reveal>
       </div>
-    </Reveal>
+    </section>
   );
 }
 

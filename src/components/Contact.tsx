@@ -61,12 +61,12 @@ export default function Contact({ profile }: ContactProps) {
   }
 
   return (
-    <Reveal as="section"
+    <section
       id="contact"
       className="scroll-mt-[47px] bg-[#191919] pb-[102px] pt-24 text-[#b5c0cb] md:scroll-mt-20"
     >
       <div className="container-site">
-        <div className="section-head mb-10">
+        <Reveal className="section-head mb-10">
           <h2 className="mb-1.5 font-serif text-lg uppercase tracking-[0.2em] text-[#ebeeee]">
             Get In Touch.
           </h2>
@@ -83,10 +83,10 @@ export default function Contact({ profile }: ContactProps) {
               Book a 15-min intro call
             </a>
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid gap-12 lg:grid-cols-12">
-          <form onSubmit={handleSubmit} className="relative lg:col-span-8" noValidate>
+          <Reveal as="form" onSubmit={handleSubmit} delayMs={80} className="relative lg:col-span-8" noValidate>
             {/* Honeypot: visually hidden, not in tab order; no aria-hidden on focusable */}
             <label htmlFor="contact-website-hp" className="honeypot-field">
               Leave this field blank
@@ -194,9 +194,9 @@ export default function Contact({ profile }: ContactProps) {
                 </p>
               ) : null}
             </div>
-          </form>
+          </Reveal>
 
-          <div className="lg:col-span-4">
+          <Reveal delayMs={160} className="lg:col-span-4">
             <h3 className="mb-1.5 font-serif text-base font-bold leading-6 text-[#ebeeee]">
               Contact Details
             </h3>
@@ -241,10 +241,10 @@ export default function Contact({ profile }: ContactProps) {
                 </a>
               ))}
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }
 

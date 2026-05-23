@@ -1,5 +1,8 @@
 "use client";
 
+// Scroll reveal for inner content only — not whole <section> wrappers.
+// See .cursor/rules/scroll-reveal-fades.mdc for the project default.
+
 import {
   type ComponentPropsWithoutRef,
   type ElementType,
