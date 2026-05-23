@@ -90,7 +90,7 @@ export default function MetricStrip() {
     <Reveal
       as="section"
       aria-label="Lighthouse scores on this site"
-      className="section-edge-fade section-edge-fade--to-portfolio border-y border-white/10 bg-[#0f0f0f] py-10 text-center"
+      className="border-y border-white/10 bg-[#0f0f0f] py-10 text-center"
     >
       <div className="container-site">
         <p className="mb-6 font-serif text-xs uppercase tracking-[0.28em] text-[#b5c0cb]">

@@ -297,38 +297,6 @@ select:focus-visible {
   }
 }
 
-/* Section edge fades: soften dark ↔ light transitions */
-.section-edge-fade {
-  position: relative;
-}
-
-.section-edge-fade::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 56px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.section-edge-fade--to-portfolio::after {
-  background: linear-gradient(to bottom, transparent, var(--bg-portfolio));
-}
-
-.section-edge-fade--to-white::after {
-  background: linear-gradient(to bottom, transparent, var(--bg-resume));
-}
-
-.section-edge-fade--to-about::after {
-  background: linear-gradient(to bottom, transparent, var(--bg-about));
-}
-
-.section-edge-fade--to-contact::after {
-  background: linear-gradient(to bottom, transparent, var(--bg-contact));
-}
-
 /* Trusted by marquee */
 .trusted-marquee-mask {
   mask-image: linear-gradient(
