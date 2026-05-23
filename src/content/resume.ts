@@ -64,7 +64,7 @@ export const resumeContent: ResumeContent = {
       title: "Freelance Front-end Developer",
       years: "2025 – present",
       description:
-        "Led WordPress front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry); shipped events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA accessibility. Delivered conversion-focused WordPress and Shopify front-end work with React for interactive UI; customized themes against design specs and shipped performance-, accessibility-, and conversion-tuned releases.",
+        "Led WordPress front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry); built on Gutenberg + GenerateBlocks with events, physician finder, and donation flows shipped with Schema.org markup and WCAG 2.1 AA accessibility. Additional WordPress and Shopify front-end work with React used on Shopify interactive UI; customized themes against design specs and shipped performance-, accessibility-, and conversion-tuned releases.",
       highlights: [],
     },
     {

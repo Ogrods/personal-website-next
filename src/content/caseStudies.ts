@@ -1,4 +1,4 @@
-﻿import type { CaseStudy } from "@/types";
+import type { CaseStudy } from "@/types";
 
 export const caseStudies: Record<string, CaseStudy> = {
   first: {
@@ -8,7 +8,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Front-end build via Rhumbline AI · Feb – Apr 2026",
     liveUrl: "https://firstskinfoundation.org/",
     overview:
-      "FIRST is a global rare-disease nonprofit supporting patients, caregivers, and clinicians. I led the WordPress front-end build with React for interactive UI—events, physician finder, and donation flows—while the site had to speak to two very different audiences without splitting into two separate properties.",
+      "FIRST is a global rare-disease nonprofit supporting patients, caregivers, and clinicians. I led the WordPress front-end build using Gutenberg and GenerateBlocks for the editor surface, events, physician finder, and donation flows, while the site had to speak to two very different audiences without splitting into two separate properties.",
     metrics: [
       "$2.2M research funding",
       "1,600+ patient registry",
@@ -19,7 +19,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     approach: [
       "Dual color-coded experiences in one WordPress site: a blue patients and caregivers side and a green medical professionals side. Headers, navigation, heroes, and sidebars recolor throughout so visitors always know which audience mode they are in.",
       "A persistent audience toggle in the masthead—Medical Professionals on the blue side, Patients and Caregivers on the green side—so users can cross over without losing context.",
-      "WordPress front-end with React for interactive UI on events, physician finder, and donation flows, plus Schema.org markup for search visibility.",
+      "WordPress front-end with Gutenberg + GenerateBlocks block library for events, physician finder, and donation flows. No page-builder, clean markup, plus Schema.org for search visibility.",
       "Built to WCAG 2.1 AA from day one, with contrast checks on both color systems so neither experience compromises legibility.",
     ],
     heroImage: {
@@ -43,11 +43,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     stack: [
       "WordPress",
-      "React",
+      "Gutenberg",
+      "GenerateBlocks",
+      "PHP",
       "Schema.org",
       "WCAG 2.1 AA",
-      "Gutenberg",
-      "PHP",
     ],
   },
 };
