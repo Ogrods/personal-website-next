@@ -13,11 +13,11 @@ export default function Hero({ profile }: HeroProps) {
   return (
     <header
       id="home"
-      className="relative flex h-dvh min-h-[100svh] w-full items-center justify-center overflow-hidden text-center"
+      className="hero-section relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden py-12 text-center"
     >
       <ParticleBackground />
 
-      <div className="relative z-10 inline-block w-[85%] max-w-5xl px-4 pb-8 align-middle">
+      <div className="relative z-10 inline-block w-[85%] max-w-5xl px-4 align-middle">
         <div className="banner-text w-full">
           <p className="mb-4 hidden font-serif text-xs uppercase tracking-[0.35em] text-[#b8c4ce] md:block">
             {profile.availability}
