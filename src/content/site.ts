@@ -15,7 +15,7 @@ export const siteProfile: SiteProfile = {
   bioClosing:
     "CalArts MFA | Hartford BM | snowboarder, cyclist, coffee enthusiast.",
   currentlyExploring:
-    "Currently exploring: AWS Cloud Practitioner certification, headless WordPress on Vercel, and Next.js app router patterns.",
+    "Currently exploring: AWS Cloud Practitioner certification, Magento, headless WordPress on Vercel, and Next.js app router patterns.",
   contactMessage:
     "Looking for a senior front-end developer to ship WordPress or Shopify work? Send a note or book a 15-minute call.",
   email: "Dan.Ogrodnik@gmail.com",
