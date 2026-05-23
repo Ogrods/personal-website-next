@@ -302,10 +302,22 @@ select:focus-visible {
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 8%,
-    black 92%,
+    black 4%,
+    black 96%,
     transparent
   );
+}
+
+@media (min-width: 768px) {
+  .trusted-marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
