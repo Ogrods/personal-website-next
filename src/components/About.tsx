@@ -13,7 +13,7 @@ export default function About({ profile }: AboutProps) {
   return (
     <Reveal as="section"
       id="about"
-      className="scroll-mt-[47px] overflow-hidden bg-[#000524] pb-[66px] pt-24 text-[#ccc] md:scroll-mt-20"
+      className="section-edge-fade section-edge-fade--to-white scroll-mt-[47px] overflow-hidden bg-[#000524] pb-[66px] pt-24 text-[#ccc] md:scroll-mt-20"
     >
       <div className="container-site">
         <div className="grid gap-10 md:grid-cols-12 md:items-start">

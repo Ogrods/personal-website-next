@@ -11,7 +11,7 @@ export default function Resume({ resume }: ResumeProps) {
     <Reveal
       as="section"
       id="resume"
-      className="scroll-mt-[47px] overflow-hidden bg-white pb-[72px] pt-[90px] text-[#6e7881] md:scroll-mt-20"
+      className="section-edge-fade section-edge-fade--to-contact scroll-mt-[47px] overflow-hidden bg-white pb-[72px] pt-[90px] text-[#6e7881] md:scroll-mt-20"
     >
       <div className="container-site">
         <SectionHeading title="Work" />
