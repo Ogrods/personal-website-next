@@ -36,6 +36,11 @@ function ProjectCard({
           featured ? "aspect-[21/9] md:aspect-[2.4/1]" : "aspect-[16/9]"
         }`}
       >
+        {!featured && project.caseStudySlug ? (
+          <span className="absolute left-3 top-3 z-10 rounded-sm bg-[#0762f9] px-2 py-0.5 font-serif text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-sm">
+            Case study
+          </span>
+        ) : null}
         <Image
           src={`/images/portfolio/${project.image}`}
           alt={`Homepage screenshot of ${project.title} - ${project.category}`}
@@ -54,7 +59,7 @@ function ProjectCard({
       <div className={`p-5 sm:p-6 ${featured ? "md:p-8" : ""}`}>
         {featured ? (
           <p className="mb-2 font-serif text-[11px] uppercase tracking-[0.2em] text-[#0762f9]">
-            Featured · Current engagement
+            {project.featuredEyebrow ?? "Featured"}
           </p>
         ) : null}
         <h3
@@ -150,15 +155,13 @@ function ProjectCard({
 }
 
 export default function Portfolio({ projects }: PortfolioProps) {
-  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   const featured = projects.find((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
-  const activeCaseStudy = featured?.caseStudySlug
-    ? getCaseStudy(featured.caseStudySlug)
-    : undefined;
+  const activeCaseStudy = activeSlug ? getCaseStudy(activeSlug) : undefined;
 
-  const handleCloseCaseStudy = () => setCaseStudyOpen(false);
+  const handleCloseCaseStudy = () => setActiveSlug(null);
 
   return (
     <>
@@ -177,11 +180,24 @@ export default function Portfolio({ projects }: PortfolioProps) {
                 project={featured}
                 featured
                 delayMs={0}
-                onOpenCaseStudy={() => setCaseStudyOpen(true)}
+                onOpenCaseStudy={
+                  featured.caseStudySlug
+                    ? () => setActiveSlug(featured.caseStudySlug!)
+                    : undefined
+                }
               />
             ) : null}
             {rest.map((project, i) => (
-              <ProjectCard key={project.title} project={project} delayMs={(i + 1) * 80} />
+              <ProjectCard
+                key={project.title}
+                project={project}
+                delayMs={(i + 1) * 80}
+                onOpenCaseStudy={
+                  project.caseStudySlug
+                    ? () => setActiveSlug(project.caseStudySlug!)
+                    : undefined
+                }
+              />
             ))}
           </div>
         </div>
@@ -189,7 +205,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
 
       {activeCaseStudy ? (
         <CaseStudyModal
-          open={caseStudyOpen}
+          open={activeSlug !== null}
           onClose={handleCloseCaseStudy}
           caseStudy={activeCaseStudy}
         />

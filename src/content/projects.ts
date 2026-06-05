@@ -2,6 +2,21 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    title: "BAKLOG",
+    category: "Local-first game library · Solo founder project",
+    image: "baklog.webp",
+    url: "https://baklog.app",
+    stack: ["Python", "JavaScript", "Local-first", "CDP auth", "Chart.js"],
+    metric: "25 fetch sources · live sync · 480 tests",
+    outcome:
+      "Local-first app that unifies game libraries across major storefronts on your machine.",
+    featured: true,
+    featuredEyebrow: "Featured · Founder project",
+    caseStudySlug: "baklog",
+    featuredBlurb:
+      "Solo-built local-first app that unifies game libraries across Steam, Epic, GOG, PlayStation, Xbox, and more on your machine. A responsive, real-time fetch module orchestrates 25 sources with per-source freshness tracking, no cloud account required. Ownership-aware deal radar, cross-store dedupe, and a dashboard with 130+ locally computed stats.",
+  },
+  {
     title: "FIRST - Foundation for Ichthyosis & Related Skin Types",
     category: "Global rare-disease nonprofit",
     image: "first.webp",
@@ -10,10 +25,17 @@ export const projects: Project[] = [
     metric: "$2.2M research · 1,600+ patient registry",
     outcome:
       "Events, physician finder, and donation flows for a global rare-disease nonprofit.",
-    featured: true,
     caseStudySlug: "first",
-    featuredBlurb:
-      "Current Rhumbline AI engagement: conversion-focused WordPress front-end on Gutenberg + GenerateBlocks. Built events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA, supporting $2.2M in research funding and a 1,600+ patient registry for a global rare-disease nonprofit.",
+  },
+  {
+    title: "Madishroom",
+    category: "E-commerce · Shopify storefront",
+    image: "madishroom.webp",
+    url: "https://madishroom.com",
+    stack: ["Shopify", "Liquid"],
+    metric: "End-to-end owner-operator launch",
+    outcome:
+      "Custom Liquid theme, product flows, and conversion-focused storefront built and shipped end-to-end.",
   },
   {
     title: "Virginia G. Piper Charitable Trust",
@@ -60,15 +82,4 @@ export const projects: Project[] = [
     metric: "Acclaimed Scottish artist · gallery",
     outcome: "Gallery-forward portfolio for exhibitions, news, and collector outreach.",
   },
-  {
-    title: "Madishroom",
-    category: "E-commerce · Shopify storefront",
-    image: "madishroom.webp",
-    url: "https://madishroom.com",
-    stack: ["Shopify", "Liquid"],
-    metric: "End-to-end owner-operator launch",
-    outcome:
-      "Custom Liquid theme, product flows, and conversion-focused storefront built and shipped end-to-end.",
-  },
 ];
-

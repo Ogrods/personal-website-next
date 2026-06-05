@@ -216,6 +216,43 @@ export default function CaseStudyModal({
             </section>
           ) : null}
 
+          {caseStudy.gallery ? (
+            <section className="mt-8">
+              <h3 className="font-serif text-sm font-bold uppercase tracking-[0.14em] text-[#313131]">
+                {caseStudy.gallery.heading}
+              </h3>
+              {caseStudy.gallery.body ? (
+                <p className="mt-3 font-serif text-base leading-relaxed text-[#6e7881]">
+                  {caseStudy.gallery.body}
+                </p>
+              ) : null}
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {caseStudy.gallery.images.map((img) => (
+                  <figure
+                    key={img.src}
+                    className="overflow-hidden border border-[#dfe3e3] bg-white"
+                  >
+                    <div className="relative aspect-[16/9] bg-[#e8ecec]">
+                      <Image
+                        src={`/images/portfolio/${img.src}`}
+                        alt={img.alt}
+                        width={1024}
+                        height={576}
+                        className="h-full w-full object-cover object-top"
+                        sizes="(max-width: 640px) 100vw, 320px"
+                      />
+                    </div>
+                    {img.caption ? (
+                      <figcaption className="px-3 py-2 font-serif text-xs text-[#6e7881]">
+                        {img.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="mt-8">
             <h3 className="font-serif text-sm font-bold uppercase tracking-[0.14em] text-[#313131]">
               Stack

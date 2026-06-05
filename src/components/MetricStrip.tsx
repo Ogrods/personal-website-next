@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Reveal from "@/components/Reveal";
 import { useInView } from "@/lib/useInView";
 
@@ -41,6 +41,9 @@ const METRICS: MetricDef[] = [
   },
 ];
 
+const useIsoLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 function AnimatedMetric({
   metric,
   delayMs,
@@ -50,7 +53,15 @@ function AnimatedMetric({
 }) {
   const { ref, inView } = useInView<HTMLParagraphElement>({ threshold: 0.35 });
   const target = metric.target ?? 0;
-  const [value, setValue] = useState(metric.static ?? "0");
+  const initial = metric.static ?? metric.format!(metric.target ?? 0);
+  const [value, setValue] = useState(initial);
+
+  useIsoLayoutEffect(() => {
+    if (metric.static) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    setValue(metric.format!(0));
+  }, []);
 
   useEffect(() => {
     if (metric.static || !inView) return;

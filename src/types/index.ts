@@ -66,6 +66,7 @@ export type Project = {
   metric: string;
   outcome: string;
   featured?: boolean;
+  featuredEyebrow?: string;
   featuredBlurb?: string;
   caseStudySlug?: string;
 };
@@ -90,6 +91,11 @@ export type CaseStudy = {
     heading: string;
     body: string;
     caption: string;
+    images: CaseStudyImage[];
+  };
+  gallery?: {
+    heading: string;
+    body?: string;
     images: CaseStudyImage[];
   };
   heroImage: CaseStudyImage;
