@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>danogrodnik.com · Project Tracker</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-panel: #1e293b;
+      --bg-elev: #334155;
+      --border: #334155;
+      --border-soft: #475569;
+      --text: #e2e8f0;
+      --text-dim: #cbd5e1;
+      --text-mute: #94a3b8;
+      --text-faint: #64748b;
+      --accent: #0762f9;
+      --accent-dim: #0550d4;
+      --red: #f87171;
+      --amber: #fbbf24;
+      --green: #34d399;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      background: var(--bg-elev);
+      color: var(--text-dim);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      font-family: Consolas, ui-monospace, monospace;
+    }
+    strong { color: var(--text); }
+    h1, h2, h3 { color: var(--text); margin: 0 0 0.5rem; line-height: 1.2; font-weight: 600; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.15rem; margin-top: 1rem; }
+    h3 { font-size: 0.85rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+    p { margin: 0 0 0.75rem; color: var(--text-dim); }
+    .muted { color: var(--text-mute); }
+    .faint { color: var(--text-faint); font-size: 0.85rem; }
+
+    .app { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+    header.topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .brand-title { font-size: 1.35rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
+    .brand-sub { font-size: 0.7rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.15rem; }
+    .topbar-actions { display: flex; gap: 0.5rem; margin-left: auto; flex-wrap: wrap; }
+    .btn {
+      background: var(--bg-elev); color: var(--text-dim); border: 1px solid var(--border-soft);
+      border-radius: 0.375rem; padding: 0.4rem 0.75rem; font-size: 0.85rem; cursor: pointer;
+      font-family: inherit; text-decoration: none; display: inline-block;
+    }
+    .btn:hover { background: var(--border-soft); color: var(--text); text-decoration: none; }
+    .btn-danger { color: var(--red); border-color: var(--red); }
+    .btn-danger:hover { background: var(--red); color: #1a0b0b; }
+    .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+
+    .tabbar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+    .tab {
+      background: var(--bg-panel); color: var(--text-dim); border: 1px solid var(--border-soft);
+      padding: 0.4rem 0.85rem; border-radius: 0.375rem; font-size: 0.85rem; cursor: pointer;
+      font-family: inherit; font-weight: 500;
+    }
+    .tab:hover { background: var(--bg-elev); color: var(--text); }
+    .tab.active { background: var(--accent-dim); border-color: var(--accent); color: #f0f9ff; }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    @media (max-width: 700px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+
+    .stat { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.85rem 1rem; }
+    .stat-value { font-size: 1.35rem; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mute); margin-top: 0.35rem; }
+    .stat-info .stat-value { color: var(--accent); }
+    .stat-success .stat-value { color: var(--green); }
+
+    .callout { background: rgba(7, 98, 249, 0.08); border: 1px solid var(--accent); border-radius: 0.5rem; padding: 0.85rem 1rem; margin-bottom: 1rem; }
+    .callout.warning { background: rgba(251, 191, 36, 0.08); border-color: var(--amber); }
+    .callout.success { background: rgba(52, 211, 153, 0.08); border-color: var(--green); }
+    .callout-title { font-weight: 600; color: var(--text); margin-bottom: 0.35rem; font-size: 0.95rem; }
+    .callout-body { color: var(--text-dim); font-size: 0.85rem; white-space: pre-wrap; line-height: 1.55; }
+
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.5rem 0 1rem; }
+    .data-table th, .data-table td { border: 1px solid var(--border); padding: 0.5rem 0.65rem; text-align: left; vertical-align: top; }
+    .data-table th { background: var(--bg-elev); color: var(--text-mute); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .data-table td { color: var(--text-dim); }
+
+    .checklist { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; margin-bottom: 1rem; }
+    .check-row { display: flex; gap: 0.6rem; padding: 0.55rem 0.85rem; border-bottom: 1px solid var(--border); align-items: flex-start; }
+    .check-row:last-child { border-bottom: none; }
+    .check-row input[type="checkbox"] { margin-top: 0.25rem; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; width: 1rem; height: 1rem; }
+    .check-row label { cursor: pointer; flex: 1; color: var(--text-dim); font-size: 0.9rem; line-height: 1.45; }
+    .check-row input[type="checkbox"]:checked + label { color: var(--text-mute); text-decoration: line-through; text-decoration-color: var(--text-faint); }
+
+    .toast {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      background: var(--bg-elev); color: var(--text); border: 1px solid var(--accent);
+      padding: 0.65rem 1.2rem; border-radius: 0.375rem; font-size: 0.85rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 50;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <div class="brand-title">danogrodnik.com</div>
+        <div class="brand-sub">Project Tracker</div>
+      </div>
+      <div class="topbar-actions">
+        <button type="button" class="btn btn-sm" id="exportBtn">Export</button>
+        <button type="button" class="btn btn-sm" id="importBtn">Import</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none" />
+        <button type="button" class="btn btn-sm btn-danger" id="resetAllBtn">Reset all</button>
+        <a class="btn btn-sm" href="https://www.danogrodnik.com" target="_blank" rel="noopener">Live site</a>
+        <a class="btn btn-sm" href="/">← App</a>
+      </div>
+    </header>
+
+    <nav class="tabbar" id="tabbar"></nav>
+    <main id="panels"></main>
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script>
+  "use strict";
+
+  const STORAGE_KEY = "danogrodnik-tracker-v1";
+
+  const TABS = [
+    { id: "overview", label: "Overview" },
+    { id: "deploy", label: "Deploy" },
+    { id: "email", label: "Email & DNS" },
+    { id: "content", label: "Content" },
+    { id: "loops", label: "Open loops" },
+  ];
+
+  const EMAIL_NOTES = [
+    {
+      id: "email_split",
+      title: "Email split (danogrodnik.com vs baklog.app)",
+      body: "Two domains, two inbound services, one outbound provider (Resend).\n\n• danogrodnik.com INBOUND: forwardemail.net via Namecheap Advanced DNS. MX on @ → mx1.forwardemail.net + mx2.forwardemail.net (priority 10). TXT on @ → forward-email=dan.ogrodnik@gmail.com (catch-all). Forwards dan@ and anything else @danogrodnik.com to Gmail.\n\n• danogrodnik.com OUTBOUND: Resend on subdomain mail.danogrodnik.com. Contact form sends contact@mail.danogrodnik.com via portfolio/src/app/api/contact/route.ts. Vercel env: RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL.\n\n• baklog.app INBOUND: ImprovMX (free tier, single domain slot). Forwards @baklog.app to Gmail. DNS in ImprovMX dashboard, not Namecheap.\n\n• baklog.app OUTBOUND: Resend for waitlist + bug reports (steam-backlog/landing/api/subscribe.js, report.js). Vercel env: RESEND_API_KEY, NOTIFY_FROM (BAKLOG <waitlist@baklog.app>), NOTIFY_TO.\n\nBAKLOG ops tracker: ../steam-backlog/tracker.html (Notes tab → ops_email_dns_split).",
+    },
+    {
+      id: "email_namecheap_block",
+      title: "Namecheap Redirect Email is blocked",
+      className: "warning",
+      body: "Namecheap built-in Redirect Email refuses to enable when Resend mail.* records exist on danogrodnik.com. Use forwardemail.net instead (DNS records only, no nameserver change). Do NOT delete resend._domainkey.mail or send.mail SPF when adding forwardemail apex records — those keep the contact form working.",
+    },
+    {
+      id: "email_records",
+      title: "Namecheap records (danogrodnik.com, as configured 2026-06-07)",
+      body: "Host Records (top table):\n• A @ → Vercel (216.198.79.1)\n• CNAME www → vercel-dns\n• TXT _dmarc → v=DMARC1; p=none;\n• TXT resend._domainkey… → Resend DKIM (contact form)\n• TXT send.mail → v=spf1 include:amazonses.com ~all (Resend)\n• TXT @ → forward-email=dan.ogrodnik@gmail.com (forwardemail catch-all)\n\nMail Settings → Custom MX:\n• MX @ mx1.forwardemail.net priority 10\n• MX @ mx2.forwardemail.net priority 10",
+    },
+    {
+      id: "email_verify",
+      title: "Verification checklist",
+      body: "1. Email dan@danogrodnik.com from your phone → lands in Gmail.\n2. Submit portfolio contact form → arrives at CONTACT_TO_EMAIL, Resend dashboard shows Delivered.\n3. Do not touch mail.* Resend records when editing apex MX/TXT.",
+    },
+  ];
+
+  const OPEN_LOOPS = [
+    { id: "loop_forwardemail_test", label: "Verify dan@danogrodnik.com forwarding (forwardemail.net → Gmail)" },
+    { id: "loop_contact_form", label: "Smoke-test contact form on production (Resend Delivered, not Bounced)" },
+    { id: "loop_editorial_card", label: "Editorial business card printed with dan@danogrodnik.com (employment/business-cards/dan-ogrodnik-editorial-card.html)" },
+    { id: "loop_gsc_sitemap", label: "Google Search Console: submit sitemap for danogrodnik.com" },
+    { id: "loop_rich_results", label: "Rich Results test on live JSON-LD" },
+    { id: "loop_pagespeed", label: "PageSpeed audit on homepage (do not inflate MetricStrip without real run)" },
+    { id: "loop_resume_pdf", label: "Re-export resume PDF to public/dan-ogrodnik-resume.pdf after resume.ts changes" },
+  ];
+
+  const CONTENT_MAP = [
+    { file: "src/content/site.ts", what: "Profile, nav, social links, booking URL" },
+    { file: "src/content/resume.ts", what: "Work history, skills, education (mirrors employment resume)" },
+    { file: "src/content/projects.ts", what: "Portfolio project cards" },
+    { file: "src/content/caseStudies.ts", what: "Case study detail pages (#baklog deep-link)" },
+    { file: "src/content/clients.ts", what: "Client logos / names" },
+    { file: "public/dan-ogrodnik-resume.pdf", what: "Downloadable resume (manual re-export)" },
+    { file: "public/images/", what: "Project thumbnails, OG image" },
+    { file: "src/app/api/contact/route.ts", what: "Resend contact handler" },
+  ];
+
+  // ---------- State ----------
+  function defaultState() {
+    return { v: 1, items: {}, activeTab: "overview" };
+  }
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return defaultState();
+      const parsed = JSON.parse(raw);
+      if (!parsed || parsed.v !== 1) return defaultState();
+      return parsed;
+    } catch {
+      return defaultState();
+    }
+  }
+  let state = loadState();
+  function saveState() {
+    try {
+      state.ts = new Date().toISOString();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (err) {
+      console.warn("[tracker] save failed", err);
+    }
+  }
+  function getItem(id) { return state.items[id]?.checked === true; }
+  function setItem(id, checked) { state.items[id] = { checked: !!checked }; saveState(); }
+
+  // ---------- DOM helpers ----------
+  function el(tag, attrs, ...children) {
+    const node = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (k === "class") node.className = v;
+      else if (k === "html") node.innerHTML = v;
+      else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2).toLowerCase(), v);
+      else if (v !== undefined && v !== null) node.setAttribute(k, v);
+    }
+    for (const c of children) {
+      if (c == null) continue;
+      node.appendChild(c.nodeType ? c : document.createTextNode(String(c)));
+    }
+    return node;
+  }
+  function toast(msg) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(t._tid);
+    t._tid = setTimeout(() => t.classList.remove("show"), 1800);
+  }
+
+  function checkboxRow(id, label) {
+    const cb = el("input", { type: "checkbox", id });
+    cb.checked = getItem(id);
+    cb.addEventListener("change", () => {
+      setItem(id, cb.checked);
+      renderActive();
+    });
+    return el("div", { class: "check-row" }, cb, el("label", { for: id }, label));
+  }
+
+  function callout(note) {
+    return el("div", { class: "callout" + (note.className ? " " + note.className : "") },
+      el("div", { class: "callout-title" }, note.title, note.id ? el("code", { style: "margin-left:0.5rem;font-size:0.75rem" }, note.id) : null),
+      el("div", { class: "callout-body" }, note.body),
+    );
+  }
+
+  // ---------- Tabs ----------
+  function renderTabBar() {
+    const bar = document.getElementById("tabbar");
+    bar.innerHTML = "";
+    for (const t of TABS) {
+      bar.appendChild(el("button", {
+        type: "button",
+        class: "tab" + (t.id === state.activeTab ? " active" : ""),
+        onClick: () => activateTab(t.id),
+      }, t.label));
+    }
+  }
+  function activateTab(id) {
+    state.activeTab = id;
+    saveState();
+    renderTabBar();
+    document.querySelectorAll(".panel").forEach((p) => p.classList.toggle("active", p.id === "panel-" + id));
+  }
+
+  // ---------- Panels ----------
+  function panelOverview() {
+    return el("section", { id: "panel-overview", class: "panel" + (state.activeTab === "overview" ? " active" : "") },
+      el("h1", {}, "Overview"),
+      el("p", {}, "Personal portfolio site. Job-search ops live in ", el("a", { href: "../JOBBY_BOT.md" }, "JOBBY_BOT.md"), " and ", el("a", { href: "../JOB_SEARCH_PLAN.html" }, "JOB_SEARCH_PLAN.html"), "."),
+      el("div", { class: "grid-4" },
+        el("div", { class: "stat stat-info" }, el("div", { class: "stat-value" }, "99"), el("div", { class: "stat-label" }, "Mobile perf (do not inflate)")),
+        el("div", { class: "stat stat-success" }, el("div", { class: "stat-value" }, "100"), el("div", { class: "stat-label" }, "A11y")),
+        el("div", { class: "stat stat-success" }, el("div", { class: "stat-value" }, "100"), el("div", { class: "stat-label" }, "SEO")),
+        el("div", { class: "stat stat-success" }, el("div", { class: "stat-value" }, "100"), el("div", { class: "stat-label" }, "Best practices")),
+      ),
+      el("div", { class: "card" },
+        el("h2", {}, "Stack"),
+        el("p", { style: "margin:0" },
+          "Next.js 15 (App Router) · TypeScript · Tailwind v4 · Vercel · Resend contact API · Vercel Analytics + Speed Insights · EB Garamond",
+        ),
+      ),
+      el("div", { class: "card" },
+        el("h2", {}, "Links"),
+        el("p", { style: "margin:0" },
+          el("a", { href: "https://www.danogrodnik.com", target: "_blank", rel: "noopener" }, "Live site"),
+          " · ",
+          el("a", { href: "https://github.com/Ogrods/personal-website-next", target: "_blank", rel: "noopener" }, "GitHub"),
+          " · ",
+          el("a", { href: "README.md" }, "README"),
+          " · ",
+          el("a", { href: "DEPLOY.md" }, "DEPLOY.md"),
+          " · ",
+          el("a", { href: "../steam-backlog/tracker.html" }, "BAKLOG tracker"),
+        ),
+      ),
+    );
+  }
+
+  function panelDeploy() {
+    return el("section", { id: "panel-deploy", class: "panel" + (state.activeTab === "deploy" ? " active" : "") },
+      el("h1", {}, "Deploy"),
+      el("p", { class: "muted" }, "Condensed from DEPLOY.md. Full checklist there."),
+      el("div", { class: "card" },
+        el("h2", {}, "Vercel environment variables"),
+        el("table", { class: "data-table" },
+          el("thead", {}, el("tr", {}, el("th", {}, "Name"), el("th", {}, "Value"))),
+          el("tbody", {},
+            el("tr", {}, el("td", {}, "RESEND_API_KEY"), el("td", {}, "re_… from Resend (Sending access on mail.danogrodnik.com)")),
+            el("tr", {}, el("td", {}, "CONTACT_TO_EMAIL"), el("td", {}, "dan.ogrodnik@gmail.com")),
+            el("tr", {}, el("td", {}, "CONTACT_FROM_EMAIL"), el("td", {}, "Dan Ogrodnik <contact@mail.danogrodnik.com>")),
+          ),
+        ),
+      ),
+      el("div", { class: "card" },
+        el("h2", {}, "Web DNS (Namecheap → Vercel)"),
+        el("p", {}, "Separate from mail subdomain records. Vercel Domains tab shows exact A/CNAME targets."),
+        el("table", { class: "data-table" },
+          el("thead", {}, el("tr", {}, el("th", {}, "Type"), el("th", {}, "Host"), el("th", {}, "Value"))),
+          el("tbody", {},
+            el("tr", {}, el("td", {}, "A"), el("td", {}, "@"), el("td", {}, "Vercel apex IP")),
+            el("tr", {}, el("td", {}, "CNAME"), el("td", {}, "www"), el("td", {}, "…vercel-dns…")),
+          ),
+        ),
+      ),
+      el("div", { class: "card" },
+        el("h2", {}, "Deploy flow"),
+        el("p", { style: "margin:0" },
+          "Push ", el("code", {}, "main"), " → Vercel auto-deploys. Local: ", el("code", {}, "npm run dev"), " at localhost:3000.",
+        ),
+      ),
+    );
+  }
+
+  function panelEmail() {
+    return el("section", { id: "panel-email", class: "panel" + (state.activeTab === "email" ? " active" : "") },
+      el("h1", {}, "Email & DNS"),
+      el("p", { class: "muted" }, "Inbound = receive mail. Outbound = send mail (contact form, waitlist). Keep subsystems separate."),
+      el("table", { class: "data-table" },
+        el("thead", {}, el("tr", {},
+          el("th", {}, "Domain"),
+          el("th", {}, "Inbound"),
+          el("th", {}, "Outbound"),
+          el("th", {}, "DNS host"),
+        )),
+        el("tbody", {},
+          el("tr", {},
+            el("td", {}, el("strong", {}, "danogrodnik.com")),
+            el("td", {}, "forwardemail.net (catch-all → Gmail)"),
+            el("td", {}, "Resend on mail.danogrodnik.com"),
+            el("td", {}, "Namecheap Advanced DNS"),
+          ),
+          el("tr", {},
+            el("td", {}, el("strong", {}, "baklog.app")),
+            el("td", {}, "ImprovMX → Gmail"),
+            el("td", {}, "Resend (waitlist@baklog.app)"),
+            el("td", {}, "ImprovMX + Vercel env"),
+          ),
+        ),
+      ),
+      ...EMAIL_NOTES.map(callout),
+      el("p", { class: "faint" }, "Setup guide: ", el("a", { href: "../business-cards/EMAIL_SETUP_danogrodnik.md" }, "../business-cards/EMAIL_SETUP_danogrodnik.md")),
+    );
+  }
+
+  function panelContent() {
+    return el("section", { id: "panel-content", class: "panel" + (state.activeTab === "content" ? " active" : "") },
+      el("h1", {}, "Content map"),
+      el("p", { class: "muted" }, "After resume changes, sync employment resume source + run sync-check (see JOBBY_BOT.md)."),
+      el("table", { class: "data-table" },
+        el("thead", {}, el("tr", {}, el("th", {}, "File"), el("th", {}, "What to edit"))),
+        el("tbody", {}, ...CONTENT_MAP.map((row) =>
+          el("tr", {}, el("td", {}, el("code", {}, row.file)), el("td", {}, row.what)),
+        )),
+      ),
+    );
+  }
+
+  function panelLoops() {
+    const done = OPEN_LOOPS.filter((x) => getItem(x.id)).length;
+    return el("section", { id: "panel-loops", class: "panel" + (state.activeTab === "loops" ? " active" : "") },
+      el("h1", {}, "Open loops"),
+      el("p", { class: "muted" }, done + " / " + OPEN_LOOPS.length + " done. State persists in localStorage."),
+      el("div", { class: "checklist" }, ...OPEN_LOOPS.map((item) => checkboxRow(item.id, item.label))),
+    );
+  }
+
+  function renderActive() {
+    const host = document.getElementById("panels");
+    host.innerHTML = "";
+    host.appendChild(panelOverview());
+    host.appendChild(panelDeploy());
+    host.appendChild(panelEmail());
+    host.appendChild(panelContent());
+    host.appendChild(panelLoops());
+    activateTab(state.activeTab);
+  }
+
+  // ---------- Export / Import / Reset ----------
+  function exportState() {
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = el("a", { href: url, download: "danogrodnik-tracker-" + new Date().toISOString().slice(0, 10) + ".json" });
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast("Exported.");
+  }
+  function importStateFromText(text) {
+    try {
+      const parsed = JSON.parse(text);
+      if (!parsed || parsed.v !== 1) throw new Error("unknown version");
+      state = { ...defaultState(), ...parsed, v: 1 };
+      saveState();
+      renderActive();
+      toast("Imported.");
+    } catch (err) {
+      toast("Import failed: " + err.message);
+    }
+  }
+  function resetAll() {
+    if (!confirm("Wipe all tracker state? Cannot be undone.")) return;
+    state = defaultState();
+    saveState();
+    renderActive();
+    toast("Reset.");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderTabBar();
+    renderActive();
+    document.getElementById("exportBtn").addEventListener("click", exportState);
+    document.getElementById("importBtn").addEventListener("click", () => document.getElementById("importFile").click());
+    document.getElementById("importFile").addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => importStateFromText(String(reader.result || ""));
+      reader.readAsText(file);
+      e.target.value = "";
+    });
+    document.getElementById("resetAllBtn").addEventListener("click", resetAll);
+  });
+  </script>
+</body>
+</html>

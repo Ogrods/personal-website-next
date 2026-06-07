@@ -38,7 +38,7 @@ See `.env.example`.
 3. Add env vars above → Deploy.
 4. Add custom domain `danogrodnik.com` under Vercel → Domains.
 
-Full checklist: `DEPLOY.md`.
+Full checklist: `DEPLOY.md`. Ops reference (email/DNS, content map): open `tracker.html` in a browser.
 
 ## Edit content
 
