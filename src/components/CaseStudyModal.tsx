@@ -119,7 +119,19 @@ export default function CaseStudyModal({
               id={titleId}
               className="mt-1 font-serif text-lg font-bold leading-snug text-[#313131] sm:text-xl"
             >
-              {caseStudy.title}
+              {caseStudy.liveUrl ? (
+                <a
+                  href={caseStudy.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-[#0762f9]"
+                  aria-label={`${caseStudy.title} (opens live site in new tab)`}
+                >
+                  {caseStudy.title}
+                </a>
+              ) : (
+                caseStudy.title
+              )}
             </h2>
             <p className="mt-1 font-serif text-sm text-[#6e7881]">
               {caseStudy.role}

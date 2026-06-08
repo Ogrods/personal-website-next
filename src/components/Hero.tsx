@@ -32,34 +32,45 @@ export default function Hero({ profile }: HeroProps) {
           <p className="mx-auto w-[85%] max-w-2xl font-serif text-lg italic leading-[1.75] text-[#d4d4d4] md:text-xl">
             {profile.proofLine}
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-6">
+          <div className="hero-cta-grid mx-auto mt-8 flex w-full max-w-md flex-col gap-3">
             <a
               href={profile.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-hero-primary hover:shadow-lg hover:shadow-blue-500/20"
+              className="btn-hero-primary w-full text-center hover:shadow-lg hover:shadow-blue-500/20"
             >
               Book a 15-min intro call
             </a>
-            <a
-              href={profile.resumeDownload}
-              download
-              className="btn-hero-secondary hover:shadow-lg hover:shadow-white/10"
-            >
-              Download resume
-            </a>
-            {linkedIn ? (
+            <div className="grid grid-cols-3 gap-3">
               <a
-                href={linkedIn.url}
+                href="https://baklog.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/40 px-5 py-3.5 text-sm uppercase tracking-[0.12em] text-white transition hover:border-white hover:bg-white/10 hover:shadow-lg hover:shadow-white/10"
-                aria-label="LinkedIn profile (opens in new tab)"
+                className="btn-hero-secondary w-full text-center hover:shadow-lg hover:shadow-white/10"
+                aria-label="BAKLOG (opens in new tab)"
               >
-                <LinkedInIcon size={18} className="text-white" />
-                LinkedIn
+                BAKLOG
               </a>
-            ) : null}
+              <a
+                href={profile.resumeDownload}
+                download
+                className="btn-hero-secondary w-full text-center hover:shadow-lg hover:shadow-white/10"
+              >
+                Resume
+              </a>
+              {linkedIn ? (
+                <a
+                  href={linkedIn.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 border border-white/40 px-3 py-3.5 text-sm uppercase tracking-[0.12em] text-white transition hover:border-white hover:bg-white/10 hover:shadow-lg hover:shadow-white/10"
+                  aria-label="LinkedIn profile (opens in new tab)"
+                >
+                  <LinkedInIcon size={18} className="text-white" />
+                  LinkedIn
+                </a>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
