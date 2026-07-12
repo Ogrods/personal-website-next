@@ -9,7 +9,9 @@ export const resumeContent: ResumeContent = {
         "Gutenberg",
         "ACF",
         "WooCommerce",
+        "WordPress VIP (WP VIP)",
         "Shopify",
+        "Shopify Plus",
         "Liquid",
         "React",
         "TypeScript",
@@ -70,7 +72,7 @@ export const resumeContent: ResumeContent = {
       title: "Founder & Full-Stack Engineer",
       years: "2026 – present",
       description:
-        "Founded and solo-built BAKLOG, a local-first desktop app unifying game libraries across 20 storefronts; own product, engineering, and go-to-market. Engineered a 25-source sync orchestrator with per-source freshness tracking, cross-store dedupe, and ownership-aware deal alerts. Hardened for production with atomic writes, fetch drift guard, encrypted credentials (AES-256-GCM + OS keyring), and zero telemetry. Stood up CI with 480 automated tests and an axe-core accessibility gate; full case study at danogrodnik.com/#baklog.",
+        "Founded and solo-built BAKLOG, a local-first desktop app unifying game libraries across 20 storefronts; own product, engineering, and go-to-market. Engineered a 27-source sync orchestrator with per-source freshness tracking, cross-store dedupe, and ownership-aware deal alerts. Hardened for production with atomic writes, fetch drift guard, encrypted credentials (AES-256-GCM + OS keyring), and zero telemetry. Stood up CI with 480 automated tests and an axe-core accessibility gate; full case study at danogrodnik.com/#baklog.",
       highlights: [],
     },
     {
