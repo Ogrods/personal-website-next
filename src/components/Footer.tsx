@@ -25,7 +25,9 @@ export default function Footer({ social, name }: FooterProps) {
                 href={network.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#8f9aa8] transition hover:text-white"
+                className={`text-[#8f9aa8] transition hover:text-white${
+                  network.name === "github" ? " github-btn" : ""
+                }`}
                 aria-label={network.name}
               >
                 <Icon size={30} />

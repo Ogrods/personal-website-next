@@ -80,7 +80,9 @@ export default function About({ profile }: AboutProps) {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#b5c0cb] transition hover:text-[#0762f9]"
+                      className={`text-[#b5c0cb] transition hover:text-[#0762f9]${
+                        link.name === "github" ? " github-btn" : ""
+                      }`}
                     >
                       {link.name === "github"
                         ? "GitHub"
@@ -106,7 +108,7 @@ export default function About({ profile }: AboutProps) {
                 <a
                   href={profile.resumeDownload}
                   download
-                  className="btn-primary"
+                  className="resume-button btn-primary"
                 >
                   Download Resume
                 </a>

@@ -54,7 +54,7 @@ export default function Hero({ profile }: HeroProps) {
               <a
                 href={profile.resumeDownload}
                 download
-                className="btn-hero-secondary w-full text-center hover:shadow-lg hover:shadow-white/10"
+                className="resume-button btn-hero-secondary w-full text-center hover:shadow-lg hover:shadow-white/10"
               >
                 Resume
               </a>

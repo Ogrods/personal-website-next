@@ -229,7 +229,9 @@ export default function Contact({ profile }: ContactProps) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#0762f9] transition hover:text-white"
+                  className={`text-[#0762f9] transition hover:text-white${
+                    link.name === "github" ? " github-btn" : ""
+                  }`}
                 >
                   {link.name === "github"
                     ? "GitHub"
