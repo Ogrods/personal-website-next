@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond } from "next/font/google";
 import DeferredAnalytics from "@/components/DeferredAnalytics";
+import GoogleTagManager from "@/components/GoogleTagManager";
 import {
   siteDescription,
   siteKeywords,
@@ -118,6 +119,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${ebGaramond.className} font-serif antialiased`}>
+        <GoogleTagManager />
         {children}
         <DeferredAnalytics />
       </body>
