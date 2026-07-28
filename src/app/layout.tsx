@@ -106,6 +106,9 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: ["/og-image.png"],
   },
+  verification: {
+    google: "01dBFuDQs4rDhqThCLKjstsJFAQXHeRg6QAP4e6c-Tw",
+  },
 };
 
 export default function RootLayout({
