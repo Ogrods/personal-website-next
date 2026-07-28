@@ -125,7 +125,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo build · Design and front-end",
     liveUrl: "https://audio.danogrodnik.com",
     overview:
-      "A one-page hire site on a subdomain of danogrodnik.com. The job was a calm first impression that still carries proof: work samples, services, credits, and resume/CV downloads without dragging LCP or shipping a heavy media stack up front.",
+      "A one-page hire site on a subdomain of danogrodnik.com. Goal: keep the first screen light and clear while still surfacing work samples, services, credits, and resume/CV downloads - without dragging LCP or shipping a heavy media stack up front.",
     metrics: [
       "Next.js 15 on Vercel",
       "Click-to-load SoundCloud / YouTube facades",

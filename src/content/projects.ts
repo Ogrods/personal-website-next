@@ -28,17 +28,6 @@ export const projects: Project[] = [
     caseStudySlug: "first",
   },
   {
-    title: "Audio hire site",
-    category: "Personal brand · Next.js one-pager",
-    image: "audio-hire.webp",
-    url: "https://audio.danogrodnik.com",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
-    metric: "Lighthouse ~98 · click-to-load embeds",
-    outcome:
-      "Fast hire one-pager with deferred media, PDF downloads, and clean SEO basics on a subdomain.",
-    caseStudySlug: "audio-hire",
-  },
-  {
     title: "Madishroom",
     category: "E-commerce · Shopify storefront",
     image: "madishroom.webp",
@@ -92,5 +81,16 @@ export const projects: Project[] = [
     stack: ["WordPress"],
     metric: "Acclaimed Scottish artist · gallery",
     outcome: "Gallery-forward portfolio for exhibitions, news, and collector outreach.",
+  },
+  {
+    title: "Audio hire site",
+    category: "Personal brand · Next.js one-pager",
+    image: "audio-hire.webp",
+    url: "https://audio.danogrodnik.com",
+    stack: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
+    metric: "Lighthouse ~99 · click-to-load embeds",
+    outcome:
+      "Fast hire one-pager with deferred media, PDF downloads, and clean SEO basics on a subdomain.",
+    caseStudySlug: "audio-hire",
   },
 ];

@@ -25,7 +25,7 @@ function ProjectCard({
   onOpenCaseStudy?: () => void;
 }) {
   const hasCaseStudy = Boolean(project.caseStudySlug && onOpenCaseStudy);
-  const cardClass = `portfolio-card group block w-full border border-[#dfe3e3] bg-white text-left transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg ${
+  const cardClass = `portfolio-card group flex h-full w-full flex-col border border-[#dfe3e3] bg-white text-left transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg ${
     featured ? "md:col-span-2" : ""
   }`;
 
@@ -56,7 +56,9 @@ function ProjectCard({
         />
       </div>
 
-      <div className={`p-5 sm:p-6 ${featured ? "md:p-8" : ""}`}>
+      <div
+        className={`flex flex-1 flex-col p-5 sm:p-6 ${featured ? "md:p-8" : ""}`}
+      >
         {featured ? (
           <p className="mb-2 font-serif text-[11px] uppercase tracking-[0.2em] text-[#0762f9]">
             {project.featuredEyebrow ?? "Featured"}
@@ -100,7 +102,7 @@ function ProjectCard({
         ) : null}
 
         <span
-          className="mt-4 inline-flex items-center gap-1 font-serif text-xs uppercase tracking-[0.12em] text-[#0762f9] transition-colors group-hover:text-[#fe6928]"
+          className="mt-auto inline-flex items-center gap-1 pt-4 font-serif text-xs uppercase tracking-[0.12em] text-[#0762f9] transition-colors group-hover:text-[#fe6928]"
           aria-hidden
         >
           {hasCaseStudy ? (
@@ -126,7 +128,11 @@ function ProjectCard({
 
   if (hasCaseStudy) {
     return (
-      <Reveal as="div" delayMs={delayMs} className={featured ? "md:col-span-2" : ""}>
+      <Reveal
+        as="div"
+        delayMs={delayMs}
+        className={`h-full ${featured ? "md:col-span-2" : ""}`}
+      >
         <button
           type="button"
           className={cardClass}
@@ -147,7 +153,7 @@ function ProjectCard({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${project.title} - ${project.metric} (opens in new tab)`}
-      className={cardClass}
+      className={`${cardClass} ${featured ? "md:col-span-2" : ""}`}
     >
       {inner}
     </Reveal>
