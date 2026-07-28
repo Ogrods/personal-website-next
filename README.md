@@ -26,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | Variable | Description |
 |----------|-------------|
 | `RESEND_API_KEY` | API key from [Resend](https://resend.com) |
-| `CONTACT_TO_EMAIL` | Inbox for form submissions (e.g. `Dan.Ogrodnik@gmail.com`) |
+| `CONTACT_TO_EMAIL` | Inbox for form submissions (e.g. `dan@danogrodnik.com`) |
 | `CONTACT_FROM_EMAIL` | Verified sender domain in Resend |
 
 See `.env.example`.

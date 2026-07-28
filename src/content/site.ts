@@ -18,7 +18,7 @@ export const siteProfile: SiteProfile = {
     "Currently exploring: AWS Cloud Practitioner certification, Magento, headless WordPress on Vercel, and Next.js app router patterns.",
   contactMessage:
     "Looking for a senior front-end developer to ship WordPress or Shopify work? Send a note or book a 15-minute call.",
-  email: "Dan.Ogrodnik@gmail.com",
+  email: "dan@danogrodnik.com",
   phone: "",
   github: "https://github.com/Ogrods",
   project: "https://www.danogrodnik.com",

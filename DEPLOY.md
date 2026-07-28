@@ -64,7 +64,7 @@ git push -u origin main
 | Name | Value |
 |------|-------|
 | `RESEND_API_KEY` | `re_...` from Step 0a |
-| `CONTACT_TO_EMAIL` | `Dan.Ogrodnik@gmail.com` |
+| `CONTACT_TO_EMAIL` | `dan@danogrodnik.com` |
 | `CONTACT_FROM_EMAIL` | `Dan Ogrodnik <contact@mail.danogrodnik.com>` |
 
 5. **Deploy**.

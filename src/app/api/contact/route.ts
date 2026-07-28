@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const to = process.env.CONTACT_TO_EMAIL ?? "Dan.Ogrodnik@gmail.com";
+    const to = process.env.CONTACT_TO_EMAIL ?? "dan@danogrodnik.com";
     const from =
       process.env.CONTACT_FROM_EMAIL ??
       "Dan Ogrodnik <contact@mail.danogrodnik.com>";
