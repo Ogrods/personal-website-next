@@ -7,14 +7,14 @@ export const projects: Project[] = [
     image: "baklog.webp",
     url: "https://baklog.app",
     stack: ["Python", "JavaScript", "Local-first", "CDP auth", "Chart.js"],
-    metric: "25 fetch sources · live sync · 480 tests",
+    metric: "27 fetch sources · live sync · 480 tests",
     outcome:
       "Local-first app that unifies game libraries across major storefronts on your machine.",
     featured: true,
     featuredEyebrow: "Featured · Founder project",
     caseStudySlug: "baklog",
     featuredBlurb:
-      "Solo-built local-first app that unifies game libraries across Steam, Epic, GOG, PlayStation, Xbox, and more on your machine. A responsive, real-time fetch module orchestrates 25 sources with per-source freshness tracking, no cloud account required. Ownership-aware deal radar, cross-store dedupe, and a dashboard with 130+ locally computed stats.",
+      "Solo-built local-first app that unifies game libraries across Steam, Epic, GOG, PlayStation, Xbox, and more on your machine. A responsive, real-time fetch module orchestrates 27 sources with per-source freshness tracking, no cloud account required. Ownership-aware deal radar, cross-store dedupe, and a dashboard with 130+ locally computed stats.",
   },
   {
     title: "FIRST - Foundation for Ichthyosis & Related Skin Types",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     title: "Fionna Carlisle",
     category: "Artist Portfolio",
     image: "fionna.webp",
-    url: "http://www.fionnacarlisle.com",
+    url: "https://www.fionnacarlisle.com",
     stack: ["WordPress"],
     metric: "Acclaimed Scottish artist · gallery",
     outcome: "Gallery-forward portfolio for exhibitions, news, and collector outreach.",

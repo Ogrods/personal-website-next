@@ -7,6 +7,7 @@ export const resumeContent: ResumeContent = {
       items: [
         "WordPress",
         "Gutenberg",
+        "GenerateBlocks",
         "ACF",
         "WooCommerce",
         "WordPress VIP (WP VIP)",
@@ -33,6 +34,8 @@ export const resumeContent: ResumeContent = {
         "Search Console",
         "SEMrush",
         "Ahrefs",
+        "Screaming Frog",
+        "Looker Studio",
       ],
     },
     {
@@ -65,6 +68,11 @@ export const resumeContent: ResumeContent = {
       degree: "BM, Music",
       graduated: "2009",
     },
+    {
+      school: "Amazon Web Services",
+      degree: "Cloud Practitioner (CLF-C02) - in progress",
+      graduated: "",
+    },
   ],
   work: [
     {
@@ -80,7 +88,7 @@ export const resumeContent: ResumeContent = {
       title: "Freelance Front-end Developer",
       years: "2025 – present",
       description:
-        "Led WordPress front-end build for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org), a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry); built on Gutenberg + GenerateBlocks with events, physician finder, and donation flows shipped with Schema.org markup and WCAG 2.1 AA accessibility. Additional WordPress and Shopify front-end work with React used on Shopify interactive UI; customized themes against design specs and shipped performance-, accessibility-, and conversion-tuned releases.",
+        "Led WordPress front-end for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org) on Gutenberg + GenerateBlocks; shipped events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA for a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry). Additional WordPress and Shopify front-end work; React used on Shopify interactive UI and high-traffic landing pages where the stack called for it.",
       highlights: [],
     },
     {
@@ -88,7 +96,7 @@ export const resumeContent: ResumeContent = {
       title: "Front-end Developer",
       years: "April 2022 – October 2024",
       description:
-        "Shipped 50+ production WordPress and Shopify sites in 30 months for nonprofit, education, and multifamily real estate clients including ASU, Starbucks, The Piper Trust, and 100+ Greystar Real Estate properties. Owned post-launch support across a 150+ site agency portfolio; triaged plugin conflicts, hosting incidents, and accessibility regressions under same-day response expectations. Engineered custom themes in PHP, JavaScript (ES6+), and Liquid; lifted Lighthouse Performance, SEO, and Accessibility scores by 30–50 points per site via Core Web Vitals tuning, Schema.org / JSON-LD, and WCAG remediation.",
+        "Shipped 50+ production WordPress and Shopify sites in 30 months for nonprofit, education, and multifamily real estate clients including ASU, Starbucks, The Piper Trust, and 100+ Greystar Real Estate properties. Owned post-launch support across a 150+ site agency portfolio; triaged plugin conflicts, hosting incidents, and accessibility regressions under same-day response expectations. Engineered custom themes in PHP, JavaScript (ES6+), and Liquid; lifted Lighthouse Performance, SEO, and Accessibility scores by 30 to 50 points per site via Core Web Vitals tuning, Schema.org / JSON-LD, and WCAG remediation.",
       highlights: [],
     },
     {

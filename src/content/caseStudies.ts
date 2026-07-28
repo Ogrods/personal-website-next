@@ -10,7 +10,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     overview:
       "Modern PC libraries are accidental. Free game drops, bundle purchases, and forgotten launcher accounts scatter ownership across Steam, Epic, GOG, PlayStation, Xbox, and more. BAKLOG runs on your machine and is driven by a single fetch module: a responsive, real-time orchestrator that pulls from every connected store and feed, dedupes cross-store titles, tracks how fresh each source is, and answers the question every backlog owner actually has - what should I play next?",
     metrics: [
-      "25 fetch sources, one orchestrator",
+      "27 fetch sources, one orchestrator",
       "Live, non-blocking sync",
       "Per-source freshness tracking",
       "480 automated tests",
@@ -18,7 +18,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     challenge:
       "Every storefront is a flaky silo with its own auth, rate limits, and failure modes. Pulling from two dozen sources at once - libraries, wishlists, prices, and enrichment - with no cloud backend, without freezing the UI, and without a single failed fetch corrupting a 1,000+ title library is the hard part. The sync surface also has to stay legible and usable while a dozen jobs run, and reflow cleanly from a wide dashboard down to a narrow panel.",
     approach: [
-      "A single fetch module orchestrates 25 sources - nine game libraries, six wishlist feeds, IsThereAnyDeal pricing, and four enrichment providers (co-op, covers, reviews, HowLongToBeat) - each with its own adapter, schedule, and freshness window.",
+      "A single fetch module orchestrates 27 sources - nine game libraries, six wishlist feeds, IsThereAnyDeal pricing, and enrichment providers (co-op, covers, reviews, HowLongToBeat, and more) - each with its own adapter, schedule, and freshness window.",
       "The fetcher surfaces as a responsive, real-time control panel: per-source counts and age badges, connected vs stale/missing filters, auto-refresh toggles, expand/collapse and layout controls, and live job status (Running: ITAD ... done) that reflows from the full dashboard down to small screens - all without blocking the rest of the app.",
       "Local-first architecture: a Python server on localhost runs the fetchers, encrypted credentials stay on disk with AES-256-GCM and the OS keyring, and storefront requests run from your IP via Chrome DevTools Protocol browser auth, not a BAKLOG cloud.",
       "Cross-store dedupe with store-priority survivor selection, combined playtime rollup, and ownership-aware wishlist deals fused with IsThereAnyDeal pricing. A drift guard prevents a failed fetch from wiping a populated library.",
@@ -34,8 +34,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       images: [
         {
           src: "baklog-fetchers.webp",
-          alt: "BAKLOG fetcher log panel syncing 25 library, wishlist, price, and enrichment sources",
-          caption: "Fetcher log · 25 sources syncing live",
+          alt: "BAKLOG fetcher log panel syncing 27 library, wishlist, price, and enrichment sources",
+          caption: "Fetcher log · 27 sources syncing live",
         },
         {
           src: "baklog-wishlist.webp",

@@ -9,8 +9,8 @@ export const siteProfile: SiteProfile = {
   bookingUrl: "https://calendar.app.google/rveuZ14Je3ehY7Zq9",
   image: "profilepic.webp",
   bioParagraphs: [
-    "Senior front-end developer with 5+ years shipping production WordPress and Shopify sites. At Fervor Creative, I led 50+ launches across multifamily real estate (100+ Greystar properties), nonprofit (Virginia G. Piper Charitable Trust, Helios Education Foundation), and enterprise (collaborations involving ASU and Starbucks). I served as primary technical contact for a 150+ site agency portfolio.",
-    "My focus is Core Web Vitals, WCAG 2.1 AA accessibility, and technical SEO. I routinely lift Lighthouse scores by 30 to 50 points per project. I work in PHP, JavaScript, Liquid, React, and modern CSS. Based in Los Angeles, currently freelancing at Rhumbline AI, and open to senior front-end roles.",
+    "Senior front-end developer and solo founder of BAKLOG (baklog.app), a local-first game library with a 27-source sync engine, 480 automated tests, and Lighthouse 100 on accessibility, SEO, and best practices. At Fervor Creative I led 50+ launches across multifamily real estate (100+ Greystar properties), nonprofit (Virginia G. Piper Charitable Trust, Helios Education Foundation), and enterprise collaborations involving ASU and Starbucks, and served as primary technical contact for a 150+ site agency portfolio.",
+    "My focus is Core Web Vitals, WCAG 2.1 AA accessibility, and technical SEO. I routinely lift Lighthouse scores by 30 to 50 points per project. I work in PHP, JavaScript, Liquid, React, and modern CSS. Based in Los Angeles, currently freelancing at Rhumbline AI on WordPress and Shopify work (including FIRST Foundation on Gutenberg + GenerateBlocks), and open to senior front-end roles.",
   ],
   bioClosing:
     "CalArts MFA | Hartford BM | snowboarder, cyclist, coffee enthusiast.",
@@ -19,16 +19,16 @@ export const siteProfile: SiteProfile = {
   contactMessage:
     "Looking for a senior front-end developer to ship WordPress or Shopify work? Send a note or book a 15-minute call.",
   email: "Dan.Ogrodnik@gmail.com",
-  phone: "860-305-9789",
+  phone: "",
   github: "https://github.com/Ogrods",
-  project: "https://www.DanOgrodnik.com",
+  project: "https://www.danogrodnik.com",
   address: {
     street: "",
     city: "Los Angeles",
     state: "CA",
     zip: "",
   },
-  website: "http://www.danogrodnik.com",
+  website: "https://www.danogrodnik.com",
   resumeDownload: "/dan-ogrodnik-resume.pdf",
   social: [
     {
@@ -41,7 +41,7 @@ export const siteProfile: SiteProfile = {
     },
     {
       name: "instagram",
-      url: "http://instagram.com/ogrods",
+      url: "https://instagram.com/ogrods",
     },
   ],
 };

@@ -80,10 +80,14 @@ export default function Resume({ resume }: ResumeProps) {
               </h3>
               <p className="info mt-2 font-serif text-base italic leading-6 text-[#6e7881]">
                 {edu.degree}
-                <span className="mx-1">•</span>
-                <span className="font-serif text-[17px] not-italic leading-6 text-[#313131]">
-                  {edu.graduated}
-                </span>
+                {edu.graduated ? (
+                  <>
+                    <span className="mx-1">•</span>
+                    <span className="font-serif text-[17px] not-italic leading-6 text-[#313131]">
+                      {edu.graduated}
+                    </span>
+                  </>
+                ) : null}
               </p>
             </Reveal>
           ))}

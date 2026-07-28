@@ -17,7 +17,7 @@ const personJsonLd = {
   url: siteUrl,
   image: `${siteUrl}/images/${siteProfile.image}`,
   email: `mailto:${siteProfile.email}`,
-  telephone: siteProfile.phone,
+  ...(siteProfile.phone ? { telephone: siteProfile.phone } : {}),
   jobTitle: "Senior Front-End Developer",
   description: siteDescription,
   address: {
