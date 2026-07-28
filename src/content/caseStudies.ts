@@ -118,6 +118,52 @@ export const caseStudies: Record<string, CaseStudy> = {
       "WCAG 2.1 AA",
     ],
   },
+  "audio-hire": {
+    slug: "audio-hire",
+    title: "Audio hire site",
+    eyebrow: "Case study",
+    role: "Solo build · Design and front-end",
+    liveUrl: "https://audio.danogrodnik.com",
+    overview:
+      "A one-page hire site on a subdomain of danogrodnik.com. The job was a calm first impression that still carries proof: work samples, services, credits, and resume/CV downloads without dragging LCP or shipping a heavy media stack up front.",
+    metrics: [
+      "Next.js 15 on Vercel",
+      "Click-to-load SoundCloud / YouTube facades",
+      "Sitemap, robots, Person JSON-LD",
+      "Shared GTM container with the main site",
+    ],
+    challenge:
+      "Hire pages fail when they feel like a dump of embeds and PDFs. Third-party players, a long photo strip, and downloadable docs all compete with the hero. The page had to stay readable on a phone, keep section backgrounds stable under scroll motion, and stay honest about performance instead of papering over it with a spinner.",
+    approach: [
+      "Plain section shells with item-level scroll reveals so bands do not flash in as black sheets.",
+      "Hero treated as LCP: image tuned, type scaled for small screens, no reveal wrapper on the hero content.",
+      "Work section uses facades; players load only after a click. Photo strip scrolls continuously but pauses when offscreen.",
+      "Resume and full CV as generated PDFs with mailto contact (no form backend on this property).",
+      "Same GTM container as danogrodnik.com (GTM-PWX68TK), plus click classes on resume/CV links so existing triggers keep working.",
+      "Basic SEO kit: canonical, Open Graph image, sitemap.xml, robots.txt, structured data.",
+    ],
+    heroImage: {
+      src: "audio-hire.webp",
+      alt: "Audio hire site hero on audio.danogrodnik.com",
+    },
+    gallery: {
+      heading: "Page surfaces",
+      body: "Hero as LCP, work facades that stay light until clicked, and the services band with PDF downloads.",
+      images: [
+        {
+          src: "audio-hire-work.webp",
+          alt: "Work section with click-to-load media facades",
+          caption: "Work · Click-to-load embeds",
+        },
+        {
+          src: "audio-hire-services.webp",
+          alt: "Services section with stack and download CTAs",
+          caption: "Services · PDF downloads",
+        },
+      ],
+    },
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "GTM"],
+  },
 };
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
