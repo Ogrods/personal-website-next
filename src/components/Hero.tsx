@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ExternalLink, FileDown } from "lucide-react";
 import ParticleBackground from "@/components/ParticleBackground";
 import { LinkedInIcon } from "@/components/icons";
 import type { SiteProfile } from "@/types";
@@ -6,6 +6,9 @@ import type { SiteProfile } from "@/types";
 type HeroProps = {
   profile: SiteProfile;
 };
+
+const secondaryBtnClass =
+  "btn-hero-secondary inline-flex w-full items-center justify-center gap-2 text-center hover:shadow-lg hover:shadow-white/10";
 
 export default function Hero({ profile }: HeroProps) {
   const linkedIn = profile.social.find((s) => s.name === "linkedin");
@@ -41,21 +44,23 @@ export default function Hero({ profile }: HeroProps) {
             >
               Book a 15-min intro call
             </a>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <a
                 href="https://baklog.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-hero-secondary w-full text-center hover:shadow-lg hover:shadow-white/10"
+                className={secondaryBtnClass}
                 aria-label="BAKLOG (opens in new tab)"
               >
+                <ExternalLink size={16} className="shrink-0" aria-hidden />
                 BAKLOG
               </a>
               <a
                 href={profile.resumeDownload}
                 download
-                className="resume-button btn-hero-secondary w-full text-center hover:shadow-lg hover:shadow-white/10"
+                className={`resume-button ${secondaryBtnClass}`}
               >
+                <FileDown size={16} className="shrink-0" aria-hidden />
                 Resume
               </a>
               {linkedIn ? (
@@ -63,10 +68,10 @@ export default function Hero({ profile }: HeroProps) {
                   href={linkedIn.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 border border-white/40 px-3 py-3.5 text-sm uppercase tracking-[0.12em] text-white transition hover:border-white hover:bg-white/10 hover:shadow-lg hover:shadow-white/10"
+                  className={secondaryBtnClass}
                   aria-label="LinkedIn profile (opens in new tab)"
                 >
-                  <LinkedInIcon size={18} className="text-white" />
+                  <LinkedInIcon size={16} className="shrink-0 text-white" />
                   LinkedIn
                 </a>
               ) : null}

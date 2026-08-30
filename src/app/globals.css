@@ -52,7 +52,7 @@ body {
   display: inline-block;
   background: #0762f9;
   color: #fff;
-  padding: 14px 28px;
+  padding: 12px 20px;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: 0.12em;
@@ -66,16 +66,25 @@ body {
 }
 
 .btn-hero-secondary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.55);
   color: #fff;
-  padding: 14px 28px;
+  padding: 12px 14px;
   font-size: 14px;
   line-height: 1.4;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .btn-hero-primary {
+    padding: 14px 28px;
+  }
 }
 
 .btn-hero-secondary:hover {
@@ -230,11 +239,8 @@ select:focus-visible {
     margin-top: 0.875rem;
     gap: 0.75rem;
   }
-  .hero-section .btn-hero-primary,
-  .hero-section .btn-hero-secondary,
-  .hero-section .hero-cta-grid a[aria-label*="LinkedIn"],
-  .hero-section .hero-cta-grid a[aria-label*="BAKLOG"] {
-    padding: 11px 20px;
+  .hero-section .hero-cta-grid a {
+    padding: 11px 16px;
     font-size: 13px;
   }
 }
@@ -263,11 +269,8 @@ select:focus-visible {
     margin-top: 0.75rem;
     gap: 0.625rem;
   }
-  .hero-section .btn-hero-primary,
-  .hero-section .btn-hero-secondary,
-  .hero-section .hero-cta-grid a[aria-label*="LinkedIn"],
-  .hero-section .hero-cta-grid a[aria-label*="BAKLOG"] {
-    padding: 9px 16px;
+  .hero-section .hero-cta-grid a {
+    padding: 9px 12px;
     font-size: 12px;
   }
   .hero-section a[aria-label^="Scroll"] {

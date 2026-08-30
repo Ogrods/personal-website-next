@@ -136,7 +136,7 @@ export default function Nav({ name, bookingUrl }: NavProps) {
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-hero-primary mt-6"
+              className="btn-hero-primary mt-6 w-full max-w-sm text-center"
               onClick={closeMenu}
             >
               Book a 15-min intro call
