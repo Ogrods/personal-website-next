@@ -302,7 +302,9 @@ select:focus-visible {
   }
 }
 
-/* Trusted by marquee */
+/* Trusted by marquee
+   Two equal .trusted-marquee-set groups; pe matches gap so translateX(-50%)
+   lands exactly on the duplicate seam (flex gap on a flat list breaks this). */
 .trusted-marquee-mask {
   mask-image: linear-gradient(
     to right,
@@ -327,7 +329,8 @@ select:focus-visible {
 
 @media (prefers-reduced-motion: no-preference) {
   .trusted-marquee-track {
-    animation: trusted-marquee 36s linear infinite;
+    animation: trusted-marquee 40s linear infinite;
+    will-change: transform;
   }
 
   .trusted-marquee-mask:hover .trusted-marquee-track {
@@ -337,10 +340,10 @@ select:focus-visible {
 
 @keyframes trusted-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -354,8 +357,19 @@ select:focus-visible {
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    gap: 1.5rem 2rem;
     animation: none;
+  }
+
+  .trusted-marquee-set {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem 2rem;
+    padding-inline-end: 0;
+  }
+
+  .trusted-marquee-set[aria-hidden="true"] {
+    display: none;
   }
 }
 
