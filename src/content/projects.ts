@@ -7,7 +7,7 @@ export const projects: Project[] = [
     image: "baklog.webp",
     url: "https://baklog.app",
     stack: ["Python", "JavaScript", "Local-first", "CDP auth", "Chart.js"],
-    metric: "27 fetch sources · live sync · 480 tests",
+    metric: "27 fetch sources · live sync · 3,800+ tests",
     outcome:
       "Local-first app that unifies game libraries across major storefronts on your machine.",
     featured: true,

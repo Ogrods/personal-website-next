@@ -9,7 +9,7 @@ export const siteProfile: SiteProfile = {
   bookingUrl: "https://calendar.app.google/rveuZ14Je3ehY7Zq9",
   image: "profilepic.webp",
   bioParagraphs: [
-    "Senior front-end developer and solo founder of BAKLOG (baklog.app), a local-first game library with a 27-source sync engine, 480 automated tests, and Lighthouse 100 on accessibility, SEO, and best practices. At Fervor Creative I led 50+ launches across multifamily real estate (100+ Greystar properties), nonprofit (Virginia G. Piper Charitable Trust, Helios Education Foundation), and enterprise collaborations involving ASU and Starbucks, and served as primary technical contact for a 150+ site agency portfolio.",
+    "Senior front-end developer and solo founder of BAKLOG (baklog.app), a local-first game library with a 27-source sync engine, 3,800+ automated tests, and Lighthouse 100 on accessibility, SEO, and best practices. At Fervor Creative I led 50+ launches across multifamily real estate (100+ Greystar properties), nonprofit (Virginia G. Piper Charitable Trust, Helios Education Foundation), and enterprise collaborations involving ASU and Starbucks, and served as primary technical contact for a 150+ site agency portfolio.",
     "My focus is Core Web Vitals, WCAG 2.1 AA accessibility, and technical SEO. I routinely lift Lighthouse scores by 30 to 50 points per project. I work in PHP, JavaScript, Liquid, React, and modern CSS. Based in Los Angeles, currently freelancing at Rhumbline AI on WordPress and Shopify work (including FIRST Foundation on Gutenberg + GenerateBlocks), and open to senior front-end roles.",
   ],
   bioClosing:

@@ -13,7 +13,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "27 fetch sources, one orchestrator",
       "Live, non-blocking sync",
       "Per-source freshness tracking",
-      "480 automated tests",
+      "3,800+ automated tests",
     ],
     challenge:
       "Every storefront is a flaky silo with its own auth, rate limits, and failure modes. Pulling from two dozen sources at once - libraries, wishlists, prices, and enrichment - with no cloud backend, without freezing the UI, and without a single failed fetch corrupting a 1,000+ title library is the hard part. The sync surface also has to stay legible and usable while a dozen jobs run, and reflow cleanly from a wide dashboard down to a narrow panel.",
@@ -22,7 +22,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "The fetcher surfaces as a responsive, real-time control panel: per-source counts and age badges, connected vs stale/missing filters, auto-refresh toggles, expand/collapse and layout controls, and live job status (Running: ITAD ... done) that reflows from the full dashboard down to small screens - all without blocking the rest of the app.",
       "Local-first architecture: a Python server on localhost runs the fetchers, encrypted credentials stay on disk with AES-256-GCM and the OS keyring, and storefront requests run from your IP via Chrome DevTools Protocol browser auth, not a BAKLOG cloud.",
       "Cross-store dedupe with store-priority survivor selection, combined playtime rollup, and ownership-aware wishlist deals fused with IsThereAnyDeal pricing. A drift guard prevents a failed fetch from wiping a populated library.",
-      "Virtual scrolling and a Web Worker filter pipeline keep 1,000+ row tables responsive in vanilla JavaScript, backed by 480 automated tests (pytest + Vitest), CI on Windows, and a documented privacy threat model with zero network telemetry.",
+      "Virtual scrolling and a Web Worker filter pipeline keep 1,000+ row tables responsive in vanilla JavaScript, backed by 3,800+ automated tests (pytest + Vitest), CI on Windows, and a documented privacy threat model with zero network telemetry.",
     ],
     heroImage: {
       src: "baklog.webp",
