@@ -21,6 +21,15 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
+// offsetParent is null for position: fixed elements, so it can't be used as a
+// visibility check inside the fixed modal panel.
+function isFocusableVisible(el: HTMLElement) {
+  if (el === document.activeElement) return true;
+  if (el.hasAttribute("disabled")) return false;
+  const style = getComputedStyle(el);
+  return style.visibility !== "hidden" && style.display !== "none";
+}
+
 export default function CaseStudyModal({
   open,
   onClose,
@@ -57,9 +66,7 @@ export default function CaseStudyModal({
       if (e.key === "Tab" && panelRef.current) {
         const focusables = Array.from(
           panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)
-        ).filter(
-          (el) => !el.hasAttribute("disabled") && el.offsetParent !== null
-        );
+        ).filter(isFocusableVisible);
         if (focusables.length === 0) {
           e.preventDefault();
           return;
