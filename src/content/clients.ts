@@ -28,4 +28,9 @@ export const clientLogos: ClientLogo[] = [
   { name: "Virginia G. Piper Charitable Trust", logo: "piper.webp", url: "https://pipertrust.org/" },
   { name: "Helios Education Foundation", logo: "helios.svg", url: "https://www.helios.org/" },
   { name: "Milton Sleep Co.", logo: "milton.webp" },
+  {
+    name: "NYX Cycle + Fitness",
+    logo: "nyx.webp",
+    url: "https://nyxcycle.com/",
+  },
 ];
