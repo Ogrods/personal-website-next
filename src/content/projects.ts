@@ -44,10 +44,11 @@ export const projects: Project[] = [
     category: "E-commerce · Shopify storefront",
     image: "madishroom.webp",
     url: "https://madishroom.com",
-    stack: ["Shopify", "Liquid"],
-    metric: "End-to-end owner-operator launch",
+    stack: ["Shopify", "Liquid", "Python"],
+    metric: "650+ SKUs · ~480 Draft · safe catalog imports",
     outcome:
-      "Custom Liquid theme and product flows for a conversion-focused storefront, built and shipped solo.",
+      "Owner-operated Shopify storefront with a dual-brand catalog where most SKUs stay Draft by design, plus import tooling that never flips status or inventory.",
+    caseStudySlug: "madishroom",
   },
   {
     title: "Virginia G. Piper Charitable Trust",
