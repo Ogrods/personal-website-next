@@ -11,7 +11,7 @@ export const clientLogos: ClientLogo[] = [
     name: "Greystar",
     logo: "greystar.webp",
     url: "https://www.greystar.com/",
-    scale: 1.15,
+    scale: 1.35,
   },
   {
     name: "Wood Partners",
