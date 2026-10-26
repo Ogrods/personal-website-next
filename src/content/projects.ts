@@ -14,7 +14,7 @@ export const projects: Project[] = [
     featuredEyebrow: "Featured · Founder project",
     caseStudySlug: "baklog",
     featuredBlurb:
-      "Solo-built local-first app that unifies game libraries across Steam, Epic, GOG, PlayStation, Xbox, and more on your machine. A responsive, real-time fetch module orchestrates 27 sources with per-source freshness tracking, no cloud account required. Ownership-aware deal radar, cross-store dedupe, and a dashboard with 130+ locally computed stats.",
+      "Solo-built local-first app that unifies Steam, Epic, GOG, PlayStation, Xbox, and more on your machine. One fetch module orchestrates 27 sources with freshness tracking, ownership-aware deals, cross-store dedupe, and a dashboard of 130+ locally computed stats. No cloud account required.",
   },
   {
     title: "FIRST - Foundation for Ichthyosis & Related Skin Types",
@@ -24,8 +24,20 @@ export const projects: Project[] = [
     stack: ["WordPress", "Gutenberg", "GenerateBlocks"],
     metric: "$2.2M research · 1,600+ patient registry",
     outcome:
-      "Events, physician finder, and donation flows for a global rare-disease nonprofit.",
+      "Dual-audience WordPress build: events, physician finder, and donation flows for patients and clinicians.",
     caseStudySlug: "first",
+  },
+  {
+    title: "Wedding guest site",
+    category: "Custom wedding site · Solo full-stack",
+    image: "wedding.webp",
+    url: "https://danison.love",
+    stack: ["Next.js", "Payload", "Neon", "TypeScript"],
+    metric: "96 attending · admin strip · dual booth + slideshow",
+    outcome:
+      "Replaced WeddingWire with a guest site and ops stack for RSVP, seating, meals, and day-of media.",
+    caseStudySlug: "wedding",
+    hidden: true,
   },
   {
     title: "Madishroom",
@@ -35,7 +47,7 @@ export const projects: Project[] = [
     stack: ["Shopify", "Liquid"],
     metric: "End-to-end owner-operator launch",
     outcome:
-      "Custom Liquid theme, product flows, and conversion-focused storefront built and shipped end-to-end.",
+      "Custom Liquid theme and product flows for a conversion-focused storefront, built and shipped solo.",
   },
   {
     title: "Virginia G. Piper Charitable Trust",
@@ -44,7 +56,7 @@ export const projects: Project[] = [
     url: "https://pipertrust.org/",
     stack: ["WordPress", "ACF"],
     metric: "$764M+ AZ philanthropy",
-    outcome: "Custom theme and grants experience for Arizona's largest philanthropy.",
+    outcome: "Custom theme and grants experience for Arizona’s largest philanthropy.",
   },
   {
     title: "Helios Education Foundation",
@@ -53,7 +65,7 @@ export const projects: Project[] = [
     url: "https://annualreports.helios.org/",
     stack: ["WordPress", "Gutenberg"],
     metric: "$350M+ over 20 years",
-    outcome: "Annual report site highlighting impact across early learning and college success.",
+    outcome: "Annual report site that surfaces impact across early learning and college success.",
   },
   {
     title: "Alta Uptown",
@@ -61,8 +73,8 @@ export const projects: Project[] = [
     image: "uptown.webp",
     url: "https://altauptown.com/",
     stack: ["WordPress", "ACF"],
-    metric: "+30–50 pt Lighthouse",
-    outcome: "Greystar Alta rollout with shared multifamily theme across 100+ properties.",
+    metric: "+30-50 pt Lighthouse",
+    outcome: "Shared Greystar Alta theme rolled out across 100+ multifamily properties.",
   },
   {
     title: "NYX Cycle & Fitness",
@@ -71,7 +83,7 @@ export const projects: Project[] = [
     url: "https://nyxcycle.com",
     stack: ["WordPress"],
     metric: "Brand-forward custom theme",
-    outcome: "High-energy studio site with distinctive typography and class booking flows.",
+    outcome: "Studio site with distinctive type and class booking flows that match the brand energy.",
   },
   {
     title: "Fionna Carlisle",
@@ -80,7 +92,7 @@ export const projects: Project[] = [
     url: "https://www.fionnacarlisle.com",
     stack: ["WordPress"],
     metric: "Acclaimed Scottish artist · gallery",
-    outcome: "Gallery-forward portfolio for exhibitions, news, and collector outreach.",
+    outcome: "Gallery-led portfolio for exhibitions, news, and collector outreach.",
   },
   {
     title: "Audio hire site",
@@ -90,7 +102,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
     metric: "Lighthouse ~99 · click-to-load embeds",
     outcome:
-      "Fast hire one-pager with deferred media, PDF downloads, and clean SEO basics on a subdomain.",
+      "Fast hire one-pager with deferred media, PDF downloads, and clean SEO on a subdomain.",
     caseStudySlug: "audio-hire",
   },
 ];

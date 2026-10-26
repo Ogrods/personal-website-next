@@ -78,7 +78,7 @@ export const resumeContent: ResumeContent = {
     {
       company: "BAKLOG (baklog.app)",
       title: "Founder & Full-Stack Engineer",
-      years: "2026 – present",
+      years: "2026 - present",
       description:
         "Founded and solo-built BAKLOG, a local-first desktop app unifying game libraries across 20 storefronts; own product, engineering, and go-to-market. Engineered a 27-source sync orchestrator with per-source freshness tracking, cross-store dedupe, and ownership-aware deal alerts. Hardened for production with atomic writes, fetch drift guard, encrypted credentials (AES-256-GCM + OS keyring), and zero telemetry. Stood up CI with 3,800+ automated tests and an axe-core accessibility gate; full case study at danogrodnik.com/#baklog.",
       highlights: [],
@@ -86,7 +86,7 @@ export const resumeContent: ResumeContent = {
     {
       company: "Rhumbline AI",
       title: "Freelance Front-end Developer",
-      years: "2025 – present",
+      years: "2025 - present",
       description:
         "Led WordPress front-end for FIRST - Foundation for Ichthyosis & Related Skin Types (firstskinfoundation.org) on Gutenberg + GenerateBlocks; shipped events, physician finder, and donation flows with Schema.org markup and WCAG 2.1 AA for a global rare-disease nonprofit ($2.2M research funding, 1,600+ patient registry). Additional WordPress and Shopify front-end work; React used on Shopify interactive UI and high-traffic landing pages where the stack called for it.",
       highlights: [],
@@ -94,7 +94,7 @@ export const resumeContent: ResumeContent = {
     {
       company: "Fervor Creative",
       title: "Front-end Developer",
-      years: "April 2022 – October 2024",
+      years: "April 2022 - October 2024",
       description:
         "Shipped 50+ production WordPress and Shopify sites in 30 months for nonprofit, education, and multifamily real estate clients including ASU, Starbucks, The Piper Trust, and 100+ Greystar Real Estate properties. Owned post-launch support across a 150+ site agency portfolio; triaged plugin conflicts, hosting incidents, and accessibility regressions under same-day response expectations. Engineered custom themes in PHP, JavaScript (ES6+), and Liquid; lifted Lighthouse Performance, SEO, and Accessibility scores by 30 to 50 points per site via Core Web Vitals tuning, Schema.org / JSON-LD, and WCAG remediation.",
       highlights: [],
@@ -102,7 +102,7 @@ export const resumeContent: ResumeContent = {
     {
       company: "Freelance / Contract",
       title: "Front-end Developer (Straight Up Digital, ANova Digital)",
-      years: "August 2020 – present",
+      years: "August 2020 - present",
       description:
         "End-to-end WordPress and Shopify development for small-to-mid-market clients; convert design mockups into production Liquid and PHP / Sass themes; integrate REST APIs for payments, shipping, and marketing automation; optimize page speed, mobile usability, and accessibility post-launch.",
       highlights: [],

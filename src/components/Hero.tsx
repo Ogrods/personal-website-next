@@ -30,6 +30,14 @@ export default function Hero({ profile }: HeroProps) {
           </h1>
           <h2 className="mx-auto w-[90%] max-w-3xl font-serif text-[clamp(1.25rem,4vw,2.125rem)] leading-tight text-[#ddd]">
             {profile.tagline}
+            {profile.taglineStack ? (
+              <>
+                <br />
+                <span className="mt-1 inline-block text-[clamp(1.05rem,3.2vw,1.65rem)] font-normal tracking-wide text-[#c8c8c8]">
+                  {profile.taglineStack}
+                </span>
+              </>
+            ) : null}
           </h2>
           <hr className="mx-auto my-[18px] w-3/5 border-white/10" />
           <p className="mx-auto w-[85%] max-w-2xl font-serif text-lg italic leading-[1.75] text-[#d4d4d4] md:text-xl">

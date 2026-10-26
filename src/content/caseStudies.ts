@@ -8,7 +8,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo founder · Product, engineering, and GTM",
     liveUrl: "https://baklog.app",
     overview:
-      "Modern PC libraries are accidental. Free game drops, bundle purchases, and forgotten launcher accounts scatter ownership across Steam, Epic, GOG, PlayStation, Xbox, and more. BAKLOG runs on your machine and is driven by a single fetch module: a responsive, real-time orchestrator that pulls from every connected store and feed, dedupes cross-store titles, tracks how fresh each source is, and answers the question every backlog owner actually has - what should I play next?",
+      "Modern PC libraries are accidental. Free game drops, bundle purchases, and forgotten launcher accounts scatter ownership across Steam, Epic, GOG, PlayStation, Xbox, and more. BAKLOG runs on your machine with a single fetch module: a real-time orchestrator that pulls every connected store and feed, dedupes cross-store titles, and tracks how fresh each source is. It answers a simple question: what should I play next?",
     metrics: [
       "27 fetch sources, one orchestrator",
       "Live, non-blocking sync",
@@ -22,7 +22,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "The fetcher surfaces as a responsive, real-time control panel: per-source counts and age badges, connected vs stale/missing filters, auto-refresh toggles, expand/collapse and layout controls, and live job status (Running: ITAD ... done) that reflows from the full dashboard down to small screens - all without blocking the rest of the app.",
       "Local-first architecture: a Python server on localhost runs the fetchers, encrypted credentials stay on disk with AES-256-GCM and the OS keyring, and storefront requests run from your IP via Chrome DevTools Protocol browser auth, not a BAKLOG cloud.",
       "Cross-store dedupe with store-priority survivor selection, combined playtime rollup, and ownership-aware wishlist deals fused with IsThereAnyDeal pricing. A drift guard prevents a failed fetch from wiping a populated library.",
-      "Virtual scrolling and a Web Worker filter pipeline keep 1,000+ row tables responsive in vanilla JavaScript, backed by 3,800+ automated tests (pytest + Vitest), CI on Windows, and a documented privacy threat model with zero network telemetry.",
+      "Virtual scrolling and a Web Worker filter pipeline keep 1,000+ row tables responsive in vanilla JavaScript. Production discipline backs it: 3,800+ automated tests (pytest + Vitest), CI on Windows, and a documented privacy threat model with zero network telemetry.",
     ],
     heroImage: {
       src: "baklog.webp",
@@ -76,14 +76,14 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Front-end build via Rhumbline AI",
     liveUrl: "https://firstskinfoundation.org/",
     overview:
-      "FIRST is a global rare-disease nonprofit supporting patients, caregivers, and clinicians. I led the WordPress front-end build using Gutenberg and GenerateBlocks for the editor surface, events, physician finder, and donation flows, while the site had to speak to two very different audiences without splitting into two separate properties.",
+      "FIRST is a global rare-disease nonprofit supporting patients, caregivers, and clinicians. The site had to speak to two very different audiences without becoming two properties. I led the WordPress front-end on Gutenberg and GenerateBlocks: editor surface, events, physician finder, and donation flows.",
     metrics: [
       "$2.2M research funding",
       "1,600+ patient registry",
       "Global rare-disease nonprofit",
     ],
     challenge:
-      "The same ichthyosis content must serve frightened patients and caregivers looking for plain-language guidance, and medical professionals who need clinical depth and references. A single nav and one visual system would force each audience to wade through the other's world. Accessibility was non-negotiable: many visitors have visual or skin-related conditions that intersect directly with WCAG requirements.",
+      "The same ichthyosis content must serve patients and caregivers looking for plain-language guidance, and medical professionals who need clinical depth and references. A single nav and one visual system would force each audience through the other's world. Accessibility had to hold: many visitors have visual or skin-related conditions that map directly to WCAG requirements.",
     approach: [
       "Dual color-coded experiences in one WordPress site: a blue patients and caregivers side and a green medical professionals side. Headers, navigation, heroes, and sidebars recolor throughout so visitors always know which audience mode they are in.",
       "A persistent audience toggle in the masthead - Medical Professionals on the blue side, Patients and Caregivers on the green side - so users can cross over without losing context.",
@@ -118,6 +118,82 @@ export const caseStudies: Record<string, CaseStudy> = {
       "WCAG 2.1 AA",
     ],
   },
+  wedding: {
+    slug: "wedding",
+    title: "Wedding guest site",
+    eyebrow: "Case study",
+    role: "Solo build · Product, design, and full-stack engineering",
+    liveUrl: "https://danison.love",
+    overview: [
+      "We started on WeddingWire and it was not enough: rigid RSVPs, thin logistics for a two-venue mountain day, guest data that did not match how we planned, and almost no day-of ops. So I built a custom guest site and planning system for our October 31 wedding: ceremony at SkyPark, dinner and dancing at Twin Peaks Community Center.",
+      "Guests had one phone-friendly place for schedule, maps, lodging, and RSVP. We ran headcount, seating, meals, and day-of media off the same database instead of screenshots and spreadsheets. Closing the RSVP window left 96 attending (89 adults, 7 kids), 90 portal-confirmed, and zero awaiting reply.",
+    ],
+    metrics: [
+      "96 attending · 0 awaiting reply",
+      "90 portal-confirmed RSVPs",
+      "Admin headcount strip on invitee dots",
+      "Dual booth + reception slideshow",
+    ],
+    challenge:
+      "WeddingWire worked for a starter list and a save-the-date. It did not work for a dual-venue mountain wedding with a firm caterer deadline, household replies, vegetarian meal counts, verbal yeses mixed with portal replies, and seating that had to stay accurate until the last table card. Guests needed clear answers on phones. We needed admin tools that treated invitees as canonical data and RSVPs as intake, not the reverse.",
+    approach: [
+      "Left WeddingWire for a custom site: import the starter list, make Payload Invitees the canonical roster, and treat portal RSVPs as intake that syncs into it so headcount, meals, and seating never fight a second spreadsheet.",
+      "Built a household-aware RSVP flow (invitation name match, +1, up to two children, per-guest vegetarian flags, dietary notes, resubmit-as-update) with name-anchored sync, household keys, and moderation flags for ambiguous matches, without letting guests overwrite seating or planning fields.",
+      "Shipped an admin RSVP stats strip as the ops glance layer: attending vs portal-confirmed vs tentative, declines, awaiting reply, kids, vegetarian meals, and flagged rows, plus one-click Wedding plan and View wedding site links, so headcount never meant opening a spreadsheet.",
+      "Turned dual-venue logistics into one guest narrative: timed program, maps, parking, SkyPark-to-Twin Peaks directions, lodging, FAQ, dress code, registry, and Our Story. Hid a Twin Peaks Red Room easter egg behind five taps on the reception card, with a matching Red Room booth theme.",
+      "Ran two photo booths on the same themes, strip composer, and Google Photos upload: full /booth for modern devices, and /booth/lite for an old iPad mini on iOS 12. Guests pick Classic, Mountain formal, Halloween, or Red Room. An unlisted /slideshow TV reel covers reception displays; RSVPs hard-close after the caterer deadline, with archive mode ready afterward.",
+      "Treated seating and vendors as product too: attending invitees export to a seating canvas and wedding plan HTML, and vendor sections stay behind feature flags until bookings are real. Stack: Next.js, Payload CMS 3, Neon Postgres, Vercel, Playwright smoke tests, seating preflight, and database backups, with noindex so the guest site stays share-by-link.",
+    ],
+    heroImage: {
+      src: "wedding.webp",
+      alt: "Wedding guest site hero with couple monogram, names, and countdown",
+    },
+    gallery: {
+      heading: "Guest, ops, and day-of surfaces",
+      body: "Guest logistics with a Red Room easter egg, the admin headcount strip, RSVP party builder, and four booth themes across dual kiosks including the iPad mini lite booth.",
+      images: [
+        {
+          src: "wedding-venues.webp",
+          alt: "Ceremony and reception venue cards with Twin Peaks Red Room easter egg revealed",
+          caption: "Venues · Red Room easter egg",
+        },
+        {
+          src: "wedding-program.webp",
+          alt: "Wedding program timeline with ceremony and reception schedule",
+          caption: "Program · Day-of schedule",
+        },
+        {
+          src: "wedding-stay.webp",
+          alt: "Accommodations page with mountain lodging near the reception",
+          caption: "Stay · Mountain lodging",
+        },
+        {
+          src: "wedding-admin.webp",
+          alt: "Admin RSVP stats strip showing attending, portal confirmed, and meal counts",
+          caption: "Admin · Headcount strip",
+        },
+        {
+          src: "wedding-rsvp.webp",
+          alt: "Wedding RSVP form with party builder and vegetarian meal flags",
+          caption: "RSVP · Party builder and meals",
+        },
+        {
+          src: "wedding-booth-themes.webp",
+          alt: "Four photo booth strip themes: Classic, Mountain, Halloween, and Red Room",
+          caption: "Booth · Four themes · /booth + iPad mini lite",
+        },
+      ],
+    },
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Payload CMS 3",
+      "Neon Postgres",
+      "Vercel",
+      "Playwright",
+      "Google Photos API",
+    ],
+  },
   "audio-hire": {
     slug: "audio-hire",
     title: "Audio hire site",
@@ -125,7 +201,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Solo build · Design and front-end",
     liveUrl: "https://audio.danogrodnik.com",
     overview:
-      "A one-page hire site on a subdomain of danogrodnik.com. Goal: keep the first screen light and clear while still surfacing work samples, services, credits, and resume/CV downloads - without dragging LCP or shipping a heavy media stack up front.",
+      "A one-page hire site on a subdomain of danogrodnik.com for booking audio work. The first screen stays light and clear while still surfacing samples, services, credits, and resume downloads, without shipping a heavy media stack up front.",
     metrics: [
       "Next.js 15 on Vercel",
       "Click-to-load SoundCloud / YouTube facades",
@@ -133,11 +209,11 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Shared GTM container with the main site",
     ],
     challenge:
-      "Hire pages fail when they feel like a dump of embeds and PDFs. Third-party players, a long photo strip, and downloadable docs all compete with the hero. The page had to stay readable on a phone, keep section backgrounds stable under scroll motion, and stay honest about performance instead of papering over it with a spinner.",
+      "Hire pages often bury the point under embeds and PDFs. Third-party players, a long photo strip, and downloadable docs all compete with the hero. The page had to stay readable on a phone, keep section backgrounds stable under scroll motion, and keep performance real instead of hiding weight behind a spinner.",
     approach: [
       "Plain section shells with item-level scroll reveals so bands do not flash in as black sheets.",
-      "Hero treated as LCP: image tuned, type scaled for small screens, no reveal wrapper on the hero content.",
-      "Work section uses facades; players load only after a click. Photo strip scrolls continuously but pauses when offscreen.",
+      "Hero treated as the LCP: image tuned, type scaled for small screens, no reveal wrapper on the hero content.",
+      "Work section uses facades so players load only after a click and the hero stays fast. Photo strip scrolls continuously but pauses when offscreen.",
       "Resume and full CV as generated PDFs with mailto contact (no form backend on this property).",
       "Same GTM container as danogrodnik.com (GTM-PWX68TK), plus click classes on resume/CV links so existing triggers keep working.",
       "Basic SEO kit: canonical, Open Graph image, sitemap.xml, robots.txt, structured data.",

@@ -14,6 +14,8 @@ export type SiteProfile = {
   name: string;
   availability: string;
   tagline: string;
+  /** Optional second hero line (e.g. stack list) so the rag never orphans one tech. */
+  taglineStack?: string;
   proofLine: string;
   bookingUrl: string;
   image: string;
@@ -69,6 +71,8 @@ export type Project = {
   featuredEyebrow?: string;
   featuredBlurb?: string;
   caseStudySlug?: string;
+  /** When true, omit from Selected Work and block #slug / ?case= deep links. */
+  hidden?: boolean;
 };
 
 export type CaseStudyImage = {
@@ -83,7 +87,7 @@ export type CaseStudy = {
   eyebrow: string;
   role: string;
   liveUrl: string;
-  overview: string;
+  overview: string | string[];
   metrics: string[];
   challenge: string;
   approach: string[];

@@ -167,9 +167,19 @@ export default function CaseStudyModal({
             />
           </div>
 
-          <p className="mt-6 font-serif text-base leading-relaxed text-[#313131]">
-            {caseStudy.overview}
-          </p>
+          {(Array.isArray(caseStudy.overview)
+            ? caseStudy.overview
+            : [caseStudy.overview]
+          ).map((paragraph, index) => (
+            <p
+              key={paragraph.slice(0, 48)}
+              className={`font-serif text-base leading-relaxed text-[#313131] ${
+                index === 0 ? "mt-6" : "mt-3"
+              }`}
+            >
+              {paragraph}
+            </p>
+          ))}
 
           <ul className="mt-4 flex flex-wrap gap-2">
             {caseStudy.metrics.map((metric) => (

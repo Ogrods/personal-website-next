@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import CaseStudyModal from "@/components/CaseStudyModal";
 import Reveal from "@/components/Reveal";
@@ -160,31 +160,56 @@ function ProjectCard({
   );
 }
 
-function resolveCaseStudySlugFromUrl(): string | null {
+function resolveCaseStudySlugFromUrl(
+  visibleSlugs: Set<string>
+): string | null {
   if (typeof window === "undefined") return null;
   const params = new URLSearchParams(window.location.search);
   const fromQuery = params.get("case");
-  if (fromQuery && getCaseStudy(fromQuery)) return fromQuery;
+  if (
+    fromQuery &&
+    visibleSlugs.has(fromQuery) &&
+    getCaseStudy(fromQuery)
+  ) {
+    return fromQuery;
+  }
   const hash = window.location.hash.replace(/^#/, "");
-  if (hash && getCaseStudy(hash)) return hash;
+  if (hash && visibleSlugs.has(hash) && getCaseStudy(hash)) return hash;
   return null;
 }
 
 export default function Portfolio({ projects }: PortfolioProps) {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
-  const featured = projects.find((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
-  const activeCaseStudy = activeSlug ? getCaseStudy(activeSlug) : undefined;
+  const visibleProjects = useMemo(
+    () => projects.filter((p) => !p.hidden),
+    [projects]
+  );
+  const featured = visibleProjects.find((p) => p.featured);
+  const rest = visibleProjects.filter((p) => !p.featured);
+  const visibleCaseStudySlugs = useMemo(() => {
+    const slugs = visibleProjects
+      .map((p) => p.caseStudySlug)
+      .filter((slug): slug is string => Boolean(slug));
+    return new Set(slugs);
+  }, [visibleProjects]);
+  const activeCaseStudy =
+    activeSlug && visibleCaseStudySlugs.has(activeSlug)
+      ? getCaseStudy(activeSlug)
+      : undefined;
 
-  const handleOpenCaseStudy = useCallback((slug: string) => {
-    setActiveSlug(slug);
-    if (typeof window === "undefined") return;
-    const url = new URL(window.location.href);
-    url.hash = slug;
-    url.searchParams.delete("case");
-    window.history.replaceState(null, "", url.toString());
-  }, []);
+  const handleOpenCaseStudy = useCallback(
+    (slug: string) => {
+      if (!visibleCaseStudySlugs.has(slug)) return;
+      setActiveSlug(slug);
+      if (typeof window === "undefined") return;
+      const url = new URL(window.location.href);
+      url.hash = slug;
+      url.searchParams.delete("case");
+      window.history.replaceState(null, "", url.toString());
+    },
+    [visibleCaseStudySlugs]
+  );
 
   const handleCloseCaseStudy = useCallback(() => {
     setActiveSlug(null);
@@ -197,13 +222,14 @@ export default function Portfolio({ projects }: PortfolioProps) {
 
   useEffect(() => {
     const openFromUrl = () => {
-      const slug = resolveCaseStudySlugFromUrl();
+      const slug = resolveCaseStudySlugFromUrl(visibleCaseStudySlugs);
       if (slug) setActiveSlug(slug);
+      else setActiveSlug(null);
     };
     openFromUrl();
     window.addEventListener("hashchange", openFromUrl);
     return () => window.removeEventListener("hashchange", openFromUrl);
-  }, []);
+  }, [visibleCaseStudySlugs]);
 
   return (
     <>
