@@ -49,6 +49,7 @@ function LogoSet({
                   height={48}
                   className="h-full w-auto max-w-full object-contain"
                   sizes="140px"
+                  style={{ transform: `scale(${client.scale ?? 1})` }}
                 />
               </a>
             ) : (
@@ -60,6 +61,7 @@ function LogoSet({
                   height={48}
                   className="h-full w-auto max-w-full object-contain"
                   sizes="140px"
+                  style={{ transform: `scale(${client.scale ?? 1})` }}
                 />
               </span>
             )}
