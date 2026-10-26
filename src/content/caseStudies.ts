@@ -248,7 +248,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     liveUrl: "https://madishroom.com",
     overview: [
       "Madishroom is a live DTC Shopify store I own and operate: curated pre-owned gaming and pop-culture collectibles under Madishroom, plus new handmade and made-to-order art under Crafty MerMadi. I built the Liquid theme, payments and shipping, and the catalog tooling that keeps the store honest at scale.",
-      "Most of the catalog never hits the storefront. Of 656 product handles, about 479 stay Draft on purpose—drops, $0 staging inventory, and incomplete pricing—while roughly 180 SKUs sell live. Shoppers sort and filter that live set; bulk CSV work must never accidentally publish a draft or wipe inventory.",
+      "Most of the catalog never hits the storefront. Of 656 product handles, about 479 stay Draft on purpose: drops, $0 staging inventory, and incomplete pricing, while roughly 180 SKUs sell live. Shoppers sort and filter that live set; bulk CSV work must never accidentally publish a draft or wipe inventory.",
     ],
     metrics: [
       "650+ SKUs · ~480 Draft",
@@ -259,10 +259,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     challenge:
       "A dual-brand catalog this size is mostly inactive by design. Drafts hold future drops, unpriced staging stock, and SKUs that are not ready for Google Shopping. Shoppers still need a clean, sortable live grid. The hard part is operating hundreds of inactive items safely: a careless product CSV can flip Status, publish drafts, or zero Variant Inventory Qty across the whole project.",
     approach: [
-      "Treat Shopify Draft as a first-class merchandising state—not a mistake. Keep incomplete, $0, and drop-held SKUs inactive until they are priced and ready; activate in batches when a drop or audit clears them.",
+      "Treat Shopify Draft as a first-class merchandising state, not a mistake. Keep incomplete, $0, and drop-held SKUs inactive until they are priced and ready; activate in batches when a drop or audit clears them.",
       "Build a Python normalize/check pipeline over full catalog exports. Remap SKUs, SEO, condition markup, tags, and inventory_policy across hundreds of handles while hard-omitting Status, Published, and Variant Inventory Qty from every import file so drafts stay draft and stock counts never get overwritten.",
       "Encode dual-vendor rules in catalog tooling: Madishroom pre-owned (used) versus Crafty MerMadi new/MTO (continue selling when out of stock for stickers and prints; deny otherwise), plus duplicate-draft cleanup after imports.",
-      "Ship Dawn-based collection and search facets with sorting and filtering enabled. The live grid paginates at 20 products per page; sort_by and filters update via Shopify Section Rendering without a full page reload—drafts never appear in those collections.",
+      "Ship Dawn-based collection and search facets with sorting and filtering enabled. The live grid paginates at 20 products per page; sort_by and filters update via Shopify Section Rendering without a full page reload. Drafts never appear in those collections.",
       "Tune the Liquid theme for product photography, lazy media, deferred third-party scripts, and Schema.org product/organization markup so the public storefront stays conversion-focused while the ops layer stays in CSV and admin.",
     ],
     heroImage: {
