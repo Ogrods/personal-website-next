@@ -37,7 +37,6 @@ export const projects: Project[] = [
     outcome:
       "Replaced WeddingWire with a guest site and ops stack for RSVP, seating, meals, and day-of media.",
     caseStudySlug: "wedding",
-    hidden: true,
   },
   {
     title: "Madishroom",
